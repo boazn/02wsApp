@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:padding="@dimen/widget_margin">
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+      android:alpha="0.8">
+   <ImageView
+   android:id="@+id/imgBackgroundAppSmall"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:adjustViewBounds="true"
+   android:alpha="0.8"
+   android:src="@drawable/hot"
+   >
+  </ImageView>
+  </RelativeLayout>
+  <RelativeLayout
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:scaleType="fitXY"
+   android:layout_margin="0dp"
+   android:padding="0dp"
+    android:orientation="vertical"
+    >
+  <Button
+   android:id="@+id/btnOpenAppSmall"
+      android:background="@android:color/transparent"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:layout_margin="0dp"
+   android:padding="0dp"
+   android:textColor="#000"
+   android:textSize="23sp"
+   >
+  </Button>
+  </RelativeLayout>
+
+</FrameLayout>

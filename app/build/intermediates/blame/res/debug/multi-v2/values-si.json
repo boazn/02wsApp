@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-si\\values-si.xml",
+            "map": [
+                {
+                    "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.6.2.aar\\b6c510090d6d82ead17de46e9678eba3\\res\\values-si\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "285",
+                        "endColumns": "197",
+                        "endOffsets": "482"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "105",
+                        "endColumns": "197",
+                        "endOffsets": "298"
+                    }
+                },
+                {
+                    "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-messaging-11.6.2.aar\\9033130f4c499d59418a9dfb33356efc\\res\\values-si\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "243",
+                        "endColumns": "99",
+                        "endOffsets": "342"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "303",
+                        "endColumns": "103",
+                        "endOffsets": "402"
+                    }
+                }
+            ]
+        }
+    ]
+}

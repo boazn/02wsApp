@@ -1,0 +1,136 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/menu_item_share"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action"
+        />
+    <item
+        android:id="@+id/action_camera"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_camera" >
+        <menu>
+            <item
+                android:id="@+id/action_opencamera"
+                android:title="@string/opencamera"
+                />
+            <item
+                android:id="@+id/action_opengallery"
+                android:title="@string/opengallery"
+                />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/action_language"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/language">
+        <menu>
+        <group android:checkableBehavior="single">
+         <item android:id="@+id/action_english"
+              android:title="@string/eng" />
+         <item android:id="@+id/action_hebrew"
+              android:title="@string/hebrew" />
+    	</group>
+    	</menu>
+    </item>
+    <item
+        android:id="@+id/action_temp"
+        android:orderInCategory="110"
+        android:showAsAction="never"
+        android:title="°C / °F">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/action_c"
+                    android:title="°C" />
+                <item android:id="@+id/action_f"
+                    android:title="°F" />
+            </group>
+        </menu>
+    </item>
+     <item
+        android:id="@+id/action_notifications"
+        android:orderInCategory="250"
+        android:textSize="2sp"
+        android:showAsAction="withText"
+        android:title="@string/notifications" 
+        android:checkable="true"/>
+     <item
+        android:id="@+id/action_rain_notifications"
+        android:orderInCategory="300"
+        android:showAsAction="withText"
+        android:title="@string/rain_notifications" 
+        android:checkable="true"/>
+     <item
+        android:id="@+id/action_tips_notifications"
+        android:orderInCategory="400"
+        android:showAsAction="withText"
+        android:title="@string/tips_notifications" 
+        android:checkable="true"/>
+      <item
+        android:id="@+id/action_sound"
+        android:orderInCategory="800"
+        android:showAsAction="withText"
+        android:title="@string/sound" 
+        android:checkable="true"/>
+     <item
+        android:id="@+id/action_force_fulltext"
+        android:orderInCategory="500"
+        android:showAsAction="withText"
+        android:title="@string/force_fulltext" 
+        android:checkable="true"/>
+     <item
+        android:id="@+id/action_cloth"
+        android:orderInCategory="600"
+        android:showAsAction="withText"
+        android:title="@string/cloth" 
+        android:checkable="true"/>
+     <item
+        android:id="@+id/action_vibration"
+        android:orderInCategory="700"
+        android:showAsAction="withText"
+        android:title="@string/vibration" 
+        android:checkable="true"/>
+    <item
+        android:id="@+id/action_alertsound"
+        android:orderInCategory="800"
+        android:showAsAction="never"
+        android:title="@string/alert_sound">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/action_lighttrain"
+                    android:title="@string/lighttrain" />
+                <item android:id="@+id/action_lighttrainbell"
+                    android:title="@string/lighttrainbell" />
+                <item android:id="@+id/action_lighttrainpassing"
+                    android:title="@string/lighttrainpassing" />
+                <item android:id="@+id/action_lighttrainshort"
+                    android:title="@string/lighttrainshort" />
+                <item android:id="@+id/action_JerOfGold"
+                    android:title="@string/JerOfGold" />
+                <item android:id="@+id/action_JerOfGoldDrugs"
+                    android:title="@string/JerOfGoldDrugs" />
+                <item android:id="@+id/action_vop"
+                    android:title="@string/vop" />
+                <item android:id="@+id/action_nosound"
+                    android:title="@string/nosound" />
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/change_font"
+        android:orderInCategory="900"
+        android:showAsAction="withText"
+        android:title="@string/changeFontSize"
+        >
+
+    </item>
+    <item
+        android:id="@+id/enter_code"
+        android:orderInCategory="900"
+        android:showAsAction="withText"
+        android:title="@string/title_activity_ad_free_code"
+        >
+
+    </item>
+
+</menu>

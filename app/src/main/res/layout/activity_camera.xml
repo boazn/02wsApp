@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:nestedScrollingEnabled="false">
+    <ImageView
+        android:id="@+id/imgCamera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_margin="10px"
+        android:padding="5px"
+        android:scaleType="fitCenter"
+        android:layout_weight="0.6">
+    </ImageView>
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/name"
+        android:layout_gravity="center_horizontal" />
+    <EditText
+        android:id="@+id/comment"
+     android:inputType="textMultiLine"
+    android:lines="3"
+    android:minLines="1"
+    android:maxLines="10"
+    android:layout_height="wrap_content"
+    android:layout_width="250dp"
+    android:scrollbars="vertical"
+    android:hint="@string/somethingToSay"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/SendPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+                android:onClick="onClick"
+        android:text="@string/sendphoto"
+        android:layout_gravity="center_horizontal|bottom" />
+
+    <Button
+        android:id="@+id/CancelPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:onClick="onClick"
+        android:text="@string/cancel_text"
+        android:singleLine="false"
+        android:layout_gravity="center_horizontal|bottom" />
+
+</LinearLayout>

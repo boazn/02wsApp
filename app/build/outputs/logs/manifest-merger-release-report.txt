@@ -1,0 +1,520 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:2:1-121:12
+INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:2:1-121:12
+INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:2:1-121:12
+INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:2:1-121:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\8b1d20ed4c84bb5569dee7a4251cbef7\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:design:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\design-25.2.0.aar\4d1bf76b9602ecac89252b0a72a1c589\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:appcompat-v7:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.2.0.aar\d3d13af6103f00d8e40431a11836394c\AndroidManifest.xml:17:1-27:12
+MERGED from [com.google.firebase:firebase-messaging:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.6.2.aar\9f3f0935b8da0ac9b70eefffc5582e93\AndroidManifest.xml:16:1-30:12
+MERGED from [com.google.firebase:firebase-crash:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.6.2.aar\2ee01d0f175addc10155bafa17e9dd04\AndroidManifest.xml:16:1-25:12
+MERGED from [com.google.firebase:firebase-core:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-core-11.6.2.aar\69832c54017b4fc720d9fe9415982ce7\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:16:1-35:12
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:16:1-29:12
+MERGED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:16:1-47:12
+MERGED from [com.google.firebase:firebase-common:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-11.6.2.aar\1d8d3d1791fd9877e9ec4190c8bcc980\AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.android.gms:play-services-tasks:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.6.2.aar\d5f9af21e1923791d459c6e56c2c8edb\AndroidManifest.xml:2:1-5:12
+MERGED from [com.google.android.gms:play-services-basement:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.6.2.aar\8f006d8c8ac502397271e4d108615c50\AndroidManifest.xml:16:1-23:12
+MERGED from [com.android.support:transition:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\transition-25.2.0.aar\7304bb366959affbf734a7765e086162\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-v4:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-v4-25.2.0.aar\e56ca19fd559467800127d58cbffadab\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-fragment:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-fragment-25.2.0.aar\e2b4e857e4f7d20bc8b535c4d4ad78a4\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-media-compat:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.2.0.aar\49feeb005876aea41c456185907180fa\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:recyclerview-v7:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.2.0.aar\c311b5e5c294a2999439926f8e85a89a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.2.0.aar\804a5eeb6c06b5c626bddeebf8373bd4\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:support-core-utils:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.2.0.aar\94fd53a801e305223e63e776d5195d6e\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.2.0.aar\5f5140a11f8a73728ece0d7242255dbe\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-vector-drawable:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.2.0.aar\81bffbcf8e7d75e84eb64e4d0eec50aa\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:support-compat:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-compat-25.2.0.aar\f9ab79ed0a4c062717275aefe22dcce8\AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:multidex:1.0.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\9398c9d46e50195a747a2b3948df882a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-messaging-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-license-11.6.2.aar\0aad532a3b8d77d1dc9d5003c94474be\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-crash-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-crash-license-11.6.2.aar\f099c4f651a0f08d5345d49ac9d9076c\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-iid-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-license-11.6.2.aar\26dc22f34738c1962b69113b3051e8aa\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.6.2.aar\81abcf68088375de931ede1020425fe4\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-common-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-license-11.6.2.aar\8c9d58556279b3d0b22d35b514ca9497\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-analytics-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-license-11.6.2.aar\751bce3601ff7f6c96a1e7ac90d7c228\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-tasks-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.6.2.aar\b6517ab556575c6d31e7808f3617b662\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.firebase:firebase-analytics-impl-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-license-11.6.2.aar\6f15a147cad2a857f56991f911161745\AndroidManifest.xml:2:1-6:12
+INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:2:1-121:12
+INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:2:1-121:12
+INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:2:1-121:12
+	package
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:3:5-28
+		INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:6:5-31
+		INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:5:5-29
+		INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml
+	android:installLocation
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:4:5-35
+uses-sdk
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:8:5-10:41
+INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:8:5-10:41
+INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\8b1d20ed4c84bb5569dee7a4251cbef7\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\8b1d20ed4c84bb5569dee7a4251cbef7\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:design:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\design-25.2.0.aar\4d1bf76b9602ecac89252b0a72a1c589\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\design-25.2.0.aar\4d1bf76b9602ecac89252b0a72a1c589\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.2.0.aar\d3d13af6103f00d8e40431a11836394c\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.2.0.aar\d3d13af6103f00d8e40431a11836394c\AndroidManifest.xml:21:5-23:78
+MERGED from [com.google.firebase:firebase-messaging:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.6.2.aar\9f3f0935b8da0ac9b70eefffc5582e93\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-messaging:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.6.2.aar\9f3f0935b8da0ac9b70eefffc5582e93\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-crash:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.6.2.aar\2ee01d0f175addc10155bafa17e9dd04\AndroidManifest.xml:20:5-43
+MERGED from [com.google.firebase:firebase-crash:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.6.2.aar\2ee01d0f175addc10155bafa17e9dd04\AndroidManifest.xml:20:5-43
+MERGED from [com.google.firebase:firebase-core:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-core-11.6.2.aar\69832c54017b4fc720d9fe9415982ce7\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-core:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-core-11.6.2.aar\69832c54017b4fc720d9fe9415982ce7\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-common:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-11.6.2.aar\1d8d3d1791fd9877e9ec4190c8bcc980\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-common:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-11.6.2.aar\1d8d3d1791fd9877e9ec4190c8bcc980\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-tasks:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.6.2.aar\d5f9af21e1923791d459c6e56c2c8edb\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-tasks:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.6.2.aar\d5f9af21e1923791d459c6e56c2c8edb\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-basement:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.6.2.aar\8f006d8c8ac502397271e4d108615c50\AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-basement:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.6.2.aar\8f006d8c8ac502397271e4d108615c50\AndroidManifest.xml:17:5-43
+MERGED from [com.android.support:transition:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\transition-25.2.0.aar\7304bb366959affbf734a7765e086162\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\transition-25.2.0.aar\7304bb366959affbf734a7765e086162\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-v4-25.2.0.aar\e56ca19fd559467800127d58cbffadab\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-v4-25.2.0.aar\e56ca19fd559467800127d58cbffadab\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-fragment-25.2.0.aar\e2b4e857e4f7d20bc8b535c4d4ad78a4\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-fragment-25.2.0.aar\e2b4e857e4f7d20bc8b535c4d4ad78a4\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.2.0.aar\49feeb005876aea41c456185907180fa\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.2.0.aar\49feeb005876aea41c456185907180fa\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:recyclerview-v7:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.2.0.aar\c311b5e5c294a2999439926f8e85a89a\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-25.2.0.aar\c311b5e5c294a2999439926f8e85a89a\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-core-ui:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.2.0.aar\804a5eeb6c06b5c626bddeebf8373bd4\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.2.0.aar\804a5eeb6c06b5c626bddeebf8373bd4\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.2.0.aar\94fd53a801e305223e63e776d5195d6e\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.2.0.aar\94fd53a801e305223e63e776d5195d6e\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.2.0.aar\5f5140a11f8a73728ece0d7242255dbe\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.2.0.aar\5f5140a11f8a73728ece0d7242255dbe\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.2.0.aar\81bffbcf8e7d75e84eb64e4d0eec50aa\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-vector-drawable:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.2.0.aar\81bffbcf8e7d75e84eb64e4d0eec50aa\AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-compat:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-compat-25.2.0.aar\f9ab79ed0a4c062717275aefe22dcce8\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-compat-25.2.0.aar\f9ab79ed0a4c062717275aefe22dcce8\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:multidex:1.0.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\9398c9d46e50195a747a2b3948df882a\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\9398c9d46e50195a747a2b3948df882a\AndroidManifest.xml:20:5-43
+MERGED from [com.google.firebase:firebase-messaging-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-license-11.6.2.aar\0aad532a3b8d77d1dc9d5003c94474be\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-messaging-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-license-11.6.2.aar\0aad532a3b8d77d1dc9d5003c94474be\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-crash-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-crash-license-11.6.2.aar\f099c4f651a0f08d5345d49ac9d9076c\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-crash-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-crash-license-11.6.2.aar\f099c4f651a0f08d5345d49ac9d9076c\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-iid-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-license-11.6.2.aar\26dc22f34738c1962b69113b3051e8aa\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-iid-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-license-11.6.2.aar\26dc22f34738c1962b69113b3051e8aa\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.6.2.aar\81abcf68088375de931ede1020425fe4\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.6.2.aar\81abcf68088375de931ede1020425fe4\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-common-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-license-11.6.2.aar\8c9d58556279b3d0b22d35b514ca9497\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-common-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-license-11.6.2.aar\8c9d58556279b3d0b22d35b514ca9497\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-analytics-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-license-11.6.2.aar\751bce3601ff7f6c96a1e7ac90d7c228\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-analytics-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-license-11.6.2.aar\751bce3601ff7f6c96a1e7ac90d7c228\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.6.2.aar\b6517ab556575c6d31e7808f3617b662\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.6.2.aar\b6517ab556575c6d31e7808f3617b662\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-analytics-impl-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-license-11.6.2.aar\6f15a147cad2a857f56991f911161745\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-analytics-impl-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-license-11.6.2.aar\6f15a147cad2a857f56991f911161745\AndroidManifest.xml:4:5-43
+INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:8:5-10:41
+INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:8:5-10:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\design-25.2.0.aar\4d1bf76b9602ecac89252b0a72a1c589\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:10:9-38
+		INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:9:9-35
+		INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:12:5-71
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:12:22-68
+uses-permission#android.permission.INTERNET
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:13:5-67
+MERGED from [com.google.firebase:firebase-crash:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.6.2.aar\2ee01d0f175addc10155bafa17e9dd04\AndroidManifest.xml:18:5-66
+MERGED from [com.google.firebase:firebase-crash:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.6.2.aar\2ee01d0f175addc10155bafa17e9dd04\AndroidManifest.xml:18:5-66
+MERGED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:13:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:14:5-79
+MERGED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:19:5-78
+MERGED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:14:22-76
+uses-permission#android.permission.VIBRATE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:15:5-66
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:15:22-63
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:16:5-80
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:16:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:17:5-81
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:17:22-78
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:18:5-75
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:18:22-72
+uses-feature#android.hardware.camera
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:20:5-22:36
+	android:required
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:22:9-33
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:21:9-47
+application
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:24:5-119:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\8b1d20ed4c84bb5569dee7a4251cbef7\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\8b1d20ed4c84bb5569dee7a4251cbef7\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:design:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\design-25.2.0.aar\4d1bf76b9602ecac89252b0a72a1c589\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:design:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\design-25.2.0.aar\4d1bf76b9602ecac89252b0a72a1c589\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.2.0.aar\d3d13af6103f00d8e40431a11836394c\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\appcompat-v7-25.2.0.aar\d3d13af6103f00d8e40431a11836394c\AndroidManifest.xml:25:5-20
+MERGED from [com.google.firebase:firebase-messaging:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.6.2.aar\9f3f0935b8da0ac9b70eefffc5582e93\AndroidManifest.xml:19:5-29:19
+MERGED from [com.google.firebase:firebase-messaging:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.6.2.aar\9f3f0935b8da0ac9b70eefffc5582e93\AndroidManifest.xml:19:5-29:19
+MERGED from [com.google.firebase:firebase-crash:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.6.2.aar\2ee01d0f175addc10155bafa17e9dd04\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-crash:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-crash-11.6.2.aar\2ee01d0f175addc10155bafa17e9dd04\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-core:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-core-11.6.2.aar\69832c54017b4fc720d9fe9415982ce7\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-core:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-core-11.6.2.aar\69832c54017b4fc720d9fe9415982ce7\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:24:5-34:19
+MERGED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:24:5-34:19
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:29:5-46:19
+MERGED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:29:5-46:19
+MERGED from [com.google.firebase:firebase-common:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-11.6.2.aar\1d8d3d1791fd9877e9ec4190c8bcc980\AndroidManifest.xml:4:5-7:19
+MERGED from [com.google.firebase:firebase-common:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-11.6.2.aar\1d8d3d1791fd9877e9ec4190c8bcc980\AndroidManifest.xml:4:5-7:19
+MERGED from [com.google.android.gms:play-services-tasks:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.6.2.aar\d5f9af21e1923791d459c6e56c2c8edb\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-tasks:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-tasks-11.6.2.aar\d5f9af21e1923791d459c6e56c2c8edb\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.6.2.aar\8f006d8c8ac502397271e4d108615c50\AndroidManifest.xml:19:5-21:19
+MERGED from [com.google.android.gms:play-services-basement:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.6.2.aar\8f006d8c8ac502397271e4d108615c50\AndroidManifest.xml:19:5-21:19
+MERGED from [com.android.support:transition:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\transition-25.2.0.aar\7304bb366959affbf734a7765e086162\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:transition:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\transition-25.2.0.aar\7304bb366959affbf734a7765e086162\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-v4-25.2.0.aar\e56ca19fd559467800127d58cbffadab\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-v4-25.2.0.aar\e56ca19fd559467800127d58cbffadab\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-fragment-25.2.0.aar\e2b4e857e4f7d20bc8b535c4d4ad78a4\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-fragment-25.2.0.aar\e2b4e857e4f7d20bc8b535c4d4ad78a4\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.2.0.aar\49feeb005876aea41c456185907180fa\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-media-compat-25.2.0.aar\49feeb005876aea41c456185907180fa\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.2.0.aar\804a5eeb6c06b5c626bddeebf8373bd4\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-core-ui-25.2.0.aar\804a5eeb6c06b5c626bddeebf8373bd4\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.2.0.aar\94fd53a801e305223e63e776d5195d6e\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-core-utils-25.2.0.aar\94fd53a801e305223e63e776d5195d6e\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.2.0.aar\5f5140a11f8a73728ece0d7242255dbe\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-25.2.0.aar\5f5140a11f8a73728ece0d7242255dbe\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.2.0.aar\81bffbcf8e7d75e84eb64e4d0eec50aa\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-vector-drawable:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-25.2.0.aar\81bffbcf8e7d75e84eb64e4d0eec50aa\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-compat:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-compat-25.2.0.aar\f9ab79ed0a4c062717275aefe22dcce8\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.2.0] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\support-compat-25.2.0.aar\f9ab79ed0a4c062717275aefe22dcce8\AndroidManifest.xml:25:5-20
+MERGED from [com.google.firebase:firebase-messaging-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-license-11.6.2.aar\0aad532a3b8d77d1dc9d5003c94474be\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-messaging-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-license-11.6.2.aar\0aad532a3b8d77d1dc9d5003c94474be\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-crash-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-crash-license-11.6.2.aar\f099c4f651a0f08d5345d49ac9d9076c\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-crash-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-crash-license-11.6.2.aar\f099c4f651a0f08d5345d49ac9d9076c\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-iid-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-license-11.6.2.aar\26dc22f34738c1962b69113b3051e8aa\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-iid-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-license-11.6.2.aar\26dc22f34738c1962b69113b3051e8aa\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.6.2.aar\81abcf68088375de931ede1020425fe4\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.6.2.aar\81abcf68088375de931ede1020425fe4\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-common-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-license-11.6.2.aar\8c9d58556279b3d0b22d35b514ca9497\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-common-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-license-11.6.2.aar\8c9d58556279b3d0b22d35b514ca9497\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-license-11.6.2.aar\751bce3601ff7f6c96a1e7ac90d7c228\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-license-11.6.2.aar\751bce3601ff7f6c96a1e7ac90d7c228\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.6.2.aar\b6517ab556575c6d31e7808f3617b662\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.6.2.aar\b6517ab556575c6d31e7808f3617b662\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics-impl-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-license-11.6.2.aar\6f15a147cad2a857f56991f911161745\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics-impl-license:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-license-11.6.2.aar\6f15a147cad2a857f56991f911161745\AndroidManifest.xml:5:5-20
+	android:label
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:27:9-41
+	android:icon
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:26:9-45
+	android:allowBackup
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:25:9-35
+	android:theme
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:28:9-40
+service#il.co.jws.app.FcmBroadcastReceiver
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:29:9-33:19
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:29:18-54
+intent-filter#com.google.firebase.MESSAGING_EVENT
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:30:13-32:29
+action#com.google.firebase.MESSAGING_EVENT
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:31:17-78
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:31:25-75
+service#il.co.jws.app.CustomFirebaseInstanceIDService
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:34:9-38:19
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:34:18-65
+intent-filter#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:35:13-37:29
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:36:17-80
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:36:25-77
+activity#il.co.jws.app.MainActivity
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:40:9-49:20
+	android:label
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:43:13-45
+	android:configChanges
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:42:13-59
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:41:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:44:13-48:29
+action#android.intent.action.MAIN
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:45:17-69
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:45:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:47:17-77
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:47:27-74
+activity#il.co.jws.app.AdFreeCodeActivity
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:50:9-58:20
+	android:parentActivityName
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:54:13-55
+	android:label
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:53:13-45
+	android:configChanges
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:52:13-59
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:51:13-47
+meta-data#android.support.PARENT_ACTIVITY
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:55:13-57:49
+	android:value
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:57:17-46
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:56:17-63
+activity#il.co.jws.app.CameraActivity
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:59:9-62:57
+	android:label
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:62:13-45
+	android:configChanges
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:61:13-59
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:60:13-43
+activity#il.co.jws.app.FontSizeActivity
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:63:9-66:57
+	android:label
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:66:13-45
+	android:configChanges
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:65:13-59
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:64:13-45
+activity#il.co.jws.app.LargeAppWidgetConfigActivity
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:67:9-73:20
+	android:label
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:69:13-45
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:68:13-57
+intent-filter#android.appwidget.action.APPWIDGET_CONFIGURE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:70:13-72:29
+action#android.appwidget.action.APPWIDGET_CONFIGURE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:71:17-87
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:71:25-84
+activity#il.co.jws.app.NotificationActivity
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:74:9-77:48
+	android:excludeFromRecents
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:76:13-46
+	android:taskAffinity
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:77:13-36
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:75:13-49
+receiver#il.co.jws.app.LargeAppWidgetProvider
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:79:9-90:20
+	android:icon
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:81:13-52
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:80:13-51
+intent-filter#LARGE_WIDGET_FREQ_UPDATE+android.appwidget.action.APPWIDGET_UPDATE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:82:13-85:29
+action#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:83:17-84
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:83:25-81
+action#LARGE_WIDGET_FREQ_UPDATE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:84:17-67
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:84:25-64
+meta-data#android.appwidget.provider
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:87:13-89:64
+	android:resource
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:89:17-61
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:88:17-58
+receiver#il.co.jws.app.SmallAppWidgetProvider
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:91:9-102:20
+	android:icon
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:93:13-51
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:92:13-51
+intent-filter#SMALL_WIDGET_FREQ_UPDATE+android.appwidget.action.APPWIDGET_UPDATE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:94:13-97:29
+action#SMALL_WIDGET_FREQ_UPDATE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:96:17-67
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:96:25-64
+receiver#il.co.jws.app.RectangleAppWidgetProvider
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:103:9-114:20
+	android:icon
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:105:13-53
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:104:13-55
+intent-filter#RECT_WIDGET_FREQ_UPDATE+android.appwidget.action.APPWIDGET_UPDATE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:106:13-109:29
+action#RECT_WIDGET_FREQ_UPDATE
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:108:17-66
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:108:25-63
+service#il.co.jws.app.UpdateService
+ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:116:9-50
+	android:name
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:116:18-47
+service#com.google.firebase.messaging.FirebaseMessagingService
+ADDED from [com.google.firebase:firebase-messaging:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.6.2.aar\9f3f0935b8da0ac9b70eefffc5582e93\AndroidManifest.xml:23:9-27:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.6.2.aar\9f3f0935b8da0ac9b70eefffc5582e93\AndroidManifest.xml:23:88-111
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-messaging-11.6.2.aar\9f3f0935b8da0ac9b70eefffc5582e93\AndroidManifest.xml:23:18-87
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:21:5-67
+MERGED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:21:5-67
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:22:22-65
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:25:7-26:18
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:25:7-26:18
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:25:7-26:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:25:90-112
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:25:113-137
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:25:17-89
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:27:7-31:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:27:162-184
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:27:185-208
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:27:105-161
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:27:17-104
+intent-filter#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:28:11-30:27
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:29:15-76
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:29:23-74
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:32:7-137
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:27:7-137
+MERGED from [com.google.firebase:firebase-analytics-impl:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-11.6.2.aar\4e18494cd56319f7a87467d5141daae4\AndroidManifest.xml:27:7-137
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:32:88-110
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:32:111-135
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:32:16-87
+service#com.google.android.gms.measurement.AppMeasurementJobService
+ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:33:7-197
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:33:148-170
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:33:171-195
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:33:91-147
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-analytics-11.6.2.aar\bc0d12d55ad58ce07f9cf39771348d07\AndroidManifest.xml:33:16-90
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:23:5-81
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:23:22-79
+permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:25:5-109
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:25:72-107
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:25:17-71
+permission#il.co.jws.app.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:25:5-109
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:25:72-107
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:25:17-71
+uses-permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:27:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:27:22-76
+uses-permission#il.co.jws.app.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:27:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:27:22-76
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:31:9-36:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:31:85-108
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:31:109-169
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:31:19-84
+intent-filter#${applicationId}+com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:32:13-35:29
+intent-filter#com.google.android.c2dm.intent.RECEIVE+il.co.jws.app
+ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:32:13-35:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:33:17-80
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:33:25-78
+category#${applicationId}
+ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:34:17-60
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:34:27-58
+category#il.co.jws.app
+ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:34:17-60
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:34:27-58
+service#com.google.firebase.iid.FirebaseInstanceIdService
+ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:40:9-44:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:40:83-106
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-iid-11.6.2.aar\98615dc259230720b85296257c6e5911\AndroidManifest.xml:40:18-82
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-11.6.2.aar\1d8d3d1791fd9877e9ec4190c8bcc980\AndroidManifest.xml:6:9-194
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-11.6.2.aar\1d8d3d1791fd9877e9ec4190c8bcc980\AndroidManifest.xml:6:19-78
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-11.6.2.aar\1d8d3d1791fd9877e9ec4190c8bcc980\AndroidManifest.xml:6:144-168
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-11.6.2.aar\1d8d3d1791fd9877e9ec4190c8bcc980\AndroidManifest.xml:6:169-192
+	android:name
+		ADDED from [com.google.firebase:firebase-common:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\firebase-common-11.6.2.aar\1d8d3d1791fd9877e9ec4190c8bcc980\AndroidManifest.xml:6:79-143
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.6.2.aar\8f006d8c8ac502397271e4d108615c50\AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.6.2.aar\8f006d8c8ac502397271e4d108615c50\AndroidManifest.xml:20:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:11.6.2] D:\Users\boaz.NEW-PC\.gradle\caches\transforms-1\files-1.1\play-services-basement-11.6.2.aar\8f006d8c8ac502397271e4d108615c50\AndroidManifest.xml:20:20-65

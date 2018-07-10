@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\52044510a5c74df480324d7a8a851ce6a42b574a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3e07112dbb70051d612383e8698f4d5bf4d40cfe\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpmime\4.5.2\22b4c53dd9b6761024258de8f9240c3dce6ea368\httpmime-4.5.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="22b4c53dd9b6761024258de8f9240c3dce6ea368">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\httpmime-4.5.2_1bbd838b63396e5fa22782d717c0ac68ee8ab69e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\e6e937bf74c19ed8953a1ac300236fc45d58eda0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b215e312bdc1ee7bfda31674eab5df8bad45c014">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a077aa4f5180671e0cc04ff777f9dc6b901bdb62\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\74d48d8c4652c30b8d92643bc23473291dcbbd49\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="399f75732ff1ac159f9e73611536f1508bf18d3b">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a047963b52812a18b7dd0714abe90fc5c93cafaa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\f2b47b498a7bb67d7c4cb7ef5e3b88cef51a06c1\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fc29308a7a8f6d4407b34634eb48fb8b817f9b23">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_53bb72ebdfd3239b414b5afb867e9c284cd0bfbb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_af47b8d32ed1633efc59a22b9f1bf1eb4e16374f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\895edfecd93cb1321c6509f9e12c55b1501eecb7\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0a5d5553c308643a9022f15513ebdd59e9c78d82">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_85b0382e6d0baed34baa0123b591719ff39db70a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6cd71bf6c46a45d7127a94b7a7ebbfe8f7f82d87">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_59e4d1bbdc6b5309ca7d5be9ce80242e0c6bacf6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\c3b607b847b781dd93538f0a9bd76a29f5aa586a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6003d64df88a6ce5e961fa2bad7f1b9b97689ac1">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cc48f03a70fed2d1963b823d6a543e99480e131a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\52044510a5c74df480324d7a8a851ce6a42b574a\output\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_63930d8427a1a8d67e156619a49ac2345856d372\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\0d4939c00bf186f71f6266c2d12f7889f93b03cd\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_02f9537fa9fcb2ae350abcb48a3c1398948bafa2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\421159541731d5d989a04881a615d37ddeeff893\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a1aa1dd9917e887bfe732cc5e561ae6ae8f9a84a">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_dc8e52cf587bd893ff8abb108c0fb1eeb189e37a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\7309995d6c43b6487b04d46b40680c9466150a29\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3df516d2440e38e9dfe8577dcc8ad78500defcd0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\0d45846c2fac2492a7c4d1edadf2654389879404\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="894922f67adeaaef51f077a29e315da21a3382d3">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7b7e6f13692b295949c9ad5aab122f412885f2c1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\8f40b6e9efd6fdc1bff52173a65394de8f1b82a9\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bdcc2a9572f18b8c90a3a157cab6cdfc97c6c736">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9099de726765270b21b198f3002ad5b5f162440f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\6e6726c48a516e98da6e25defe08bc199c77d56a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b2349ddfe04831042844cbf055e5a072da37ddf8">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_38bb1d9bb045e25350b016ef116002135c6d22a2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\6d1de2dd349c88916ed277b4832c22512428e644\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="888983f51cf34f57a93ff16832552f2f15937212">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_506d683768295678d45c8045109c59e25389dba4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\NetBeansProjects\adt-bundle-windows-x86_64-20130219\sdk\extras\android\m2repository\com\android\support\support-annotations\24.0.0\support-annotations-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.0.0_8b75f51c27a15a762563b8b081b3189abfbc2a6b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Users\boaz.NEW-PC\.android\build-cache\45fc42e5fbfb2f762faec1c9059de9ba6c2f18da\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2080522180427a97544d56595f39175fad91d9a1\classes.dex" />
+    </item>
+
+</items>

@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-sq\\values-sq.xml",
+            "map": [
+                {
+                    "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-messaging-11.6.2.aar\\9f3f0935b8da0ac9b70eefffc5582e93\\res\\values-sq\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "243",
+                        "endColumns": "105",
+                        "endOffsets": "348"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "293",
+                        "endColumns": "109",
+                        "endOffsets": "398"
+                    }
+                },
+                {
+                    "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-11.6.2.aar\\8f006d8c8ac502397271e4d108615c50\\res\\values-sq\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "285",
+                        "endColumns": "187",
+                        "endOffsets": "472"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "105",
+                        "endColumns": "187",
+                        "endOffsets": "288"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">02WS ירושמיים</string>
+    <string name="action_settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="refresh">Refresh</string>
+    <string name="loading">Loading</string>
+    <string name="notifications">Long range notification - forecasts, etc</string>
+    <string name="rain_notifications">Immediate notification - rain, etc</string>
+    <string name="tips_notifications">Tips</string>
+    <string name="forum">Forum</string>
+    <string name="hebrew">עברית</string>
+    <string name="eng">eng</string>
+    <string name="server_url">http://www.02ws.co.il/gcm_register.php</string>
+    <string name="log_gcm_prefix">GCM</string>
+    <string name="update_hint">כל כמה זמן לעדכן</string>
+    <string name="unitsPrompt">Time units</string>
+    <string name="ok_text">OK</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="share_title">Share</string>
+    <string name="reply_title">Reply</string>
+    <string name="share_extra_text">http://www.02ws.co.il/small.php?lang=</string>
+    <string name="share_extra_subject">Jerusalem Weather now</string>
+    <string name="share_extra_title">02ws app download link here</string>
+    <string name="force_fulltext">Show full forecast text</string>
+    <string name="cloth">Cloth</string>
+    <string name="vibration">Vibration on alerts</string>
+    <string name="alert_sound">Notification sound</string>
+    <string name="sound">Sound (of rain, etc)</string>
+    <string name="lighttrain">light train</string>
+    <string name="lighttrainpassing">light train passing</string>
+    <string name="lighttrainbell">light train bell</string>
+    <string name="lighttrainshort">light train short</string>
+    <string name="JerOfGold">Jerusalem of gold</string>
+    <string name="JerOfGoldDrugs">Jerusalem of gold on drugs</string>
+    <string name="vop">voice of peace</string>
+    <string name="nosound">no sound</string>
+    <string name="missing">Fill the empty fields, please</string>
+    <string name="uploaded">Image uploaded and will be processed before approved. Thanks</string>
+    <string name="notuploaded">Image has not uploaded. Try again</string>
+    <string name="opencamera">Take a shot</string>
+    <string name="opengallery">Pick from gallery</string>
+    <string name="sendphoto">Send Photo</string>
+    <string name="cancel">Cancel</string>
+    <string name="name">Name</string>
+    <string name="somethingToSay">comment</string>
+    <string name="changeFontSize">Change font size</string>
+    <string name="FontSampleSeekBar">Sample Text</string>
+    <string name="dismiss">dismiss</string>
+    <string name="feelslike">feels like</string>
+    <string name="openforum">forum</string>
+    <string name="opencontact">contact</string>
+    <string name="openradar">radar</string>
+    <string name="openuserpics">user pics</string>
+    <string name="openpicoftheday">pic of the day</string>
+    <string name="drawer_open">open drawer</string>
+    <string name="drawer_close">close the drawer</string>
+    <string name="title_activity_ad_free_code">Ad Free</string>
+    <string name="desc_activity_ad_free_code">Enter here the code that was sent to you to clean the app from ads</string>
+</resources>

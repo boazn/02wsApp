@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <string-array name="units">
+         <item>Time units: Minutes</item>
+         <item>Time units: Hours</item>
+         <item>Time units: Days</item>
+      </string-array>
+
+    <string-array name="navItems">
+        <item>Home page</item>
+        <item>Forum</item>
+        <item>Contact</item>
+        <item>Rain radar</item>
+        <item>User pics</item>
+        <item>Pic of the day</item>
+        <item>Alerts</item>
+    </string-array>
+
+    <integer-array name="array_drawer_icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_forum_grey600_48dp</item>
+        <item>@drawable/ic_contact_mail_grey600_48dp</item>
+        <item>@drawable/ic_weather_rainy_grey600_48dp</item>
+        <item>@drawable/ic_camera</item>
+        <item>@drawable/ic_camera</item>
+        <item>@drawable/icon_g</item>
+   </integer-array>
+</resources>

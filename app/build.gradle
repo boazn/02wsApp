@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'keystore'
+            keyPassword 'boaz1972'
+            storeFile file('D:/Users/boaz.NEW-PC/StudioProjects/02WSApp/app/keystore')
+            storePassword 'boaz1972'
+        }
+    }
+    compileSdkVersion 25
+    buildToolsVersion '27.0.3'
+    useLibrary 'org.apache.http.legacy'
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 23
+        multiDexEnabled true
+        applicationId "il.co.jws.app"
+    }
+    dexOptions {
+        javaMaxHeapSize "4g" //specify the heap size for the dex process
+    }
+    buildTypes {
+
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+    compileOptions {
+
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/DEPENDENCIES'
+
+    }
+}
+
+dependencies {
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:support-media-compat:25.2.0'
+    compile 'com.android.support:support-compat:25.2.0'
+    compile 'com.android.support:support-core-ui:25.2.0'
+    compile 'com.android.support:support-core-utils:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:support-vector-drawable:25.2.0'
+    compile 'com.google.firebase:firebase-messaging:11.6.2'
+    compile 'com.google.firebase:firebase-crash:11.6.2'
+    compile 'org.apache.httpcomponents:httpmime:4.5.2'
+    compile 'com.android.support:design:25.2.0'
+
+}
+apply plugin: 'com.google.gms.google-services'
+
+configurations {
+    all {
+        exclude module: 'httpclient'
+    }
+}

@@ -1,0 +1,7 @@
+#Sun Dec 10 21:45:39 IST 2017
+base.0=D\:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=D\:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1\\classes.dex
+base.1=D\:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+file.0=D\:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex
