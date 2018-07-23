@@ -58,8 +58,21 @@
         android:id="@+id/action_rain_notifications"
         android:orderInCategory="300"
         android:showAsAction="withText"
-        android:title="@string/rain_notifications" 
-        android:checkable="true"/>
+        android:title="@string/rain_notifications"
+         android:checkable="true"
+         >
+         <menu>
+             <group android:checkableBehavior="all">
+                 <item android:id="@+id/shorttermalerts_monthly"
+                     android:title="@string/monthly"
+                     android:checked="false"
+                     />
+                 <item android:id="@+id/shorttermalerts_yearly"
+                     android:title="@string/yearly"
+                     android:checked="false"/>
+             </group>
+         </menu>
+     </item>
      <item
         android:id="@+id/action_tips_notifications"
         android:orderInCategory="400"
@@ -128,10 +141,19 @@
         android:id="@+id/enter_code"
         android:orderInCategory="900"
         android:showAsAction="withText"
-        android:checkable="true"
         android:title="@string/title_activity_ad_free_code"
+        android:checkable="true"
         >
-
+        <menu>
+            <group android:checkableBehavior="all">
+                <item android:id="@+id/adfree_monthly"
+                    android:title="@string/monthly"
+                    android:checked="false"/>
+                <item android:id="@+id/adfree_yearly"
+                    android:title="@string/yearly"
+                    android:checked="false"/>
+            </group>
+        </menu>
     </item>
 
 </menu>

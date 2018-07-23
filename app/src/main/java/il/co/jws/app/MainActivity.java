@@ -60,6 +60,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.widget.Toast;
@@ -72,7 +73,9 @@ public class MainActivity extends Activity implements BillingProvider {
     public @interface BillingActivity {
         /** A type of SKU for in-app products. */
         String ALERTS_CLICK = "alerts click";
+        String ALERTS_YEARLY_CLICK = "alerts yearly click";
         String ADFREE_CLICK = "adfree click";
+        String ADFREE_YEARLY_CLICK = "adfree yearly click";
         /** A type of SKU for subscriptions. */
         String SUBS_QUERY = "subs query";
     }
@@ -402,17 +405,10 @@ public class MainActivity extends Activity implements BillingProvider {
             }
         });
         doRefresh(isFromAlerts, false);
-        if (!boolgetBillingQuery){
-            mBillingActivity = BillingActivity.SUBS_QUERY;
-            // Create and initialize BillingManager which talks to BillingLibrary
-            mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
-            editor.putBoolean(Config.BILLING_QUERY,true);
-        }
-
         int iEntries = prefs.getInt(Config.PREFS_ENTRIES, 0);
         //final Toolbar toolbar = findViewById(R.id.toolbar);
-        //if (iEntries > 0)
-        //    return true;
+        if (!(iEntries % 100 == 0))
+            return true;
 
         // We load a drawable and create a location to show a tap target here
         // We need the display to get the width and height at this point in time
@@ -423,15 +419,18 @@ public class MainActivity extends Activity implements BillingProvider {
         //nav.setBounds(0, 0, 50, 50);
         // Tell our droid buddy where we want him to appear
         final Rect navTarget = new Rect(280, 350, 0 , 0);
+
         final Rect shorttermforecastTarget = new Rect(0, 0, 100 , 100);
         // Using deprecated methods makes you look way cool
-        shorttermforecastTarget.offset(display.getWidth()-220, display.getHeight() / 4);
+        shorttermforecastTarget.offset(display.getWidth()-150, display.getHeight() / 4);
         final Rect soundTarget = new Rect(0, 0, 100 , 100);
         // Using deprecated methods makes you look way cool
-        soundTarget.offset(display.getWidth()-220, display.getHeight() / 2);
+        soundTarget.offset(display.getWidth()-150, display.getHeight() / 2);
         final Rect adfreeTarget = new Rect(0, 0, 100 , 100);
         // Using deprecated methods makes you look way cool
-        adfreeTarget.offset(display.getWidth()-220, display.getHeight() - 50);
+        adfreeTarget.offset(display.getWidth()-150, (int) (0.8* display.getHeight()));
+        final Rect settingsTarget = new Rect(0, 0, 100 , 100);
+        settingsTarget.offset(display.getWidth()-130, 120);
         new Handler().post(new Runnable() {
             @Override
             public void run() {
@@ -445,13 +444,13 @@ public class MainActivity extends Activity implements BillingProvider {
                                 // Likewise, this tap target will target the search button
                                 //TapTarget.forToolbarMenuItem(toolbar, R.id.action_rain_notifications, "This is a short term forecast", "As you can see, it has gotten pretty dark around here...").id(2),
                                 // You can also target the overflow button in your toolbar
-                                /*TapTarget.forToolbarOverflow(toolbar, getResources().getString(R.string.guide_settings_title), getResources().getString(R.string.guide_settings_desc))
+                                TapTarget.forBounds(settingsTarget , getResources().getString(R.string.guide_settings_title), getResources().getString(R.string.guide_settings_desc))
                                         .outerCircleAlpha(0.96f)
                                         .outerCircleColor(R.color.gray)
                                         .targetCircleColor(R.color.white)
                                         .targetRadius(60)
                                         .cancelable(false)
-                                        .textColor(R.color.black).id(1),*/
+                                        .textColor(R.color.black).icon(getResources().getDrawable(R.drawable.icons8_menu_vertical_50)).id(1),
                                 // This tap target will target the back button, we just need to pass its containing toolbar
                                 //TapTarget.forToolbarNavigationIcon(toolbar, "navigation button", "desc for back button").textColor(android.R.color.white).id(4),
                                 TapTarget.forBounds(shorttermforecastTarget, getResources().getString(R.string.guide_shorttermalerts_title), getResources().getString(R.string.guide_shorttermalerts_desc))
@@ -562,7 +561,15 @@ public class MainActivity extends Activity implements BillingProvider {
         FirebaseCrash.report(e);
       }
     }
-   
+
+    @Override
+    public boolean onMenuOpened (int featureId,
+                                 Menu menu){
+        mBillingActivity = BillingActivity.SUBS_QUERY;
+        // Create and initialize BillingManager which talks to BillingLibrary
+        mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
+        return true;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
@@ -645,18 +652,48 @@ public class MainActivity extends Activity implements BillingProvider {
             Intent intent = new Intent(this, FontSizeActivity.class);
             this.startActivity(intent);
         }
-        else if (item.getItemId() == R.id.enter_code) {
+        else if (item.getItemId() == R.id.adfree_monthly) {
 
             bundle.putString("full_text", "clicked on enter_code");
             mFirebaseAnalytics.logEvent("enter_code", bundle);
+            MenuItem yearlyItem = mmenu.findItem(R.id.adfree_yearly);
+            MenuItem enter_codeItem = mmenu.findItem(R.id.enter_code);
+            MenuItem adfree_monthly = mmenu.findItem(R.id.adfree_monthly);
             if (item.isChecked()){
                 mBillingActivity = BillingActivity.ADFREE_CLICK;
                 mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
+                yearlyItem.setChecked(false);
+                enter_codeItem.setChecked(true);
             }
             else
             {
                 mViewController.cancelSubscription(BillingConstants.SKU_AD_FREE, prefs.getString(Config.PREFS_SUB_ID, ""));
                 mViewController.notifyServerForSubChange("0");
+                enter_codeItem.setChecked((yearlyItem.isChecked())||(adfree_monthly.isChecked()));
+
+            }
+
+
+        }
+        else if (item.getItemId() == R.id.adfree_yearly) {
+
+            bundle.putString("full_text", "clicked on enter_code");
+            mFirebaseAnalytics.logEvent("enter_code", bundle);
+            MenuItem yearlyItem = mmenu.findItem(R.id.adfree_yearly);
+            MenuItem enter_codeItem = mmenu.findItem(R.id.enter_code);
+            MenuItem adfree_monthly = mmenu.findItem(R.id.adfree_monthly);
+            if (item.isChecked()){
+                mBillingActivity = BillingActivity.ADFREE_YEARLY_CLICK;
+                mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
+                adfree_monthly.setChecked(false);
+                enter_codeItem.setChecked(true);
+
+            }
+            else
+            {
+                mViewController.cancelSubscription(BillingConstants.SKU_AD_FREE_YEARLY, prefs.getString(Config.PREFS_SUB_ID, ""));
+                mViewController.notifyServerForSubChange("0");
+                enter_codeItem.setChecked((yearlyItem.isChecked())||(adfree_monthly.isChecked()));
             }
 
 
@@ -738,12 +775,27 @@ public class MainActivity extends Activity implements BillingProvider {
              return true;
         
         }
-        else if (item.getItemId() == R.id.action_rain_notifications) {
+        else if (item.getItemId() == R.id.action_rain_notifications){
+            // item check status is based on sons
+            if (item.isChecked()) {
+                item.setChecked(false);
+            } else {
+                item.setChecked(true);
+            }
+
+            return true;
+
+        }
+        else if (item.getItemId() == R.id.shorttermalerts_monthly) {
               editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, item.isChecked());
               editor.commit();
               if (item.isChecked()) {
                   mBillingActivity = BillingActivity.ALERTS_CLICK;
                   mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
+                  MenuItem yearlyItem = mmenu.findItem(R.id.shorttermalerts_yearly);
+                  yearlyItem.setChecked(false);
+                  MenuItem shorttermItem = mmenu.findItem(R.id.action_rain_notifications);
+                  shorttermItem.setChecked(true);
               }
                else
               {
@@ -752,6 +804,26 @@ public class MainActivity extends Activity implements BillingProvider {
               }
 
               return true;
+
+        }
+        else if (item.getItemId() == R.id.shorttermalerts_yearly) {
+            editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, item.isChecked());
+            editor.commit();
+            if (item.isChecked()) {
+                mBillingActivity = BillingActivity.ALERTS_YEARLY_CLICK;
+                mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
+                MenuItem monthlyItem = mmenu.findItem(R.id.shorttermalerts_monthly);
+                monthlyItem.setChecked(false);
+                MenuItem shorttermItem = mmenu.findItem(R.id.action_rain_notifications);
+                shorttermItem.setChecked(true);
+            }
+            else
+            {
+                mViewController.cancelSubscription(BillingConstants.SKU_ALERTS_YEARLY, prefs.getString(Config.PREFS_SUB_ID, ""));
+                mViewController.toggleNotifications();
+            }
+
+            return true;
 
         }
         else {
@@ -767,13 +839,20 @@ public class MainActivity extends Activity implements BillingProvider {
         }
         else if (BillingActivity.ADFREE_CLICK.equals(mBillingActivity)){
             mBillingManager.initiatePurchaseFlow(BillingConstants.SKU_AD_FREE, BillingClient.SkuType.SUBS);
+            /*List<String> skuList = new ArrayList<>();
+            skuList.add(BillingConstants.SKU_AD_FREE_YEARLY);
+            skuList.add(BillingConstants.SKU_AD_FREE);
+            mBillingManager.querySkuDetailsAsync(BillingClient.SkuType.SUBS, skuList,  new SkuDetailsResponse());*/
+        }
+        else if (BillingActivity.ADFREE_YEARLY_CLICK.equals(mBillingActivity)) {
+            mBillingManager.initiatePurchaseFlow(BillingConstants.SKU_AD_FREE_YEARLY, BillingClient.SkuType.SUBS);
+        }
+        else if (BillingActivity.ALERTS_YEARLY_CLICK.equals(mBillingActivity)) {
+            mBillingManager.initiatePurchaseFlow(BillingConstants.SKU_ALERTS_YEARLY, BillingClient.SkuType.SUBS);
         }
         else if (BillingActivity.SUBS_QUERY.equals(mBillingActivity)){
             mBillingManager.queryPurchases();
-            /*List<String> skuList = new ArrayList<>();
-            skuList.add(BillingConstants.SKU_ALERTS);
-            skuList.add(BillingConstants.SKU_AD_FREE);
-            mBillingManager.querySkuDetailsAsync(BillingClient.SkuType.SUBS, skuList,  new SkuDetailsResponse());*/
+
         }
     }
 
@@ -788,8 +867,14 @@ public class MainActivity extends Activity implements BillingProvider {
                     String price = skuDetails.getPrice();
                     if (BillingConstants.SKU_ALERTS.equals(sku)) {
                         Toast.makeText(MainActivity.this, BillingConstants.SKU_ALERTS, Toast.LENGTH_LONG).show();
-                    } else if (BillingConstants.SKU_AD_FREE.equals(sku)) {
+                    }  else if (BillingConstants.SKU_AD_FREE.equals(sku)) {
                         Toast.makeText(MainActivity.this, BillingConstants.SKU_AD_FREE, Toast.LENGTH_LONG).show();
+                    }
+                    else if (BillingConstants.SKU_AD_FREE_YEARLY.equals(sku)) {
+                        Toast.makeText(MainActivity.this, BillingConstants.SKU_AD_FREE_YEARLY, Toast.LENGTH_LONG).show();
+                    }
+                    else if (BillingConstants.SKU_ALERTS_YEARLY.equals(sku)) {
+                        Toast.makeText(MainActivity.this, BillingConstants.SKU_ALERTS_YEARLY, Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -938,7 +1023,7 @@ public class MainActivity extends Activity implements BillingProvider {
     }
     public void showRefreshedUi(List<Purchase> purchaseList) {
         String Str = "Premium:" + isPremiumPurchased() + " alerts:" + isAlertsOnly() + " isMonthly:" + isMonthlySubscribed() + " isYearly:" + isYearlySubscribed();
-        Toast.makeText(MainActivity.this, Str, Toast.LENGTH_LONG).show();
+        //Toast.makeText(MainActivity.this, Str, Toast.LENGTH_LONG).show();
         SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, isAlertsOnly());
@@ -949,13 +1034,27 @@ public class MainActivity extends Activity implements BillingProvider {
 
         MenuItem NotifRainItem = mmenu.findItem(R.id.action_rain_notifications);
         NotifRainItem.setChecked(isAlertsOnly());
+        MenuItem shorttermalertsMonthlyItem = mmenu.findItem(R.id.shorttermalerts_monthly);
+        MenuItem shorttermalertsYearlyItem = mmenu.findItem(R.id.shorttermalerts_yearly);
+        shorttermalertsMonthlyItem.setChecked(isAlertsOnly()&&mViewController.isGoldMonthlySubscribed());
+        shorttermalertsYearlyItem.setChecked(isAlertsOnly()&&mViewController.isGoldYearlySubscribed());
         MenuItem AdfreeItem = mmenu.findItem(R.id.enter_code);
         AdfreeItem.setChecked(isPremiumPurchased());
+        MenuItem adfreeMonthlyItem = mmenu.findItem(R.id.adfree_monthly);
+        MenuItem adfreeYearlyItem = mmenu.findItem(R.id.adfree_yearly);
+        adfreeMonthlyItem.setChecked(isPremiumPurchased()&&mViewController.isGoldMonthlySubscribed());
+        adfreeYearlyItem.setChecked(isPremiumPurchased()&&mViewController.isGoldYearlySubscribed());
 
         if (BillingActivity.ALERTS_CLICK.equals(mBillingActivity)){
             mViewController.toggleNotifications();
         }
         else if (BillingActivity.ADFREE_CLICK.equals(mBillingActivity)){
+            mViewController.notifyServerForSubChange("1");
+        }
+        else if (BillingActivity.ALERTS_YEARLY_CLICK.equals(mBillingActivity)){
+            mViewController.toggleNotifications();
+        }
+        else if (BillingActivity.ADFREE_YEARLY_CLICK.equals(mBillingActivity)){
             mViewController.notifyServerForSubChange("1");
         }
     }
@@ -990,14 +1089,7 @@ public class MainActivity extends Activity implements BillingProvider {
         @Override
         protected void onPreExecute() {
             // TODO Auto-generated method stub
-
-            super.onPreExecute();
-
-             pDialog = new ProgressDialog(context);
-             pDialog.setMessage(getString(R.string.loading) + "...");
-             pDialog.setIndeterminate(false);
-             pDialog.setCancelable(false);
-             pDialog.show();
+         super.onPreExecute();
         }
 
 

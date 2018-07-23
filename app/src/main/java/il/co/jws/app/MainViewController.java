@@ -131,6 +131,8 @@ public class MainViewController {
 
     }
 
+
+
     public static void  printStacktrace(Exception e) {
         StringWriter sw = new StringWriter();
         e.printStackTrace(new PrintWriter(sw));
@@ -229,30 +231,51 @@ public class MainViewController {
         }.execute(null, null, null);
 
     }
-    protected void cancelSubscription(String subscriptionId, String token){
+    protected void cancelSubscription(final String subscriptionId, final String token){
 
         // Create a new HttpClient and Post Header
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost(Config.SERVER_GOOGLE_PLAY_API_PREF + subscriptionId + "/tokens/" + token + ":cancel");
+        final HttpClient httpclient = new DefaultHttpClient();
+        final HttpPost httppost = new HttpPost(Config.SERVER_GOOGLE_PLAY_API_PREF + subscriptionId + "/tokens/" + token + ":cancel");
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    // Execute HTTP Post Request
+                    HttpResponse response = httpclient.execute(httppost);
+                    Log.i(Config.TAG, "cancelSubscription subscriptionId=" + subscriptionId + " token=" + token + "response:" + response.getStatusLine().getReasonPhrase());
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FirebaseAnalytics.Param.DESTINATION, String.valueOf("cancelSubscription subscriptionId=" + subscriptionId + " token=" + token + "response:" + response.getStatusLine().getReasonPhrase()));
+                    mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.POST_SCORE, bundle);
+                    return null;
 
-        try {
-            // Execute HTTP Post Request
-            HttpResponse response = httpclient.execute(httppost);
-            Log.i(Config.TAG, "cancelSubscription subscriptionId=" + subscriptionId + " token=" + token + "response:" + response.getStatusLine().getReasonPhrase());
+                } catch (ClientProtocolException e) {
+                    // TODO Auto-generated catch block
+                    printStacktrace(e);
 
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            printStacktrace(e);
+                } catch (IOException e) {
+                    printStacktrace(e);
 
-        } catch (IOException e) {
-            printStacktrace(e);
+                }
+                return null;
+            }
+        }.execute(null, null, null);
 
-        }
 
     }
-    public void notifyServerForSubChange(String status) {
+    public void notifyServerForSubChange (final String status){
         final SharedPreferences prefs = mContext.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
-        String registrationId = prefs.getString(Config.PROPERTY_REG_ID, FirebaseInstanceId.getInstance().getToken());
+        final String registrationId = prefs.getString(Config.PROPERTY_REG_ID, FirebaseInstanceId.getInstance().getToken());
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                notifyServerForSubChange(status, registrationId);
+                return null;
+            }
+        }.execute(null, null, null);
+    }
+
+    private void notifyServerForSubChange(String status, String registrationId) {
+
         // Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(Config.SERVER_SUB_URL);
@@ -279,6 +302,8 @@ public class MainViewController {
         }
 
     }
+
+
 
     /**
      * @return Application's version code from the {@code PackageManager}.
@@ -365,10 +390,10 @@ public class MainViewController {
                         //mActivity.getBillingManager().consumeAsync(purchase.getPurchaseToken());
                         mIsAlertsOnly = true;
                         break;
-                    case BillingConstants.SKU_SUB_MONTHLY:
-                        mGoldMonthly = true;
+                    case BillingConstants.SKU_AD_FREE_YEARLY:
+                        mGoldYearly = true;
                         break;
-                    case BillingConstants.SKU_SUB_YEARLY:
+                    case BillingConstants.SKU_ALERTS_YEARLY:
                         mGoldYearly = true;
                         break;
                 }

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="il.co.jws.app"
     android:installLocation="auto"
-    android:versionCode="48"
+    android:versionCode="49"
     android:versionName="5.1" >
 
     <uses-sdk

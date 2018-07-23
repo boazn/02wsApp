@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="il.co.jws.app"
     android:installLocation="auto"
-    android:versionCode="48"
+    android:versionCode="49"
     android:versionName="5.1" >
 
     <uses-sdk
@@ -34,7 +34,7 @@
     <application
         android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
-        android:debuggable="true"
+        android:debuggable="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >

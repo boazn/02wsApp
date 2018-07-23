@@ -66,4 +66,6 @@
     <string name="guide_shorttermalerts_desc">בתוך תפריט ההגדרות אפשר להירשם להתראות קצרות טווח לשעות הקרובות, כמו: גשם מתחיל\נגמר ואירועים נוספים</string>
     <string name="guide_navigationdrawer_title">תפריט ניווט</string>
     <string name="guide_navigationdrawer_desc">כאן אפשר להגיע לעמודים נוספים, כמו: פורום, יצירת קשר, תמונות היום, תמונות גולשים ועוד</string>
+    <string name="monthly">monthly</string>
+    <string name="yearly">yearly</string>
 </resources>

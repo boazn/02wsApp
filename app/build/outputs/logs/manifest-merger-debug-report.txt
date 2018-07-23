@@ -324,7 +324,7 @@ MERGED from [com.google.firebase:firebase-analytics-impl-license:11.6.2] D:\User
 	android:label
 		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:27:9-41
 	android:debuggable
-		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:28:9-34
+		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:28:9-35
 	tools:ignore
 		ADDED from D:\Users\boaz.NEW-PC\StudioProjects\02WSApp\app\src\main\AndroidManifest.xml:29:9-42
 	android:icon

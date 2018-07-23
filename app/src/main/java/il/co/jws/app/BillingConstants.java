@@ -31,11 +31,11 @@ public final class BillingConstants {
     public static final String SKU_AD_FREE = "adfree02ws";
 
     // SKU for our subscription
-    public static final String SKU_SUB_MONTHLY = "sub_monthly";
-    public static final String SKU_SUB_YEARLY = "sub_yearly";
+    public static final String SKU_ALERTS_YEARLY = "short_term_alerts_yearly";
+    public static final String SKU_AD_FREE_YEARLY = "adfree02ws_yearly";
 
     private static final String[] IN_APP_SKUS = {};
-    private static final String[] SUBSCRIPTIONS_SKUS = {SKU_ALERTS, SKU_AD_FREE};
+    private static final String[] SUBSCRIPTIONS_SKUS = {SKU_ALERTS, SKU_AD_FREE, SKU_ALERTS_YEARLY, SKU_AD_FREE_YEARLY};
 
     private BillingConstants(){}
 
