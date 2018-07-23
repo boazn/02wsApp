@@ -1,10 +1,11 @@
 package il.co.jws.app;
 
-import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,24 +13,27 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
-import android.net.Uri;
+import android.app.NotificationChannel;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
+import android.support.annotation.UiThread;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.util.Patterns;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
@@ -41,63 +45,56 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
+import com.android.billingclient.api.BillingClient;
+import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.SkuDetails;
+import com.android.billingclient.api.SkuDetailsResponseListener;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
+import com.google.android.gms.auth.GoogleAuthUtil;
+import com.google.android.gms.common.AccountPicker;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.regex.Pattern;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+import static il.co.jws.app.MainViewController.printStacktrace;
 
-    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+public class MainActivity extends Activity implements BillingProvider {
+
     private WebView webview;
+    public @interface BillingActivity {
+        /** A type of SKU for in-app products. */
+        String ALERTS_CLICK = "alerts click";
+        String ADFREE_CLICK = "adfree click";
+        /** A type of SKU for subscriptions. */
+        String SUBS_QUERY = "subs query";
+    }
+    String mBillingActivity;
     SwipeRefreshLayout mSwipeRefreshLayout;
     private String[] mNavTitles;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView mDrawerList;
     private int lang;
+    private BillingManager mBillingManager;
+    private MainViewController mViewController;
     private FirebaseAnalytics mFirebaseAnalytics;
     private String tempunit;
     Context context;
-    String regid;
     Menu mmenu;
-    AtomicInteger msgId = new AtomicInteger();
+    Toolbar toolbar;
     boolean isFromAlerts = false;
     boolean replyFromAlerts = false;
     boolean isFromUpload = false;
     boolean isFromAdFreeCode = false;
     private BroadcastReceiver mReceiver;
-    private int MY_PERMISSIONS_REQUEST_GET_ACCOUNT;
-    private int index;
 
     @Override
     protected  void onNewIntent(Intent intent) {
@@ -129,12 +126,15 @@ public class MainActivity extends Activity {
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         registerScreenReceiver();
+        // Start the controller and load game data
+        mViewController = new MainViewController(this, getApplicationContext(), mFirebaseAnalytics);
         // Get Info from outside
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             isFromAlerts = extras.getBoolean("IS_FROM_ALERT", false);
             replyFromAlerts = extras.getBoolean("REPLY_FROM_ALERT", false);
         }
+
         Log.i(Config.TAG, "isFromAlerts=" + isFromAlerts + " replyFromAlerts=" + replyFromAlerts);
         // Restore preferences
         SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
@@ -144,8 +144,8 @@ public class MainActivity extends Activity {
         mNavTitles = getResources().getStringArray(R.array.navItems);
         TypedArray typedArray = getResources().obtainTypedArray(R.array.array_drawer_icons);
         NavDrawerItem[] NavDrawerList = new NavDrawerItem[mNavTitles.length];
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        mDrawerList = findViewById(R.id.left_drawer);
         for (int i = 0; i < mNavTitles.length; i++) {
 
             NavDrawerItem item = new NavDrawerItem(typedArray.getResourceId(i, -1), mNavTitles[i]);
@@ -185,15 +185,14 @@ public class MainActivity extends Activity {
             getActionBar().setDisplayHomeAsUpEnabled(true);
             getActionBar().setHomeButtonEnabled(true);
         }
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        mSwipeRefreshLayout = findViewById(R.id.swipe_container);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 doRefresh(false);
             }
         });
-        float scale = getResources().getConfiguration().fontScale;
-        webview = (WebView) findViewById(R.id.webview);
+        webview = findViewById(R.id.webview);
         WebSettings webSettings = webview.getSettings();
         if  (android.os.Build.VERSION.SDK_INT >= 14) {
                 webSettings.setTextZoom(prefs.getInt(Config.PREFS_ZOOM_TEXT, 100));
@@ -230,6 +229,7 @@ public class MainActivity extends Activity {
             }
         });
          webview.setOnTouchListener(new WebView.OnTouchListener() {
+
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
@@ -275,6 +275,8 @@ public class MainActivity extends Activity {
             AlertDialog alert = builder.create();
             alert.show();
         }
+
+
     }
 
     @Override
@@ -284,20 +286,55 @@ public class MainActivity extends Activity {
         mDrawerToggle.syncState();
     }
 
+    /**
+     * Show an alert dialog to the user
+     * @param messageId String id to display inside the alert dialog
+     */
+    @UiThread
+    void alert(@StringRes int messageId) {
+        alert(messageId, null);
+    }
+
+    /**
+     * Show an alert dialog to the user
+     * @param messageId String id to display inside the alert dialog
+     * @param optionalParam Optional attribute for the string
+     */
+    @UiThread
+    void alert(@StringRes int messageId, @Nullable Object optionalParam) {
+        if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
+            throw new RuntimeException("Dialog could be shown only from the main thread");
+        }
+
+        AlertDialog.Builder bld = new AlertDialog.Builder(this);
+        bld.setNeutralButton("OK", null);
+
+        if (optionalParam == null) {
+            bld.setMessage(messageId);
+        } else {
+            bld.setMessage(getResources().getString(messageId, optionalParam));
+        }
+
+        bld.create().show();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         mmenu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.main, menu);
         // Restore preferences
         SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
         lang = prefs.getInt(Config.PREFS_LANG, 1);
         tempunit = prefs.getString(Config.PREFS_TEMPUNIT, Config.C_TEMPUNIT);
         boolean boolgetNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS, true);
-        boolean boolgetRainNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS_RAIN, true);
+        boolean boolgetRainNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS_RAIN, false);
         boolean boolgetTipsNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS_TIPS, true);
+        boolean boolgetBillingQuery = prefs.getBoolean(Config.BILLING_QUERY, false);
         boolean boolVibration = prefs.getBoolean(Config.PREFS_VIBRATION, true);
         boolean boolSound = prefs.getBoolean(Config.PREFS_SOUND, false);
         boolean boolFulltext = prefs.getBoolean(Config.PREFS_FULLTEXT, false);
@@ -365,14 +402,161 @@ public class MainActivity extends Activity {
             }
         });
         doRefresh(isFromAlerts, false);
+        if (!boolgetBillingQuery){
+            mBillingActivity = BillingActivity.SUBS_QUERY;
+            // Create and initialize BillingManager which talks to BillingLibrary
+            mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
+            editor.putBoolean(Config.BILLING_QUERY,true);
+        }
+
+        int iEntries = prefs.getInt(Config.PREFS_ENTRIES, 0);
+        //final Toolbar toolbar = findViewById(R.id.toolbar);
+        //if (iEntries > 0)
+        //    return true;
+
+        // We load a drawable and create a location to show a tap target here
+        // We need the display to get the width and height at this point in time
+        final Display display = getWindowManager().getDefaultDisplay();
+        // Load our little droid guy
+        final Drawable nav = getResources().getDrawable( R.drawable.ic_menu);
+        //nav = new ScaleDrawable(nav, 0, 50, 50).getDrawable();
+        //nav.setBounds(0, 0, 50, 50);
+        // Tell our droid buddy where we want him to appear
+        final Rect navTarget = new Rect(280, 350, 0 , 0);
+        final Rect shorttermforecastTarget = new Rect(0, 0, 100 , 100);
+        // Using deprecated methods makes you look way cool
+        shorttermforecastTarget.offset(display.getWidth()-220, display.getHeight() / 4);
+        final Rect soundTarget = new Rect(0, 0, 100 , 100);
+        // Using deprecated methods makes you look way cool
+        soundTarget.offset(display.getWidth()-220, display.getHeight() / 2);
+        final Rect adfreeTarget = new Rect(0, 0, 100 , 100);
+        // Using deprecated methods makes you look way cool
+        adfreeTarget.offset(display.getWidth()-220, display.getHeight() - 50);
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                TapTargetSequence ts =  new TapTargetSequence(MainActivity.this)
+                        .targets(
+
+                           /*TapTarget.forView(findViewById(R.id.action_rain_notifications), "This is a short term forecast", "click to register")
+                                .outerCircleAlpha(0.76f)
+                                .targetRadius(20)
+                                .textColor(android.R.color.white).id(2),*/
+                                // Likewise, this tap target will target the search button
+                                //TapTarget.forToolbarMenuItem(toolbar, R.id.action_rain_notifications, "This is a short term forecast", "As you can see, it has gotten pretty dark around here...").id(2),
+                                // You can also target the overflow button in your toolbar
+                                /*TapTarget.forToolbarOverflow(toolbar, getResources().getString(R.string.guide_settings_title), getResources().getString(R.string.guide_settings_desc))
+                                        .outerCircleAlpha(0.96f)
+                                        .outerCircleColor(R.color.gray)
+                                        .targetCircleColor(R.color.white)
+                                        .targetRadius(60)
+                                        .cancelable(false)
+                                        .textColor(R.color.black).id(1),*/
+                                // This tap target will target the back button, we just need to pass its containing toolbar
+                                //TapTarget.forToolbarNavigationIcon(toolbar, "navigation button", "desc for back button").textColor(android.R.color.white).id(4),
+                                TapTarget.forBounds(shorttermforecastTarget, getResources().getString(R.string.guide_shorttermalerts_title), getResources().getString(R.string.guide_shorttermalerts_desc))
+                                        .outerCircleAlpha(0.96f)
+                                        .outerCircleColor(R.color.gray)
+                                        .targetCircleColor(R.color.white)
+                                        .targetRadius(60)
+                                        .textColor(R.color.black)
+                                        .cancelable(false)
+                                        .icon(getResources().getDrawable(R.drawable.checkbox)).id(2),
+                                TapTarget.forBounds(soundTarget, getResources().getString(R.string.guide_soundTarget_title), getResources().getString(R.string.guide_soundTarget_desc))
+                                        .outerCircleAlpha(0.96f)
+                                        .outerCircleColor(R.color.gray)
+                                        .targetCircleColor(R.color.white)
+                                        .targetRadius(60)
+                                        .textColor(R.color.black)
+                                        .cancelable(false)
+                                        .icon(getResources().getDrawable(R.drawable.checkbox)).id(3),
+                                TapTarget.forBounds(adfreeTarget, getResources().getString(R.string.guide_adfreeTarget_title), getResources().getString(R.string.guide_adfreeTarget_desc))
+                                        .outerCircleAlpha(0.96f)
+                                        .outerCircleColor(R.color.gray)
+                                        .targetCircleColor(R.color.white)
+                                        .targetRadius(60)
+                                        .textColor(R.color.black)
+                                        .cancelable(false)
+                                        .icon(getResources().getDrawable(R.drawable.checkbox)).id(4),
+                                TapTarget.forBounds(navTarget, getResources().getString(R.string.guide_navigationdrawer_title), getResources().getString(R.string.guide_navigationdrawer_desc))
+                                        .outerCircleAlpha(0.96f)
+                                        .outerCircleColor(R.color.gray)
+                                        .targetCircleColor(R.color.white)
+                                        .targetRadius(60)
+                                        .textColor(R.color.black)
+                                        .cancelable(false)
+                                        .icon(nav).id(5))
+                        .listener(new TapTargetSequence.Listener() {
+                            // This listener will tell us when interesting(tm) events happen in regards
+                            // to the sequence
+                            @Override
+                            public void onSequenceFinish() {
+                                // Yay
+                                Log.d("TapTargetView", "finished");
+
+
+                            }
+
+                            @Override
+                            public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+                                Log.d("TapTargetView", "Clicked on " + lastTarget.id());
+
+                            }
+
+
+
+                            @Override
+                            public void onSequenceCanceled(TapTarget lastTarget) {
+                                // Boo
+                        /*final AlertDialog dialog = new AlertDialog.Builder(MainActivity.this)
+                                .setTitle("Uh oh")
+                                .setMessage("You canceled the sequence")
+                                .setPositiveButton("Oops", null).show();
+                        TapTargetView.showFor(dialog,                 // `this` is an Activity
+                                TapTarget.forView(dialog.getButton(DialogInterface.BUTTON_POSITIVE), "Uh oh!", "You canceled the sequence at step " + lastTarget.id())
+                                        // All options below are optional
+                                        .outerCircleColor(R.color.red)      // Specify a color for the outer circle
+                                        .outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+                                        .targetCircleColor(R.color.white)   // Specify a color for the target circle
+                                        .titleTextSize(20)                  // Specify the size (in sp) of the title text
+                                        .titleTextColor(R.color.white)      // Specify the color of the title text
+                                        .descriptionTextSize(10)            // Specify the size (in sp) of the description text
+                                        .descriptionTextColor(R.color.white)  // Specify the color of the description text
+                                        .textColor(R.color.blue)            // Specify a color for both the title and description text
+                                        .textTypeface(Typeface.SANS_SERIF)  // Specify a typeface for the text
+                                        .dimColor(R.color.white)            // If set, will dim behind the view with 30% opacity of the given color
+                                        .drawShadow(true)                   // Whether to draw a drop shadow or not
+                                        .cancelable(false)                  // Whether tapping outside the outer circle dismisses the view
+                                        .tintTarget(true)                   // Whether to tint the target view's color
+                                        .transparentTarget(false)           // Specify whether the target is transparent (displays the content underneath)
+                                        //.icon(R.drawable.ic_camera)                     // Specify a custom drawable to draw as the target
+                                        .targetRadius(30),                  // Specify the target radius (in dp)
+                                new TapTargetView.Listener() {          // The listener can listen for regular clicks, long clicks or cancels
+                                    @Override
+                                    public void onTargetClick(TapTargetView view) {
+                                        super.onTargetClick(view);      // This call is optional
+
+                                    }
+                                });*/
+                            }
+                        });
+                ts.start();
+
+            }
+        });
+        editor.putInt(Config.PREFS_ENTRIES,++iEntries);
+        editor.commit();
         return true;
     }
 
     @Override
    protected void onDestroy() {
+        if (mBillingManager != null) {
+            mBillingManager.destroy();
+        }
       super.onDestroy();
       try {
-         trimCache(); //if trimCache is static
+          mViewController.trimCache(); //if trimCache is static
       } catch (Exception e) {
         Log.i(Config.TAG, "onDestroy" + e.getMessage());
         FirebaseCrash.report(e);
@@ -465,15 +649,24 @@ public class MainActivity extends Activity {
 
             bundle.putString("full_text", "clicked on enter_code");
             mFirebaseAnalytics.logEvent("enter_code", bundle);
-            Intent intent = new Intent(this, AdFreeCodeActivity.class);
-            this.startActivity(intent);
+            if (item.isChecked()){
+                mBillingActivity = BillingActivity.ADFREE_CLICK;
+                mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
+            }
+            else
+            {
+                mViewController.cancelSubscription(BillingConstants.SKU_AD_FREE, prefs.getString(Config.PREFS_SUB_ID, ""));
+                mViewController.notifyServerForSubChange("0");
+            }
+
+
         }
         else if (item.getItemId() == R.id.action_lighttrain) {
             bundle.putString("full_text", "clicked on action_lighttrain");
             mFirebaseAnalytics.logEvent("action_lighttrain", bundle);
             editor.putInt(Config.PREFS_ALERT_SOUND, R.raw.lightrain);
             editor.commit();
-            playSound();
+            mViewController.playSound();
             return true;
         }
         else if (item.getItemId() == R.id.action_lighttrainbell) {
@@ -481,7 +674,7 @@ public class MainActivity extends Activity {
             mFirebaseAnalytics.logEvent("action_lighttrainbell", bundle);
             editor.putInt(Config.PREFS_ALERT_SOUND, R.raw.lightrainbell);
             editor.commit();
-            playSound();
+            mViewController.playSound();
             return true;
         }
         else if (item.getItemId() == R.id.action_lighttrainpassing) {
@@ -489,7 +682,7 @@ public class MainActivity extends Activity {
             mFirebaseAnalytics.logEvent("action_lighttrainpassing", bundle);
             editor.putInt(Config.PREFS_ALERT_SOUND, R.raw.lightrainpassing);
             editor.commit();
-            playSound();
+            mViewController.playSound();
             return true;
         }
         else if (item.getItemId() == R.id.action_lighttrainshort) {
@@ -497,7 +690,7 @@ public class MainActivity extends Activity {
             mFirebaseAnalytics.logEvent("action_lighttrainshort", bundle);
             editor.putInt(Config.PREFS_ALERT_SOUND, R.raw.lighttrainshort);
             editor.commit();
-            playSound();
+            mViewController.playSound();
             return true;
         }
         else if (item.getItemId() == R.id.action_JerOfGold) {
@@ -505,7 +698,7 @@ public class MainActivity extends Activity {
             mFirebaseAnalytics.logEvent("action_JerOfGold", bundle);
             editor.putInt(Config.PREFS_ALERT_SOUND, R.raw.jerofgold);
             editor.commit();
-            playSound();
+            mViewController.playSound();
             return true;
         }
         else if (item.getItemId() == R.id.action_JerOfGoldDrugs) {
@@ -513,7 +706,7 @@ public class MainActivity extends Activity {
             mFirebaseAnalytics.logEvent("action_JerOfGoldDrugs", bundle);
             editor.putInt(Config.PREFS_ALERT_SOUND, R.raw.jerofgolddrugs);
             editor.commit();
-            playSound();
+            mViewController.playSound();
             return true;
         }
 
@@ -522,7 +715,7 @@ public class MainActivity extends Activity {
             mFirebaseAnalytics.logEvent("action_vop", bundle);
             editor.putInt(Config.PREFS_ALERT_SOUND, R.raw.vop);
             editor.commit();
-            playSound();
+            mViewController.playSound();
             return true;
         }
         else if (item.getItemId() == R.id.action_nosound) {
@@ -535,34 +728,74 @@ public class MainActivity extends Activity {
         else if (item.getItemId() == R.id.action_notifications) {
             editor.putBoolean(Config.PREFS_NOTIFICATIONS, item.isChecked());
             editor.commit();
-            toggleNotifications();
+            mViewController.toggleNotifications();
             return true;
         }
         else if (item.getItemId() == R.id.action_tips_notifications){
              editor.putBoolean(Config.PREFS_NOTIFICATIONS_TIPS, item.isChecked());
              editor.commit();
-             toggleNotifications();
+            mViewController.toggleNotifications();
              return true;
         
         }
         else if (item.getItemId() == R.id.action_rain_notifications) {
               editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, item.isChecked());
               editor.commit();
-              toggleNotifications();
+              if (item.isChecked()) {
+                  mBillingActivity = BillingActivity.ALERTS_CLICK;
+                  mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
+              }
+               else
+              {
+                  mViewController.cancelSubscription(BillingConstants.SKU_ALERTS, prefs.getString(Config.PREFS_SUB_ID, ""));
+                  mViewController.toggleNotifications();
+              }
+
               return true;
 
-        } else {
+        }
+        else {
             return super.onOptionsItemSelected(item);
         }
         return true;
     }
-    
-    protected void playSound(){
-        SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
-        Integer alert_sound_pref = prefs.getInt(Config.PREFS_ALERT_SOUND, R.raw.lighttrainshort);
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, alert_sound_pref);
-        mediaPlayer.start(); 
+
+    public void onBillingManagerSetupFinished() {
+        Log.v(Config.TAG, "onBillingManagerSetupFinished");
+        if (BillingActivity.ALERTS_CLICK.equals(mBillingActivity)){
+            mBillingManager.initiatePurchaseFlow(BillingConstants.SKU_ALERTS, BillingClient.SkuType.SUBS);
+        }
+        else if (BillingActivity.ADFREE_CLICK.equals(mBillingActivity)){
+            mBillingManager.initiatePurchaseFlow(BillingConstants.SKU_AD_FREE, BillingClient.SkuType.SUBS);
+        }
+        else if (BillingActivity.SUBS_QUERY.equals(mBillingActivity)){
+            mBillingManager.queryPurchases();
+            /*List<String> skuList = new ArrayList<>();
+            skuList.add(BillingConstants.SKU_ALERTS);
+            skuList.add(BillingConstants.SKU_AD_FREE);
+            mBillingManager.querySkuDetailsAsync(BillingClient.SkuType.SUBS, skuList,  new SkuDetailsResponse());*/
+        }
     }
+
+     private class SkuDetailsResponse implements SkuDetailsResponseListener {
+
+        @Override
+        public void onSkuDetailsResponse(int responseCode, List<SkuDetails> skuDetailsList) {
+            if (responseCode == BillingClient.BillingResponse.OK
+                    && skuDetailsList != null) {
+                for (SkuDetails skuDetails : skuDetailsList) {
+                    String sku = skuDetails.getSku();
+                    String price = skuDetails.getPrice();
+                    if (BillingConstants.SKU_ALERTS.equals(sku)) {
+                        Toast.makeText(MainActivity.this, BillingConstants.SKU_ALERTS, Toast.LENGTH_LONG).show();
+                    } else if (BillingConstants.SKU_AD_FREE.equals(sku)) {
+                        Toast.makeText(MainActivity.this, BillingConstants.SKU_AD_FREE, Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        }
+    }
+
     
     protected void doRefresh(Boolean newSettings) {
         doRefresh(false, newSettings);
@@ -593,13 +826,17 @@ public class MainActivity extends Activity {
         tempunit = prefs.getString(Config.PREFS_TEMPUNIT, Config.C_TEMPUNIT);
         lang = prefs.getInt(Config.PREFS_LANG, 1);
         String fulltext = "&fullt=", sound = "&s=", cloth = "&c=", temp = "&tempunit=" + tempunit, guid;
-        guid = (adFreeGUID.length() > 0) ? "&reg_id=" + getRegistrationId(this) : null;
+        guid = (adFreeGUID.length() > 0) ? "&reg_id=" + mViewController.getRegistrationId(this) : "";
         fulltext += boolFulltext ? "1" : "0";
         sound += boolSound ? "1" : "0";
         cloth += boolShowCloth ? "1" : "0";
         return lang + fulltext + sound + cloth + temp + guid;
     }
 
+    protected void doExtUrl (String url){
+        webview = (WebView) findViewById(R.id.webview);
+        webview.loadUrl(url);
+    }
     protected void doUrl (String section){
         String urlext;
         webview = (WebView) findViewById(R.id.webview);
@@ -629,148 +866,103 @@ public class MainActivity extends Activity {
         editor.commit();
         item.setChecked(true);
         doRefresh(true);
-        final boolean boolgetNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS, true);
-        final boolean boolgetRainNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS_RAIN, true);
-        final boolean boolgetTipsNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS_TIPS, true);
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                notifyServerForNotificationChange(boolgetNotifications, boolgetRainNotifications, boolgetTipsNotifications, lang);
-                return null;
-            }
-        }.execute(null, null, null);
-    }
-
-    protected void toggleNotifications() {
-        final MenuItem NotifActionItem = mmenu.findItem(R.id.action_notifications);
-        final MenuItem NotifActionRainItem = mmenu.findItem(R.id.action_rain_notifications);
-        final MenuItem NotifActionTipsItem = mmenu.findItem(R.id.action_tips_notifications);
-        SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
-        lang = prefs.getInt(Config.PREFS_LANG, 1);
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                notifyServerForNotificationChange(NotifActionItem.isChecked(), NotifActionRainItem.isChecked(), NotifActionTipsItem.isChecked(), lang);
-                return null;
-            }
-        }.execute(null, null, null);
-
+        mViewController.toggleNotifications();
     }
 
     public String getEmailAddress() {
-        if((ContextCompat.checkSelfPermission(MainActivity.this,
-                android.Manifest.permission.GET_ACCOUNTS) != PackageManager.PERMISSION_GRANTED)) {
-                ActivityCompat.requestPermissions
-                    (MainActivity.this, new String[]{
-                            android.Manifest.permission.GET_ACCOUNTS
-                    },MY_PERMISSIONS_REQUEST_GET_ACCOUNT);
-        }
-        Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
-        Account[] accounts = AccountManager.get(this).getAccounts();
-        for (Account account : accounts) {
-            if (emailPattern.matcher(account.name).matches()) {
-                return account.name;
+        SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
+        String email = prefs.getString(Config.PREFS_EMAIL, null);
+        if (email != null)
+            return email;
+        Intent intent = AccountPicker.newChooseAccountIntent(null, null,
+                new String[]{GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE},
+                false, null, null, null, null);
 
-            }
+        try {
+            startActivityForResult(intent, Config.REQUEST_CODE_EMAIL);
+            email = prefs.getString(Config.PREFS_EMAIL, null);
+            return email;
+        } catch (ActivityNotFoundException e) {
+            // This device may not have Google Play Services installed.
+            // TODO: do something else
         }
         return null;
     }
 
-    protected void notifyServerForNotificationChange(Boolean ActionOn, Boolean ActionRainOn, Boolean ActionTipsOn, int lang) {
-        // Create a new HttpClient and Post Header
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost(Config.SERVER_REGISTER_URL);
-
-        try {
-            // Add your data
-            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-            nameValuePairs.add(new BasicNameValuePair("name", getEmailAddress()));
-            nameValuePairs.add(new BasicNameValuePair("email", getEmailAddress()));
-            nameValuePairs.add(new BasicNameValuePair("regId", getRegistrationId(getApplicationContext())));
-            nameValuePairs.add(new BasicNameValuePair("lang", lang == 1 ? "1" : "0"));
-            nameValuePairs.add(new BasicNameValuePair("active", ActionOn ? "1" : "0"));
-            nameValuePairs.add(new BasicNameValuePair("active_rain_etc", ActionRainOn ? "1" : "0"));
-            nameValuePairs.add(new BasicNameValuePair("active_tips", ActionTipsOn ? "1" : "0"));
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-            // Execute HTTP Post Request
-            HttpResponse response = httpclient.execute(httppost);
-            Log.i(Config.TAG, "NotificationChange ActionOn=" + ActionOn + " ActionRainOn=" + ActionRainOn +  " lang=" + lang + " httppost response: " + response.getStatusLine().getReasonPhrase());
-
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            printStacktrace(e);
-
-        } catch (IOException e) {
-            printStacktrace(e);
-
-        }
-
-    }
-
-    public static void  printStacktrace(Exception e) {
-        StringWriter sw = new StringWriter();
-        e.printStackTrace(new PrintWriter(sw));
-        String exceptionAsString = sw.toString();
-        Log.d(Config.TAG, exceptionAsString);
-        FirebaseCrash.report(e);
-    }
-
-    /**
-     * Gets the current registration ID for application on GCM service.
-     * <p>
-     * If result is empty, the app needs to register.
-     *
-     * @return registration ID, or empty string if there is no existing
-     * registration ID.
-     */
-    private String getRegistrationId(Context context) {
-        final SharedPreferences prefs = getGCMPreferences(context);
-        String registrationId = prefs.getString(Config.PROPERTY_REG_ID, FirebaseInstanceId.getInstance().getToken());
-        if (registrationId.isEmpty()) {
-            Log.i(Config.TAG, "Registration not found.");
-            Bundle bundle = new Bundle();
-
-            bundle.putString("Email", getEmailAddress());
-            bundle.putString("full_text", "Registration not found");
-            mFirebaseAnalytics.logEvent("getRegistrationId", bundle);
-            return "";
-        }
-        // Check if app was updated; if so, it must clear the registration ID
-        // since the existing regID is not guaranteed to work with the new
-        // app version.
-        int registeredVersion = prefs.getInt(Config.PROPERTY_APP_VERSION, Integer.MIN_VALUE);
-        int currentVersion = getAppVersion(context);
-        if (registeredVersion != currentVersion) {
-            Log.i(Config.TAG, "App version changed.");
-            return "";
-        }
-        return registrationId;
-    }
-
-    /**
-     * @return Application's {@code SharedPreferences}.
-     */
-    private SharedPreferences getGCMPreferences(Context context) {
-        // This sample app persists the registration ID in shared preferences, but
-        // how you store the regID in your app is up to you.
-        return context.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
-    }
-
-    /**
-     * @return Application's version code from the {@code PackageManager}.
-     */
-    public static int getAppVersion(Context context) {
-        try {
-            PackageInfo packageInfo = context.getPackageManager()
-                    .getPackageInfo(context.getPackageName(), 0);
-            return packageInfo.versionCode;
-        } catch (NameNotFoundException e) {
-            // should never happen
-            throw new RuntimeException("Could not get package name: " + e);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Config.REQUEST_CODE_EMAIL && resultCode == RESULT_OK) {
+            String accountName = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
+            SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString(Config.PREFS_EMAIL, accountName);
+            editor.commit();
         }
     }
 
-        public class ShareImageTask extends AsyncTask<String, String, String> {
+    @Override
+    public BillingManager getBillingManager() {
+        return mBillingManager;
+    }
+
+    @Override
+    public boolean isPremiumPurchased() {
+        return mViewController.isPremiumPurchased();
+    }
+
+    @Override
+    public boolean isAlertsOnly() {
+        return mViewController.isAlertOnlyPurchased();
+    }
+
+    @Override
+    public boolean isMonthlySubscribed() {
+        return mViewController.isGoldMonthlySubscribed();
+    }
+
+   @Override
+    public boolean isYearlySubscribed() {
+       return mViewController.isGoldYearlySubscribed();
+    }
+
+
+
+    public String getSubsID (List<Purchase> purchaseList){
+        if (isAlertsOnly() || isPremiumPurchased()){
+            for (Purchase purchase : purchaseList) {
+                return purchase.getPurchaseToken();
+            }
+        }
+
+        return "";
+    }
+    public void showRefreshedUi(List<Purchase> purchaseList) {
+        String Str = "Premium:" + isPremiumPurchased() + " alerts:" + isAlertsOnly() + " isMonthly:" + isMonthlySubscribed() + " isYearly:" + isYearlySubscribed();
+        Toast.makeText(MainActivity.this, Str, Toast.LENGTH_LONG).show();
+        SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, isAlertsOnly());
+        editor.putInt(Config.PREFS_APPROVED, isPremiumPurchased()? 1 : isAlertsOnly()? 1: 0);
+        editor.putBoolean(Config.PREFS_ADFREE, isPremiumPurchased());
+        editor.putString(Config.PREFS_SUB_ID, getSubsID(purchaseList));
+        editor.commit();
+
+        MenuItem NotifRainItem = mmenu.findItem(R.id.action_rain_notifications);
+        NotifRainItem.setChecked(isAlertsOnly());
+        MenuItem AdfreeItem = mmenu.findItem(R.id.enter_code);
+        AdfreeItem.setChecked(isPremiumPurchased());
+
+        if (BillingActivity.ALERTS_CLICK.equals(mBillingActivity)){
+            mViewController.toggleNotifications();
+        }
+        else if (BillingActivity.ADFREE_CLICK.equals(mBillingActivity)){
+            mViewController.notifyServerForSubChange("1");
+        }
+    }
+
+
+
+    public class ShareImageTask extends AsyncTask<String, String, String> {
 
         final private Context context;
         final private MenuItem shareditem;
@@ -789,7 +981,11 @@ public class MainActivity extends Activity {
             this.shareditem = shareItem;
         }
 
-      
+
+        @Override
+        protected String doInBackground(String... strings) {
+            return null;
+        }
 
         @Override
         protected void onPreExecute() {
@@ -804,49 +1000,8 @@ public class MainActivity extends Activity {
              pDialog.show();
         }
 
-        @Override
-        protected String doInBackground(String... args) {
-            // TODO Auto-generated method stub
 
-            /*try {
 
-                myFileUrl = new URL(args[0]);
-                HttpURLConnection conn = (HttpURLConnection) myFileUrl.openConnection();
-                conn.setDoInput(true);
-                conn.connect();
-                InputStream is = conn.getInputStream();
-                bmImg = BitmapFactory.decodeStream(is);
-            } catch (IOException e) {
-                printStacktrace(e);
-            }
-            try {
-                if (!isExternalStorageWritable()) {
-                    return null;
-                }
-                String path = myFileUrl.getPath();
-                String idStr = path.substring(path.lastIndexOf('/') + 1);
-                File filepath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-                File dir = new File(filepath.getAbsolutePath());
-                dir.mkdirs();
-                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                String fileName = idStr + '?' + timeStamp;
-                file = new File(dir, fileName);
-                FileOutputStream fos = new FileOutputStream(file);
-                bmImg.compress(CompressFormat.PNG, 85, fos);
-                fos.flush();
-                fos.close();
-
-            } catch (Exception e) {
-                printStacktrace(e);
-            }*/
-            return null;
-        }
-
-        /* Checks if external storage is available for read and write */
-        public boolean isExternalStorageWritable() {
-            String state = Environment.getExternalStorageState();
-            return Environment.MEDIA_MOUNTED.equals(state);
-        }
 
         @Override
         protected void onPostExecute(String args) {
@@ -870,7 +1025,6 @@ public class MainActivity extends Activity {
     protected void onStop()
     {
         try {
-
             unregisterReceiver(mReceiver);
         }
         catch (IllegalArgumentException e){
@@ -892,6 +1046,14 @@ public class MainActivity extends Activity {
             // THIS IS WHEN ONRESUME() IS CALLED WHEN THE SCREEN STATE HAS NOT CHANGED
         }
         super.onResume();
+        // Note: We query purchases in onResume() to handle purchases completed while the activity
+        // is inactive. For example, this can happen if the activity is destroyed during the
+        // purchase flow. This ensures that when the activity is resumed it reflects the user's
+        // current purchases.
+        if (mBillingManager != null
+                && mBillingManager.getBillingClientResponseCode() == BillingClient.BillingResponse.OK) {
+            mBillingManager.queryPurchases();
+        }
     }
 
     @Override
@@ -915,31 +1077,7 @@ public class MainActivity extends Activity {
         registerReceiver(mReceiver, filter);
     }
 
-    public void trimCache() {
-        try {
-            File dir = getCacheDir();
-            if (dir != null && dir.isDirectory()) {
-                deleteDir(dir);
-                Log.e(Config.TAG, "Directory " + dir.getName() + " deleted.");
-            }
-        } catch (Exception e) {
-            // TODO: handle exception
-            printStacktrace(e);
-        }
-    }
 
-    public static boolean deleteDir(File dir) {
-        if (dir != null && dir.isDirectory()) {
-            String[] children = dir.list();
-            for (int i = 0; i < children.length; i++) {
-                boolean success = deleteDir(new File(dir, children[i]));
-                if (!success) {
-                    return false;
-                }
-            }
-        }
-        return dir.delete();
-    }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -980,6 +1118,18 @@ public class MainActivity extends Activity {
                     break;
                 case 6:
                     doUrl("alerts.php");
+                    break;
+                case 7:
+                    doUrl("forecast/getForecast.php&region=isr");
+                    break;
+                case 8:
+                    doUrl("forecast/getForecast.php");
+                    break;
+                case 9:
+                    doUrl("snow.php");
+                    break;
+                case 10:
+                    doExtUrl("https://m.youtube.com/channel/UCcFdTuHfckfOsCy7MwbY9vQ");
                     break;
                 default:
                     doUrl("");

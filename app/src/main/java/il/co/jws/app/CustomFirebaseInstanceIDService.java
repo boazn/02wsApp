@@ -60,7 +60,7 @@ public class CustomFirebaseInstanceIDService extends FirebaseInstanceIdService {
      */
     private void storeRegistrationId(final String token) {
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
-        int appVersion = MainActivity.getAppVersion(getApplicationContext());
+        int appVersion = MainViewController.getAppVersion(getApplicationContext());
         Log.i(Config.TAG, "Saving regId on app version " + appVersion);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(Config.PROPERTY_REG_ID, token);

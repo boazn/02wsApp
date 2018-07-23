@@ -18,6 +18,7 @@ import android.widget.RemoteViews;
 
 import com.google.firebase.crash.FirebaseCrash;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +28,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -73,20 +75,24 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
         JSONObject current = jsonRootObject.getJSONObject("jws").getJSONObject("current");
         JSONObject feelsLike = jsonRootObject.getJSONObject("jws").getJSONObject("feelslike");
         JSONObject states = jsonRootObject.getJSONObject("jws").getJSONObject("states");
+        JSONArray sigweather = jsonRootObject.getJSONObject("jws").getJSONObject("states").getJSONArray("sigweather");
         Current c = new Current();
-        String ext = states.getString("sigext" + lang);
         c.temp =  Float.valueOf(current.getString("temp"));
         c.tempUnits = String.valueOf(Character.toChars(176)) + 'c';
         c.feelsLike = feelsLike.getString("value");
-        c.sigtitle = states.getString("sigtitle" + lang);
-        c.sigext = ext;
+        c.sigtitle = "";c.sigext = "";
+        if (sigweather.length() > 1){
+            c.sigtitle = sigweather.getJSONObject(0).getString("sigtitle" + lang);
+            c.sigext = sigweather.getJSONObject(0).getString("sigext" + lang);
+        }
         c.date = current.getString("date" + lang);
         c.isRaining = states.getString("israining").isEmpty() ? false : true;
         c.isLight = current.getString("islight").isEmpty() ? false : true;
-        if (Float.valueOf(current.getString("pm10")) > 130)
-            c.isDusty = true;
-        else
-            c.isDusty = false;
+        c.isWindy = current.getString("iswindy").isEmpty() ? false : true;
+        c.isDusty = current.getString("isdusty").isEmpty() ? false : true;
+        String lastForecastUpdateTS = states.getString("lastForecastUpdateTS");
+        if (!lastForecastUpdateTS.isEmpty())
+            c.lastForecastUpdate = Long.valueOf(states.getString("lastForecastUpdateTS"));
         try {
             c.nowind = Float.valueOf(current.getString("windspd")) == 0 && Float.valueOf(current.getString("windspd10min")) == 0;
         }
@@ -174,12 +180,7 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
         views.setTextViewText(R.id.textViewTemp, temp + temp_unit);
         views.setTextViewText(R.id.textViewAboveTemp, Context.getResources().getString(R.string.feelslike) + ' ' + c.feelsLike + c.tempUnits);
         views.setTextViewText(R.id.textViewBelowTemp, c.sigtitle +  '\n' + c.sigext);
-        if (c.isRaining)
-            playSound(R.raw.rainfibl);
-        if (c.nowind)
-            playSound(R.raw.owl);
-        if (c.isDusty)
-            playSound(R.raw.crow);
+        statesLogic(c);
     }
     public void playSound(int rawSound){
         SharedPreferences prefs = Context.getSharedPreferences(Config.PREFS_NAME, Context.MODE_PRIVATE);
@@ -227,14 +228,47 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
             views.setTextColor(R.id.btnOpenAppSmall, color);
         }
         views.setInt(R.id.btnOpenAppSmall, "setBackgroundColor", android.graphics.Color.TRANSPARENT);
-        if ((c.isRaining)&&(c.isLight))
-            playSound(R.raw.rainfibl);
-        if ((c.nowind)&&(c.isLight))
-            playSound(R.raw.owl);
-        if ((c.isDusty)&&(c.isLight))
-            playSound(R.raw.crow);
+        statesLogic(c);
     }
 
+    private void statesLogic (Current c){
+        SharedPreferences prefs = Context.getSharedPreferences(Config.PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        long currentTS = new java.sql.Timestamp(System.currentTimeMillis()).getTime();
+        long lastSoundAlert = prefs.getLong(Config.LAST_TIME_SOUND_ALERT, 0);
+        if (currentTS - lastSoundAlert < Config.TIME_SOUND_ALERT_INTERVAL) {
+            Log.v(TAG, "currentTS: " + currentTS + " lastSoundAlert:" + lastSoundAlert + " currentTS - lastSoundAlert = " + (currentTS - lastSoundAlert));
+            return;
+        }
+        if ((c.isRaining)&&(c.isLight)){
+            playSound(R.raw.rainfibl);
+            editor.putLong(Config.LAST_TIME_SOUND_ALERT, currentTS);
+            editor.commit();
+        }
+
+        if ((c.nowind)&&(c.isLight)){
+            playSound(R.raw.owl);
+            editor.putLong(Config.LAST_TIME_SOUND_ALERT, currentTS);
+            editor.commit();
+        }
+
+        if ((c.isDusty)&&(c.isLight)){
+            playSound(R.raw.crow);
+            editor.putLong(Config.LAST_TIME_SOUND_ALERT, currentTS);
+            editor.commit();
+        }
+
+        if ((c.isWindy)&&(c.isLight)){
+            playSound(R.raw.wind);
+            editor.putLong(Config.LAST_TIME_SOUND_ALERT, currentTS);
+            editor.commit();
+        }
+
+        if (currentTS - c.lastForecastUpdate < Config.TIME_SOUND_ALERT_INTERVAL){
+            playSound(R.raw.lighttrainshort);
+        }
+
+    }
 
     private class Current {
         public float temp;
@@ -247,6 +281,8 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
         public Boolean nowind;
         public Boolean isDusty;
         public Boolean isLight;
+        public Boolean isWindy;
+        public long lastForecastUpdate ;
     }
  }
 

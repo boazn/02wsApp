@@ -1,4 +1,12 @@
 package il.co.jws.app;
 
-public class BillingProvider {
+/**
+ * An interface that provides an access to BillingLibrary methods
+ */
+public interface BillingProvider {
+    BillingManager getBillingManager();
+    boolean isPremiumPurchased();
+    boolean isMonthlySubscribed();
+    boolean isYearlySubscribed();
+    boolean isAlertsOnly();
 }

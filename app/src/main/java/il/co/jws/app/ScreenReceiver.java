@@ -2,14 +2,20 @@ package il.co.jws.app;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.appwidget.AppWidgetManager;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.hardware.display.DisplayManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.util.Log;
+import android.view.Display;
 
 import java.util.Calendar;
 
@@ -24,36 +30,55 @@ public class ScreenReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, final Intent intent) {
         //Log.i(TAG,"ScreenReceiver onReceive");
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+
         if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
             // do whatever you need to do here
             wasScreenOn = false;
        } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
             // and do whatever you need to do here
+            if (!isScreenOn(context))
+                return;
            wasScreenOn = true;
 
-            ComponentName thisSMallAppWidget = new ComponentName(context.getPackageName(), SmallAppWidgetProvider.class.getName());
-            int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisSMallAppWidget);
-            Intent smallWidgetIntent = new Intent(context, UpdateService.class);
-            smallWidgetIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
-            smallWidgetIntent.putExtra(Config.WIDGET_TYPE, Config.WIDGET_TYPE_SMALL);
-            //PendingIntent pendingService = PendingIntent.getService(context, 0, smallWidgetIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            context.startService(smallWidgetIntent);
-
-
-
         } else if(intent.getAction().equals(Intent.ACTION_USER_PRESENT)){
-            ComponentName thisRectAppWidget = new ComponentName(context.getPackageName(), RectangleAppWidgetProvider.class.getName());
-            int[] rectappWidgetIds = appWidgetManager.getAppWidgetIds(thisRectAppWidget);
-            Intent rectwidgetIntent = new Intent(context, UpdateService.class);
-            rectwidgetIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, rectappWidgetIds);
-            rectwidgetIntent.putExtra(Config.WIDGET_TYPE, Config.WIDGET_TYPE_RECT);
-            //PendingIntent rectpendingService = PendingIntent.getService(context, 0, rectwidgetIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            context.startService(rectwidgetIntent);
+            if (!isScreenOn(context))
+                return;
+            updateWidgets(context);
             Log.i(TAG,"userpresent (unlocked)");
         }
         Log.i(TAG,"wasScreenOn "+wasScreenOn);
     }
+
+    public void updateWidgets(Context context){
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        ComponentName thisRectAppWidget = new ComponentName(context.getPackageName(), RectangleAppWidgetProvider.class.getName());
+        int[] rectappWidgetIds = appWidgetManager.getAppWidgetIds(thisRectAppWidget);
+        Intent rectwidgetIntent = new Intent(context, UpdateService.class);
+        rectwidgetIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, rectappWidgetIds);
+        rectwidgetIntent.putExtra(Config.WIDGET_TYPE, Config.WIDGET_TYPE_RECT);
+        Log.i(TAG, "discovered " + rectappWidgetIds.length + " " + Config.WIDGET_TYPE_RECT + " " +  (rectappWidgetIds.length > 0 ? rectappWidgetIds[0] : "") );
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            //Util.scheduleJob(context, rectappWidgetIds, Config.WIDGET_TYPE_RECT);
+            context.startForegroundService(rectwidgetIntent);
+        } else {
+            context.startService(rectwidgetIntent);
+        }
+
+
+        ComponentName thisSMallAppWidget = new ComponentName(context.getPackageName(), SmallAppWidgetProvider.class.getName());
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisSMallAppWidget);
+        Intent smallWidgetIntent = new Intent(context, UpdateService.class);
+        smallWidgetIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+        smallWidgetIntent.putExtra(Config.WIDGET_TYPE, Config.WIDGET_TYPE_SMALL);
+        Log.i(TAG, "discovered " + appWidgetIds.length + " " + Config.WIDGET_TYPE_SMALL + " " +  (appWidgetIds.length > 0 ? appWidgetIds[0] : "") );
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            //Util.scheduleJob(context, appWidgetIds, Config.WIDGET_TYPE_SMALL);
+            context.startForegroundService(smallWidgetIntent);
+        } else {
+            context.startService(smallWidgetIntent);
+        }
+    }
+
 
     /**
      * register receiver
@@ -80,6 +105,26 @@ public class ScreenReceiver extends BroadcastReceiver {
             return true;
         }
         return false;
+    }
+
+    private boolean isScreenOn(final Context context) {
+        if (android.os.Build.VERSION.SDK_INT >= 20) {
+
+            DisplayManager dm = (DisplayManager) context.getSystemService(Context.DISPLAY_SERVICE);
+            for (Display display : dm.getDisplays()) {
+                if (display.getState() != Display.STATE_OFF) {
+                    return true;
+                }
+            }
+        }
+        return isInteractive(context);
+    }
+
+    private boolean isInteractive(final Context context) {
+        PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        return android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT_WATCH
+                ? powerManager.isInteractive()
+                : powerManager.isScreenOn();
     }
 
 }

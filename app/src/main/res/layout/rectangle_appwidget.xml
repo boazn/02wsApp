@@ -39,6 +39,7 @@
             android:textAlignment="center"
             android:gravity="center_vertical"
             android:shadowColor="#474141"
+            android:textColor="#ffffff"
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="2"
@@ -52,6 +53,7 @@
             android:layout_gravity="center_horizontal"
             android:textAlignment="center"
             android:shadowColor="#474141"
+            android:textColor="#ffffff"
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="2"
@@ -67,9 +69,10 @@
             android:textAlignment="center"
             android:textIsSelectable="false"
             android:shadowColor="#474141"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="8" />
+            android:textColor="#ffffff"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1" />
 
         <TextView
             android:layout_width="match_parent"
@@ -79,9 +82,10 @@
             android:layout_gravity="center_horizontal"
             android:textAlignment="center"
             android:shadowColor="#474141"
+            android:textColor="#ffffff"
             android:shadowDx="1"
             android:shadowDy="1"
-            android:shadowRadius="2"
+            android:shadowRadius="1"
             android:textStyle="bold" />
 
     </LinearLayout>

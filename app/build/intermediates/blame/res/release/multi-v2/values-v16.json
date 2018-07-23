@@ -4,7 +4,26 @@
             "outputFile": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-25.2.0.aar\\d3d13af6103f00d8e40431a11836394c\\res\\values-v16\\values-v16.xml",
+                    "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "121",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "289"
+                    }
+                },
+                {
+                    "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.0.aar\\9c54717c7934fa8405cc3c1286b0522f\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="il.co.jws.app"
     android:installLocation="auto"
-    android:versionCode="46"
-    android:versionName="4.17">
+    android:versionCode="48"
+    android:versionName="5.1">
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="23" />
+        android:targetSdkVersion="26" />
 
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-    <uses-feature
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+        <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
 
@@ -25,6 +25,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:debuggable="true"
+        tools:ignore="HardcodedDebugMode"
         android:theme="@style/AppTheme">
         <service android:name=".FcmBroadcastReceiver">
             <intent-filter>
@@ -35,6 +37,12 @@
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
+        </service>
+        <service
+            android:name=".WidgetJobService"
+            android:label="Word service"
+            android:permission="android.permission.BIND_JOB_SERVICE" >
+
         </service>
 
         <activity
@@ -111,6 +119,11 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/rect_appwidget_info" />
+        </receiver>
+        <receiver android:name=".ScreenReceiver">
+        <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+        </intent-filter>
         </receiver>
 
         <service android:name=".UpdateService" />

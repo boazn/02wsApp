@@ -4,8 +4,9 @@ public interface Config {
   
     // CONSTANTS
     static final String SERVER_REGISTER_URL =  "http://www.02ws.co.il/gcm_register.php";
+    static final String SERVER_GOOGLE_PLAY_API_PREF =  "https://www.googleapis.com/androidpublisher/v3/applications/il.co.jws.app/purchases/subscriptions/";
     static final String SERVER_SUB_URL =  "http://www.02ws.co.il/subscription_reciever.php";
-    static final String SERVER_SUB_URL_ACTION =  "updateregid";
+    static final String SERVER_SUB_URL_ACTION =  "storeSub";
      
     // Google project id
     static final String GOOGLE_SENDER_ID = "761995000479"; 
@@ -26,6 +27,7 @@ public interface Config {
     public static final String PREFS_TEMPUNIT = "tempunit";
     public static final String C_TEMPUNIT = "°C";
     public static final String F_TEMPUNIT = "°F";
+    public static final int REQUEST_CODE_EMAIL = 1;
     public static final String PREFS_NOTIFICATIONS = "Notifications";
     public static final String PREFS_NOTIFICATIONS_RAIN = "Rain notifications";
     public static final String PREFS_NOTIFICATIONS_TIPS = "Tips notifications";
@@ -36,7 +38,17 @@ public interface Config {
     public static final String PREFS_NAME = "PREFS_02WS";
     public static final String PREFS_FULLTEXT = "PREFS_FULLTEXT";
     public static final String PREFS_SUBGUID = "PREFS_SUBGUID";
+    public static final String PREFS_EMAIL = "PREFS_EMAIL";
     public static final String PREFS_SUB_ID = "PREFS_SUB_ID";
+    public static final String PREFS_BILLING_ERROR = "PREFS_BILLING_ERROR";
+    public static final String PREFS_APPROVED = "PREFS_APPROVED";
+    public static final String PREFS_ENTRIES = "ENTRIES";
+    public static final String PREFS_ADFREE = "ADFREE";
+    public static final String PREFS_DAILYFORECAST = "DAILYFORECAST";
+    public static final String BILLING_QUERY = "BILLING_QUERY";
+    public static final String CHANNEL_ID = "02wsChannel";
+    public static final String LAST_TIME_SOUND_ALERT = "LAST_TIME_SOUND_ALERT";
+    public static final int TIME_SOUND_ALERT_INTERVAL = 10800;
     public static final String PROPERTY_REG_ID = "registration_id";
     public static final String SITE_URL_BASE = "http://www.02ws.co.il/small.php?lang=";
     public static final String ALERTS_URL_BASE = "http://www.02ws.co.il/small.php?section=alerts.php&lang=";

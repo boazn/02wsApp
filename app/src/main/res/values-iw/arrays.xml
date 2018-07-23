@@ -13,14 +13,22 @@
         <item>תמונות גולשים</item>
         <item>תמונת היום</item>
         <item>הודעות והתראות</item>
+        <item>תחזית לארץ</item>
+        <item>תחזית לחו"ל</item>
+        <item>שלג בירושלים</item>
+        <item>ירושמיים YouTube</item>
     </string-array>
     <integer-array name="array_drawer_icons">
         <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_forum_grey600_48dp</item>
-        <item>@drawable/ic_contact_mail_grey600_48dp</item>
-        <item>@drawable/ic_weather_rainy_grey600_48dp</item>
-        <item>@drawable/ic_camera</item>
-        <item>@drawable/ic_camera</item>
-        <item>@drawable/icon_g</item>
+        <item>@drawable/baseline_chat_black_24</item>
+        <item>@drawable/baseline_contact_mail_black_24</item>
+        <item>@drawable/ic_weather_rainy_grey600_24dp</item>
+        <item>@drawable/baseline_photo_camera_black_24</item>
+        <item>@drawable/baseline_photo_camera_black_24</item>
+        <item>@drawable/baseline_notification_important_black_24</item>
+        <item>@drawable/icons8_star_of_david_96</item>
+        <item>@drawable/icons8_globe_96</item>
+        <item>@drawable/icons8_winter_96</item>
+        <item>@drawable/icons8_youtube_96</item>
     </integer-array>
 </resources>

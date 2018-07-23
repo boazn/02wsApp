@@ -128,6 +128,7 @@
         android:id="@+id/enter_code"
         android:orderInCategory="900"
         android:showAsAction="withText"
+        android:checkable="true"
         android:title="@string/title_activity_ad_free_code"
         >
 

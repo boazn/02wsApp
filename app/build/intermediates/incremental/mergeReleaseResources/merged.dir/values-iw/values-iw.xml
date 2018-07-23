@@ -2,12 +2,16 @@
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
     <integer-array name="array_drawer_icons">
         <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_forum_grey600_48dp</item>
-        <item>@drawable/ic_contact_mail_grey600_48dp</item>
-        <item>@drawable/ic_weather_rainy_grey600_48dp</item>
-        <item>@drawable/ic_camera</item>
-        <item>@drawable/ic_camera</item>
-        <item>@drawable/icon_g</item>
+        <item>@drawable/baseline_chat_black_24</item>
+        <item>@drawable/baseline_contact_mail_black_24</item>
+        <item>@drawable/ic_weather_rainy_grey600_24dp</item>
+        <item>@drawable/baseline_photo_camera_black_24</item>
+        <item>@drawable/baseline_photo_camera_black_24</item>
+        <item>@drawable/baseline_notification_important_black_24</item>
+        <item>@drawable/icons8_star_of_david_96</item>
+        <item>@drawable/icons8_globe_96</item>
+        <item>@drawable/icons8_winter_96</item>
+        <item>@drawable/icons8_youtube_96</item>
     </integer-array>
     <string-array name="navItems">
         <item>עמוד ראשי</item>
@@ -17,6 +21,10 @@
         <item>תמונות גולשים</item>
         <item>תמונת היום</item>
         <item>הודעות והתראות</item>
+        <item>תחזית לארץ</item>
+        <item>תחזית לחו"ל</item>
+        <item>שלג בירושלים</item>
+        <item>ירושמיים YouTube</item>
     </string-array>
     <string-array name="units">
         <item>דקות</item>
@@ -51,8 +59,26 @@
     <string name="cancel">ביטול</string>
     <string name="cancel_text">ביטול</string>
     <string name="changeFontSize">שנה גודל גופן</string>
+    <string name="channel_description">אינפורמציה של תחזית ארוכת טווח וקצרת טווח, בנוסף לטיפים ועוד</string>
+    <string name="channel_name">מזג-אוויר</string>
     <string name="cloth">ביגוד</string>
+    <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"הפעל"</string>
+    <string msgid="7045129128108380659" name="common_google_play_services_enable_text">"‏האפליקציה <ns1:g id="APP_NAME">%1$s</ns1:g> לא תפעל אם לא תפעיל את שירותי Google Play."</string>
+    <string msgid="3147157405986503375" name="common_google_play_services_enable_title">"‏הפעל את שירותי Google Play"</string>
+    <string msgid="9115728400623041681" name="common_google_play_services_install_button">"התקן"</string>
+    <string msgid="8179894293032530091" name="common_google_play_services_install_text">"‏האפליקציה <ns1:g id="APP_NAME">%1$s</ns1:g> לא תפעל ללא שירותי Google Play, שאינם מותקנים במכשיר."</string>
+    <string msgid="7442193194585196676" name="common_google_play_services_install_title">"‏קבל את שירותי Google Play"</string>
+    <string msgid="180394615667698242" name="common_google_play_services_notification_ticker">"‏שגיאה בשירותי Google Play"</string>
     <string msgid="2518680582564677258" name="common_google_play_services_unknown_issue">"‏<ns1:g id="APP_NAME">%1$s</ns1:g> נתקלה בבעיה בשירותי Google Play. נסה שוב."</string>
+    <string msgid="5501187292256987189" name="common_google_play_services_unsupported_text">"‏<ns1:g id="APP_NAME">%1$s</ns1:g> לא תפעל ללא שירותי Google Play, שאינם נתמכים במכשיר שלך."</string>
+    <string msgid="8172070149091615356" name="common_google_play_services_update_button">"עדכן"</string>
+    <string msgid="7773943415006962566" name="common_google_play_services_update_text">"‏<ns1:g id="APP_NAME">%1$s</ns1:g> לא יפעל אם לא תעדכן את שירותי Google Play."</string>
+    <string msgid="8706675115216073244" name="common_google_play_services_update_title">"‏עדכון שירותי Google Play"</string>
+    <string msgid="7894275749778928941" name="common_google_play_services_updating_text">"‏האפליקציה <ns1:g id="APP_NAME">%1$s</ns1:g> לא תפעל ללא שירותי Google Play, שמתעדכנים כרגע."</string>
+    <string msgid="2804989272736383918" name="common_google_play_services_wear_update_text">"‏דרושה גרסה חדשה של שירותי Google Play. הגרסה תתעדכן בעצמה תוך זמן קצר."</string>
+    <string msgid="5201977337835724196" name="common_open_on_phone">"פתח בטלפון"</string>
+    <string msgid="3441753203274453993" name="common_signin_button_text">"כניסה"</string>
+    <string msgid="669893613918351210" name="common_signin_button_text_long">"‏היכנס באמצעות Google"</string>
     <string name="desc_activity_ad_free_code">הכניסו כאן את הקוד שנשלח אליכם כדי לא להציג פרסומות באפליקציה</string>
     <string name="dismiss">סגירה</string>
     <string name="drawer_close">סגירת תפריט</string>
@@ -62,6 +88,12 @@
     <string name="feelslike">מרגיש כמו</string>
     <string name="force_fulltext">טקסט מלא בתחזית</string>
     <string name="forum">פורום</string>
+    <string name="guide_navigationdrawer_desc">כאן אפשר להגיע לעמודים נוספים, כמו: פורום, יצירת קשר, תמונות היום, תמונות גולשים ועוד</string>
+    <string name="guide_navigationdrawer_title">תפריט ניווט</string>
+    <string name="guide_settings_desc">כאן אפשר לשנות התראות, שפה, גודל גופן והרשמה לשירותים</string>
+    <string name="guide_settings_title">כפתור הגדרות</string>
+    <string name="guide_shorttermalerts_desc">בתוך תפריט ההגדרות אפשר להירשם להתראות קצרות טווח לשעות הקרובות, כמו: גשם מתחיל\נגמר ואירועים נוספים</string>
+    <string name="guide_shorttermalerts_title">התראות קצרות טווח</string>
     <string name="hebrew">עברית</string>
     <string name="language">שפה</string>
     <string name="lighttrain">רכבת קלה</string>

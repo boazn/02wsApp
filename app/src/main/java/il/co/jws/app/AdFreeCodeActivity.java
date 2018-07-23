@@ -108,10 +108,10 @@ public class AdFreeCodeActivity extends Activity {
 
         } catch (ClientProtocolException e) {
             // TODO Auto-generated catch block
-            MainActivity.printStacktrace(e);
+            MainViewController.printStacktrace(e);
 
         } catch (IOException e) {
-            MainActivity.printStacktrace(e);
+            MainViewController.printStacktrace(e);
 
         }
 

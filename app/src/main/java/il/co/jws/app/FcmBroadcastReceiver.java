@@ -133,20 +133,20 @@ public class FcmBroadcastReceiver extends com.google.firebase.messaging.Firebase
                 Bitmap remote_picture = null;
 
                 // Create the style object with BigPictureStyle subclass.
-                NotificationCompat.BigPictureStyle bPicStyle = new
+                NotificationCompat.BigPictureStyle picStyle = new
                         NotificationCompat.BigPictureStyle();
-                bPicStyle.setBigContentTitle(context.getString(R.string.app_name));
 
                 NotificationCompat.BigTextStyle textStyle = new NotificationCompat.BigTextStyle();
-                textStyle.setBigContentTitle(context.getString(R.string.app_name));
+                textStyle.setBigContentTitle(title);
                 textStyle.bigText(msg);
-                textStyle.setSummaryText(title);
+                textStyle.setSummaryText(context.getString(R.string.app_name));
                 try {
                     if ((picture_url != null)&&(!picture_url.isEmpty()))
                         remote_picture = BitmapFactory.decodeStream(
                                 (InputStream) new URL(picture_url).getContent());
                     if (remote_picture != null)
-                        bPicStyle.bigPicture(remote_picture);
+                        picStyle.bigPicture(remote_picture)
+                                 .bigLargeIcon(null);
                 } catch (IOException e) {
                     printStacktrace(e);
                 }
@@ -155,21 +155,24 @@ public class FcmBroadcastReceiver extends com.google.firebase.messaging.Firebase
                 if (!vibration)
                     v = null;
                 NotificationCompat.Builder mBuilder =
-                        new NotificationCompat.Builder(context)
+                        new NotificationCompat.Builder(context, Config.CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle(context.getString(R.string.app_name))
+                .setLargeIcon(remote_picture)
+                .setContentTitle(title)
                 .setContentText(msg)
-                .setSubText(title)
+                .setSubText(context.getString(R.string.app_name))
                 .setAutoCancel(true)
                 .setSound(soundUri)
                 .setVibrate(v)
                 .setContentIntent(piMain)
+                .setCategory(Config.CHANNEL_ID)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setPriority(android.app.Notification.PRIORITY_MAX);
 
                 if (remote_picture == null)
                     mBuilder.setStyle(textStyle);
                 else
-                    mBuilder.setStyle(bPicStyle);
+                    mBuilder.setStyle(picStyle);
                  mBuilder.addAction (R.drawable.ic_clear_black_24dp,
                          getString(R.string.dismiss), piDismiss)
                 .addAction (R.drawable.ic_action,

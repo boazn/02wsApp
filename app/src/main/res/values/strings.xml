@@ -54,8 +54,25 @@
     <string name="openradar">radar</string>
     <string name="openuserpics">user pics</string>
     <string name="openpicoftheday">pic of the day</string>
+    <string name="israelforecast">Israel forecast</string>
+    <string name="worldforecast">world forecast</string>
+    <string name="snowinjlm">snow in JLM</string>
     <string name="drawer_open">open drawer</string>
+    <string name="alert_consume_success">consuming finished succefully</string>
+    <string name="alert_error_consuming">error on consuming</string>
     <string name="drawer_close">close the drawer</string>
-    <string name="title_activity_ad_free_code">Ad Free</string>
-    <string name="desc_activity_ad_free_code">Enter here the code that was sent to you to clean the app from ads</string>
+    <string name="title_activity_ad_free_code">Premium services</string>
+    <string name="desc_activity_ad_free_code">Get ad free, daily forecasts, etc</string>
+    <string name="channel_name">Weather Alerts</string>
+    <string name="channel_description">Get short term and long term forecast alerts and also other types</string>
+    <string name="guide_settings_title">Settings button</string>
+    <string name="guide_settings_desc">Click here to change alerts, units, language, font size and more</string>
+    <string name="guide_shorttermalerts_title">Short term alerts</string>
+    <string name="guide_shorttermalerts_desc">Check the box in the settings section to subscribe for the short term alerts, such as: rain start/stop and other events in the coming hours</string>
+    <string name="guide_navigationdrawer_title">Navigation drawer</string>
+    <string name="guide_navigationdrawer_desc">Click here to move to other pages: forum, pictures, contact and more</string>
+    <string name="guide_soundTarget_title">Sound in widget</string>
+    <string name="guide_soundTarget_desc">Click to enable sound when some event occour. First, put the small or medium widget on the screen. Then, crow=dusty, owl=no wind, wind=wind, rain=rain, light train=forecast updated.</string>
+    <string name="guide_adfreeTarget_title">Ad free</string>
+    <string name="guide_adfreeTarget_desc">Click to remove ads from app. Clean design.</string>
 </resources>

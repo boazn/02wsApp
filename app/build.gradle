@@ -9,12 +9,12 @@ android {
             storePassword 'boaz1972'
         }
     }
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion '27.0.3'
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 26
         multiDexEnabled true
         applicationId "il.co.jws.app"
     }
@@ -28,8 +28,16 @@ android {
         }
         release {
             minifyEnabled false
+            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
     compileOptions {
 
@@ -41,25 +49,35 @@ android {
         exclude 'META-INF/DEPENDENCIES'
 
     }
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
 }
 
 dependencies {
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:support-v4:25.2.0'
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:support-media-compat:25.2.0'
-    compile 'com.android.support:support-compat:25.2.0'
-    compile 'com.android.support:support-core-ui:25.2.0'
-    compile 'com.android.support:support-core-utils:25.2.0'
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:support-vector-drawable:25.2.0'
-    compile 'com.google.firebase:firebase-messaging:11.6.2'
-    compile 'com.google.firebase:firebase-crash:11.6.2'
-    compile 'org.apache.httpcomponents:httpmime:4.5.2'
-    compile 'com.android.support:design:25.2.0'
+    implementation  'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation  'com.android.support:support-v4:26.0.0'
+    implementation  'com.android.support:appcompat-v7:26.0.0'
+    implementation  'com.android.support:support-media-compat:26.0.0'
+    implementation  'com.android.support:support-compat:26.0.0'
+    implementation  'com.android.support:support-core-ui:26.0.0'
+    implementation  'com.android.support:support-core-utils:26.0.0'
+    implementation  'com.android.support:appcompat-v7:26.0.0'
+    implementation  'com.android.support:support-vector-drawable:26.0.0'
+    implementation  'com.google.firebase:firebase-messaging:11.6.2'
+    implementation  'com.google.firebase:firebase-crash:11.6.2'
+    implementation  'org.apache.httpcomponents:httpmime:4.5.2'
+    implementation  'com.android.support:design:26.0.0'
+    implementation  'com.google.android.gms:play-services-auth:11.6.2'
+    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.11.0'
+    implementation 'com.android.billingclient:billing:1.1'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.3'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
 
 }
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'
 
 configurations {
     all {

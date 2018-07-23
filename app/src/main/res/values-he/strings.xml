@@ -54,8 +54,23 @@
     <string name="openradar" >מכ"ם גשם</string>
     <string name="openuserpics" >תמונות הגולשים</string>
     <string name="openpicoftheday" >תמונת היום</string>
+    <string name="israelforecast">תחזית לארץ</string>
+    <string name="worldforecast">תחזית לחו"ל</string>
+    <string name="snowinjlm">שלג בירושלים</string>
     <string name="drawer_open" >פתח ניווט</string>
     <string name="drawer_close" >סגור</string>
     <string name="title_activity_ad_free_code">ניקוי פרסומות</string>
     <string name="desc_activity_ad_free_code">הכניסו כאן את הקוד שנשלח אליכם כדי לא להציג פרסומות באפליקציה</string>
+    <string name="channel_name">מזג-אוויר</string>
+    <string name="channel_description">אינפורמציה של תחזית ארוכת טווח וקצרת טווח, בנוסף לטיפים ועוד</string>
+    <string name="guide_settings_title">כפתור הגדרות</string>
+    <string name="guide_settings_desc">כאן אפשר לשנות התראות, שפה, גודל גופן והרשמה לשירותים</string>
+    <string name="guide_shorttermalerts_title">התראות קצרות טווח</string>
+    <string name="guide_shorttermalerts_desc">בתוך תפריט ההגדרות אפשר להירשם להתראות קצרות טווח לשעות הקרובות, כמו: גשם מתחיל\נגמר ואירועים נוספים</string>
+    <string name="guide_navigationdrawer_title">תפריט ניווט</string>
+    <string name="guide_navigationdrawer_desc">כאן אפשר להגיע לעמודים נוספים, כמו: פורום, יצירת קשר, תמונות היום, תמונות גולשים ועוד</string>
+    <string name="guide_soundTarget_title">סאונד בוִידְגֶ'ט</string>
+    <string name="guide_soundTarget_desc">תחילה שימו וִידְגֶ'ט קטן או בינוני על המסך. אח"כ בכל פעם שיקרה משהו מעניין יישמע צליל: עורב=>אבק, ינשוף=>אוויר עומד, גשם=>גשם, אפקט רוח=>רוח, צליל רכבת קלה=>התחזית עודכנה. </string>
+    <string name="guide_adfreeTarget_title">הסרת פרסומות</string>
+    <string name="guide_adfreeTarget_desc">הקליקו כדי להסיר פרסומות מהאפליקציה, עיצוב נקי.</string>
 </resources>
