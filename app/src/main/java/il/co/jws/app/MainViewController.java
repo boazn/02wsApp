@@ -33,6 +33,8 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -61,6 +63,8 @@ public class MainViewController {
     // Tracks if we currently own a premium car
     private boolean mIsPremium;
     private boolean mIsAlertsOnly;
+    private boolean mIsPremiumYearly;
+    private boolean mIsAlertsOnlyYearly;
     private Context mContext;
     private FirebaseAnalytics mFirebaseAnalytics;
     // Current amount of gas in tank, in units
@@ -91,6 +95,12 @@ public class MainViewController {
     }
     public boolean isGoldMonthlySubscribed() {
         return mGoldMonthly;
+    }
+    public boolean isAlertOnlyYearlySubscribed() {
+        return mIsAlertsOnlyYearly;
+    }
+    public boolean isPremiumYearlySubscribed() {
+        return mIsPremiumYearly;
     }
 
     public boolean isGoldYearlySubscribed() {
@@ -235,13 +245,22 @@ public class MainViewController {
 
         // Create a new HttpClient and Post Header
         final HttpClient httpclient = new DefaultHttpClient();
-        final HttpPost httppost = new HttpPost(Config.SERVER_GOOGLE_PLAY_API_PREF + subscriptionId + "/tokens/" + token + ":cancel");
+        final HttpPost httppost = new HttpPost(Config.SERVER_GOOGLE_PLAY_API_REFRESH_TOKEN_URI);
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
+                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
+                    nameValuePairs.add(new BasicNameValuePair("grant_type", Config.GRANT_TYPE_GOOGLE_API));
+                    nameValuePairs.add(new BasicNameValuePair("client_id", Config.CLIENT_ID_GOOGLE_API));
+                    nameValuePairs.add(new BasicNameValuePair("client_secret", Config.CLIENT_SECRET_GOOGLE_API));
+                    nameValuePairs.add(new BasicNameValuePair("refresh_token", Config.REFRESH_TOKEN_GOOGLE_API));
                     // Execute HTTP Post Request
                     HttpResponse response = httpclient.execute(httppost);
+                    JSONObject jsonRootObject = new JSONObject(response.getStatusLine().getReasonPhrase());
+                    String access_token = jsonRootObject.getString("access_token");
+                    final HttpPost httppost = new HttpPost(Config.SERVER_GOOGLE_PLAY_API_PREF + subscriptionId + "/tokens/" + token + ":cancel??access_token=" + access_token);
+                    response = httpclient.execute(httppost);
                     Log.i(Config.TAG, "cancelSubscription subscriptionId=" + subscriptionId + " token=" + token + "response:" + response.getStatusLine().getReasonPhrase());
                     Bundle bundle = new Bundle();
                     bundle.putString(FirebaseAnalytics.Param.DESTINATION, String.valueOf("cancelSubscription subscriptionId=" + subscriptionId + " token=" + token + "response:" + response.getStatusLine().getReasonPhrase()));
@@ -255,6 +274,8 @@ public class MainViewController {
                 } catch (IOException e) {
                     printStacktrace(e);
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
                 return null;
             }
@@ -375,9 +396,10 @@ public class MainViewController {
 
         @Override
         public void onPurchasesUpdated(List<Purchase> purchaseList) {
-            mGoldMonthly = false;
-            mGoldYearly = false;
+            mIsPremiumYearly = false;
+            mIsAlertsOnlyYearly = false;
             mIsAlertsOnly = false;
+            mIsPremium = false;
             for (Purchase purchase : purchaseList) {
                 switch (purchase.getSku()) {
                     case BillingConstants.SKU_AD_FREE:
@@ -391,10 +413,12 @@ public class MainViewController {
                         mIsAlertsOnly = true;
                         break;
                     case BillingConstants.SKU_AD_FREE_YEARLY:
-                        mGoldYearly = true;
+                        Log.d(TAG, "We have SKU_AD_FREE_YEARLY!");
+                        mIsPremiumYearly = true;
                         break;
                     case BillingConstants.SKU_ALERTS_YEARLY:
-                        mGoldYearly = true;
+                        Log.d(TAG, "We have SKU_ALERTS_YEARLY");
+                        mIsAlertsOnlyYearly = true;
                         break;
                 }
             }
