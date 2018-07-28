@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="il.co.jws.app"
     android:installLocation="auto"
-    android:versionCode="49"
+    android:versionCode="50"
     android:versionName="5.1">
 
     <uses-sdk

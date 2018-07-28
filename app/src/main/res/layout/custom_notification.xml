@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:textAlignment="center">
+<RelativeLayout
+    android:id="@+id/layout"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+
+    <ImageView
+        android:id="@+id/image_pic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:contentDescription="@string/app_name"
+        android:foregroundGravity="fill_horizontal"
+        android:scaleType="fitXY" />
+</RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/lin_lyt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal|center|clip_vertical"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical"
+        android:textAlignment="gravity"
+        android:textDirection="locale">
+
+        <LinearLayout
+            android:id="@+id/con_lyt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="fill_horizontal"
+            android:textAlignment="gravity"
+            android:textDirection="locale">
+
+            <ImageView
+                android:id="@+id/image_app"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/app_name"
+                android:maxWidth="18dp" />
+
+            <TextView
+                android:id="@+id/title"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="2"
+                android:shadowRadius="2"
+                android:text="title title title title title @string/common_google_play_services_enable_title"
+                android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="fill_horizontal|start"
+            android:shadowColor="@android:color/darker_gray"
+            android:shadowRadius="1"
+            android:text="Text Text Text Text Text  Text Text Text Text Text Text Text Text Text Text \n  Text Text Text Text Text  Text Text Text Text Text Text Text Text Text Text \n Text Text Text Text Text  Text Text Text Text Text Text Text Text Text Text     "
+            android:textColor="@android:color/white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttons_lyt"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_gravity="bottom|fill_horizontal|end"
+        android:layout_marginBottom="2dp"
+        android:gravity="fill_horizontal|end">
+
+        <Button
+            android:id="@+id/dismiss"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:background="@android:color/transparent"
+            android:shadowColor="@color/black"
+            android:shadowDx="1"
+            android:shadowDy="2"
+            android:shadowRadius="1"
+            android:singleLine="false"
+            android:text="@string/dismiss"
+            android:textColor="?android:attr/colorForegroundInverse"
+            android:textColorHighlight="?android:attr/colorForegroundInverse" />
+
+        <Button
+            android:id="@+id/share"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:background="@android:color/transparent"
+            android:shadowColor="@color/black"
+            android:shadowDx="1"
+            android:shadowDy="2"
+            android:shadowRadius="1"
+            android:singleLine="false"
+            android:text="@string/share_title"
+            android:textColor="?android:attr/colorForegroundInverse" />
+
+        <Button
+            android:id="@+id/reply"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@android:color/transparent"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="2"
+            android:singleLine="false"
+            android:text="@string/reply_title"
+            android:textColor="?android:attr/colorForegroundInverse"
+            android:textColorHighlight="?android:attr/colorForegroundInverse" />
+
+    </LinearLayout>
+
+
+</FrameLayout>

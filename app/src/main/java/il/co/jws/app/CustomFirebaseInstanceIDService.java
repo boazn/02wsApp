@@ -35,21 +35,18 @@ public class CustomFirebaseInstanceIDService extends FirebaseInstanceIdService {
     private int MY_PERMISSIONS_REQUEST_GET_ACCOUNT;
     @Override
     public void onTokenRefresh() {
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d(TAG, "Token Value: " + refreshedToken);
-        FirebaseCrash.logcat(1 , FirebaseInstanceId.getInstance().getId() , "Token Value: " + refreshedToken);
-        if ((refreshedToken != null) && (refreshedToken != "")) {
+        try {
+            String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+            Log.d(TAG, "Token Value: " + refreshedToken);
+            FirebaseCrash.logcat(1 , FirebaseInstanceId.getInstance().getId() , "Token Value: " + refreshedToken);
             storeRegistrationId(refreshedToken);
             sendTheRegisteredTokenToWebServer(refreshedToken);
+
         }
-        else {
-           try {
-                FirebaseInstanceId.getInstance().deleteInstanceId();
-            }
-            catch (Exception e ){
-                FirebaseCrash.report(e);
-            }
+        catch (Exception e ){
+            FirebaseCrash.report(e);
         }
+
    }
 
     /**
@@ -69,6 +66,10 @@ public class CustomFirebaseInstanceIDService extends FirebaseInstanceIdService {
     }
     private void sendTheRegisteredTokenToWebServer(final String token){
 
+        if (token == null)
+            return;
+        if (token.isEmpty())
+            return;
         SharedPreferences prefs = getApplicationContext().getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
         final boolean ActionOn = prefs.getBoolean(Config.PREFS_NOTIFICATIONS, true);
         final boolean ActionRainOn = prefs.getBoolean(Config.PREFS_NOTIFICATIONS_RAIN, true);

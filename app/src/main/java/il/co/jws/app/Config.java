@@ -7,7 +7,6 @@ public interface Config {
     static final String SERVER_GOOGLE_PLAY_API_PREF =  "https://www.googleapis.com/androidpublisher/v3/applications/il.co.jws.app/purchases/subscriptions/";
     static final String SERVER_GOOGLE_PLAY_API_REFRESH_TOKEN_URI = "https://accounts.google.com/o/oauth2/token";
     static final String SERVER_SUB_URL =  "http://www.02ws.co.il/subscription_reciever.php";
-    static final String ACCESS_TOKEN_GOOGLE_API = "ACCESS_TOKEN_GOOGLE_API";
     static final String REFRESH_TOKEN_GOOGLE_API = "1/aAtONbtAwRFJ0Fm6G0k82dD6rYqPEZP59YmM4GE7tb0";
     static final String GRANT_TYPE_GOOGLE_API = "refresh_token";
     static final String CLIENT_ID_GOOGLE_API = "1056747824588-3vr2v9kqort65mb22k6cm0d7ip8n5ssl.apps.googleusercontent.com";
@@ -46,8 +45,8 @@ public interface Config {
     public static final String PREFS_SUBGUID = "PREFS_SUBGUID";
     public static final String PREFS_EMAIL = "PREFS_EMAIL";
     public static final String PREFS_SUB_ID = "PREFS_SUB_ID";
-    public static final String LATEST_SUB_ID = "LATEST_SUB_ID";
-    public static final String PREFS_BILLING_ERROR = "PREFS_BILLING_ERROR";
+    public static final String ACTIVE_SUB_ID = "ACTIVE_SUB_ID";
+    public static final String PREFS_BILLING_TIME = "PREFS_BILLING_TIME";
     public static final String PREFS_APPROVED = "PREFS_APPROVED";
     public static final String PREFS_ENTRIES = "ENTRIES";
     public static final String PREFS_ADFREE = "ADFREE";
@@ -56,8 +55,8 @@ public interface Config {
     public static final String CHANNEL_ID = "02wsChannel";
     public static final String LAST_TIME_SOUND_ALERT = "LAST_TIME_SOUND_ALERT";
     public static final String LAST_CHECK_IN_APP_BILLING = "LAST_CHECK_IN_APP_BILLING";
-    public static final int CHECK_IN_APP_BILLING_INTERVAL = 172800;//2 days
-    public static final int TIME_SOUND_ALERT_INTERVAL = 10800;
+    public static final int CHECK_IN_APP_BILLING_INTERVAL = 172800000;//2 days
+    public static final int TIME_SOUND_ALERT_INTERVAL = 10800000;//3hours
     public static final String PROPERTY_REG_ID = "registration_id";
     public static final String SITE_URL_BASE = "http://www.02ws.co.il/small.php?lang=";
     public static final String ALERTS_URL_BASE = "http://www.02ws.co.il/small.php?section=alerts.php&lang=";
@@ -71,5 +70,6 @@ public interface Config {
     public static final String WIDGET_TYPE_SMALL = "SMALL";
     public static final String IS_FROM_ADFREE_ACTIVITY = "IS_FROM_ADFREE_CODE";
     public static final String WIDGET_TYPE_LARGE = "LARGE";
-     
+
+    public static final String LAST_TIME_SOUND_FORECAST = "LAST_TIME_SOUND_FORECAST";
 }

@@ -70,6 +70,9 @@
                  <item android:id="@+id/shorttermalerts_yearly"
                      android:title="@string/yearly"
                      android:checked="false"/>
+                 <item android:id="@+id/shorttermalerts_combined"
+                     android:title="@string/combined"
+                     android:checked="false"/>
              </group>
          </menu>
      </item>

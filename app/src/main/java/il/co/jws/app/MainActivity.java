@@ -132,6 +132,7 @@ public class MainActivity extends Activity implements BillingProvider {
         registerScreenReceiver();
         // Start the controller and load game data
         mViewController = new MainViewController(this, getApplicationContext(), mFirebaseAnalytics);
+        mViewController.createNotificationChannel();
         // Get Info from outside
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -407,15 +408,19 @@ public class MainActivity extends Activity implements BillingProvider {
         });
         doRefresh(isFromAlerts, false);
         int iEntries = prefs.getInt(Config.PREFS_ENTRIES, 0);
-        long iLast_check_in_app_billing= prefs.getLong(Config.LAST_CHECK_IN_APP_BILLING, 0);
-        long currentTS = new java.sql.Timestamp(System.currentTimeMillis()).getTime();
-
-        if (currentTS - iLast_check_in_app_billing > Config.CHECK_IN_APP_BILLING_INTERVAL) {
-            Log.v(Config.TAG, "currentTS: " + currentTS + " iLast_check_in_app_billing:" + iLast_check_in_app_billing + " currentTS - lastSoundAlert = " + (currentTS - iLast_check_in_app_billing));
-           check_inapp_subs();
+        editor.putInt(Config.PREFS_ENTRIES,++iEntries);
+        editor.commit();
+        if (!(prefs.getString(Config.ACTIVE_SUB_ID, null) == null)){
+            long currentTS = new java.sql.Timestamp(System.currentTimeMillis()).getTime();
+            long iLast_check_in_app_billing= prefs.getLong(Config.LAST_CHECK_IN_APP_BILLING, currentTS);
+            if (currentTS - iLast_check_in_app_billing > Config.CHECK_IN_APP_BILLING_INTERVAL) {
+                Log.v(Config.TAG, "currentTS: " + currentTS + " iLast_check_in_app_billing:" + iLast_check_in_app_billing + " currentTS - lastSoundAlert = " + (currentTS - iLast_check_in_app_billing));
+                check_inapp_subs();
+            }
         }
+
         //final Toolbar toolbar = findViewById(R.id.toolbar);
-        if (!(iEntries % 100 == 0))
+        if ((iEntries > 0))
             return true;
 
         // We load a drawable and create a location to show a tap target here
@@ -551,8 +556,7 @@ public class MainActivity extends Activity implements BillingProvider {
 
             }
         });
-        editor.putInt(Config.PREFS_ENTRIES,++iEntries);
-        editor.commit();
+
         return true;
     }
 
@@ -685,11 +689,12 @@ public class MainActivity extends Activity implements BillingProvider {
             else
             {
                 mViewController.cancelSubscription(BillingConstants.SKU_AD_FREE, prefs.getString(Config.PREFS_SUB_ID, ""));
-                mViewController.notifyServerForSubChange("0");
+                mViewController.notifySubChange("0");
+                editor.putString(Config.ACTIVE_SUB_ID, null);
                 enter_codeItem.setChecked((yearlyItem.isChecked())||(adfree_monthly.isChecked()));
 
             }
-
+            editor.commit();
 
         }
         else if (item.getItemId() == R.id.adfree_yearly) {
@@ -709,10 +714,11 @@ public class MainActivity extends Activity implements BillingProvider {
             else
             {
                 mViewController.cancelSubscription(BillingConstants.SKU_AD_FREE_YEARLY, prefs.getString(Config.PREFS_SUB_ID, ""));
-                mViewController.notifyServerForSubChange("0");
+                mViewController.notifySubChange("0");
+                editor.putString(Config.ACTIVE_SUB_ID, null);
                 enter_codeItem.setChecked((yearlyItem.isChecked())||(adfree_monthly.isChecked()));
             }
-
+            editor.commit();
 
         }
         else if (item.getItemId() == R.id.action_lighttrain) {
@@ -803,9 +809,19 @@ public class MainActivity extends Activity implements BillingProvider {
             return true;
 
         }
+        else if (item.getItemId() == R.id.shorttermalerts_combined){
+            // item check status is based on sons
+            boolean setAlerts = item.isChecked()&&(isPremiumYearly()||isPremiumPurchased());
+               editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, setAlerts);
+               editor.commit();
+               //put the same as pref status
+               item.setChecked(setAlerts);
+            mViewController.toggleNotifications();
+            return true;
+
+        }
         else if (item.getItemId() == R.id.shorttermalerts_monthly) {
-              editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, item.isChecked());
-              editor.commit();
+
               if (item.isChecked()) {
                   mBillingActivity = BillingActivity.ALERTS_CLICK;
                   mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
@@ -814,15 +830,18 @@ public class MainActivity extends Activity implements BillingProvider {
                else
               {
                   mViewController.cancelSubscription(BillingConstants.SKU_ALERTS, prefs.getString(Config.PREFS_SUB_ID, ""));
+                  editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, false);
+                  editor.commit();
                   mViewController.toggleNotifications();
-              }
+                  editor.putString(Config.ACTIVE_SUB_ID, null);
 
+              }
+              editor.commit();
               return true;
 
         }
         else if (item.getItemId() == R.id.shorttermalerts_yearly) {
-            editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, item.isChecked());
-            editor.commit();
+
             if (item.isChecked()) {
                 mBillingActivity = BillingActivity.ALERTS_YEARLY_CLICK;
                 mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
@@ -830,9 +849,13 @@ public class MainActivity extends Activity implements BillingProvider {
             else
             {
                 mViewController.cancelSubscription(BillingConstants.SKU_ALERTS_YEARLY, prefs.getString(Config.PREFS_SUB_ID, ""));
+                editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, false);
+                editor.commit();
                 mViewController.toggleNotifications();
-            }
+                editor.putString(Config.ACTIVE_SUB_ID, null);
 
+            }
+            editor.commit();
             return true;
 
         }
@@ -845,12 +868,14 @@ public class MainActivity extends Activity implements BillingProvider {
     public void onBillingManagerSetupFinished() {
         Log.v(Config.TAG, "onBillingManagerSetupFinished");
         SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
         ArrayList<String> oldskuList = new ArrayList<>();
-        oldskuList.add(prefs.getString(Config.LATEST_SUB_ID, null));
+        oldskuList.add(prefs.getString(Config.ACTIVE_SUB_ID, null));
         if (BillingActivity.ALERTS_CLICK.equals(mBillingActivity)){
             mBillingManager.initiatePurchaseFlow(BillingConstants.SKU_ALERTS, oldskuList,  BillingClient.SkuType.SUBS);
         }
         else if (BillingActivity.ADFREE_CLICK.equals(mBillingActivity)){
+            editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, true);
             mBillingManager.initiatePurchaseFlow(BillingConstants.SKU_AD_FREE, oldskuList, BillingClient.SkuType.SUBS);
             /*List<String> skuList = new ArrayList<>();
             skuList.add(BillingConstants.SKU_AD_FREE_YEARLY);
@@ -858,6 +883,7 @@ public class MainActivity extends Activity implements BillingProvider {
             mBillingManager.querySkuDetailsAsync(BillingClient.SkuType.SUBS, skuList,  new SkuDetailsResponse());*/
         }
         else if (BillingActivity.ADFREE_YEARLY_CLICK.equals(mBillingActivity)) {
+            editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, true);
             mBillingManager.initiatePurchaseFlow(BillingConstants.SKU_AD_FREE_YEARLY, oldskuList,  BillingClient.SkuType.SUBS);
         }
         else if (BillingActivity.ALERTS_YEARLY_CLICK.equals(mBillingActivity)) {
@@ -1013,6 +1039,11 @@ public class MainActivity extends Activity implements BillingProvider {
         return mViewController.isAlertOnlyPurchased();
     }
 
+    public boolean isAlertsYearlyOnly() {
+        return mViewController.isAlertOnlyYearlySubscribed();
+    }
+
+
     @Override
     public boolean isMonthlySubscribed() {
         return mViewController.isGoldMonthlySubscribed();
@@ -1023,58 +1054,72 @@ public class MainActivity extends Activity implements BillingProvider {
        return mViewController.isGoldYearlySubscribed();
     }
 
+    public boolean isPremiumYearly(){
+        return mViewController.isPremiumYearlySubscribed();
+    }
+
+
 
 
     public String getSubsID (List<Purchase> purchaseList){
-        if (isAlertsOnly() || isPremiumPurchased()){
+        SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        if (isAlertsOnly() || isPremiumPurchased()|| mViewController.isPremiumYearlySubscribed()||mViewController.isAlertOnlyYearlySubscribed()){
             for (Purchase purchase : purchaseList) {
+                editor.putLong(Config.PREFS_BILLING_TIME, purchase.getPurchaseTime());
+                editor.commit();
                 return purchase.getPurchaseToken();
             }
         }
 
         return "";
     }
+
+    private boolean isUserWantsAlerts(){
+        SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
+        return (isPremiumYearly()||isPremiumPurchased())&&prefs.getBoolean(Config.PREFS_NOTIFICATIONS_RAIN, false);
+    }
     public void showRefreshedUi(List<Purchase> purchaseList) {
         String Str = "Premium:" + isPremiumPurchased() + " alerts:" + isAlertsOnly();
         //Toast.makeText(MainActivity.this, Str, Toast.LENGTH_LONG).show();
         SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, isAlertsOnly());
         editor.putInt(Config.PREFS_APPROVED, isPremiumPurchased()? 1 : isAlertsOnly()? 1: 0);
         editor.putBoolean(Config.PREFS_ADFREE, isPremiumPurchased());
         editor.putString(Config.PREFS_SUB_ID, getSubsID(purchaseList));
-
+        if (purchaseList.isEmpty())
+            editor.putString(Config.ACTIVE_SUB_ID, null);
 
         MenuItem NotifRainItem = mmenu.findItem(R.id.action_rain_notifications);
-        NotifRainItem.setChecked(isAlertsOnly()||mViewController.isAlertOnlyYearlySubscribed());
         MenuItem shorttermalertsMonthlyItem = mmenu.findItem(R.id.shorttermalerts_monthly);
         MenuItem shorttermalertsYearlyItem = mmenu.findItem(R.id.shorttermalerts_yearly);
-        shorttermalertsMonthlyItem.setChecked(mViewController.isAlertOnlyPurchased());
-        shorttermalertsYearlyItem.setChecked(mViewController.isAlertOnlyYearlySubscribed());
+        MenuItem shorttermalertsCombined = mmenu.findItem(R.id.shorttermalerts_combined);
         MenuItem AdfreeItem = mmenu.findItem(R.id.enter_code);
-        AdfreeItem.setChecked(isPremiumPurchased()||mViewController.isAlertOnlyYearlySubscribed());
         MenuItem adfreeMonthlyItem = mmenu.findItem(R.id.adfree_monthly);
         MenuItem adfreeYearlyItem = mmenu.findItem(R.id.adfree_yearly);
+        NotifRainItem.setChecked(isAlertsOnly()||isAlertsYearlyOnly()||isUserWantsAlerts());
+        shorttermalertsMonthlyItem.setChecked(isAlertsOnly());
+        shorttermalertsYearlyItem.setChecked(isAlertsYearlyOnly());
+        AdfreeItem.setChecked(isPremiumPurchased()||isPremiumYearly());
         adfreeMonthlyItem.setChecked(isPremiumPurchased());
-        adfreeYearlyItem.setChecked(mViewController.isAlertOnlyYearlySubscribed());
-
-
+        adfreeYearlyItem.setChecked(isPremiumYearly());
+        shorttermalertsCombined.setChecked(isUserWantsAlerts());
 
         if (BillingActivity.ALERTS_CLICK.equals(mBillingActivity)){
-            editor.putString(Config.LATEST_SUB_ID, BillingConstants.SKU_ALERTS);
+            editor.putString(Config.ACTIVE_SUB_ID, BillingConstants.SKU_ALERTS);
             mViewController.toggleNotifications();
         }
         else if (BillingActivity.ADFREE_CLICK.equals(mBillingActivity)){
-            editor.putString(Config.LATEST_SUB_ID, BillingConstants.SKU_AD_FREE);
-            mViewController.notifyServerForSubChange("1");
+            editor.putString(Config.ACTIVE_SUB_ID, BillingConstants.SKU_AD_FREE);
+            mViewController.notifySubChange("1");
         }
         else if (BillingActivity.ALERTS_YEARLY_CLICK.equals(mBillingActivity)){
-            editor.putString(Config.LATEST_SUB_ID, BillingConstants.SKU_AD_FREE_YEARLY);
+            editor.putString(Config.ACTIVE_SUB_ID, BillingConstants.SKU_ALERTS_YEARLY);
             mViewController.toggleNotifications();
         }
         else if (BillingActivity.ADFREE_YEARLY_CLICK.equals(mBillingActivity)){
-            editor.putString(Config.LATEST_SUB_ID, BillingConstants.SKU_ALERTS_YEARLY);
-            mViewController.notifyServerForSubChange("1");
+            editor.putString(Config.ACTIVE_SUB_ID, BillingConstants.SKU_AD_FREE_YEARLY);
+            mViewController.notifySubChange("1");
         }
         editor.commit();
     }
@@ -1158,14 +1203,7 @@ public class MainActivity extends Activity implements BillingProvider {
             // THIS IS WHEN ONRESUME() IS CALLED WHEN THE SCREEN STATE HAS NOT CHANGED
         }
         super.onResume();
-        // Note: We query purchases in onResume() to handle purchases completed while the activity
-        // is inactive. For example, this can happen if the activity is destroyed during the
-        // purchase flow. This ensures that when the activity is resumed it reflects the user's
-        // current purchases.
-        if (mBillingManager != null
-                && mBillingManager.getBillingClientResponseCode() == BillingClient.BillingResponse.OK) {
-            mBillingManager.queryPurchases();
-        }
+
     }
 
     @Override

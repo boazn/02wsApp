@@ -33,6 +33,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -67,6 +68,7 @@ public class MainViewController {
     private boolean mIsAlertsOnlyYearly;
     private Context mContext;
     private FirebaseAnalytics mFirebaseAnalytics;
+    private boolean taskDone;
     // Current amount of gas in tank, in units
     private int mTank;
 
@@ -107,7 +109,7 @@ public class MainViewController {
         return mGoldYearly;
     }
 
-    protected void notifyServerForNotificationChange(Boolean ActionOn, Boolean ActionRainOn, Boolean ActionTipsOn, int lang, int Approved, String BillingToken, String BillingError) {
+    protected void notifyServerForNotificationChange(Boolean ActionOn, Boolean ActionRainOn, Boolean ActionTipsOn, int lang, int Approved, String BillingToken, Long BillingTime) {
         // Create a new HttpClient and Post Header
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(Config.SERVER_REGISTER_URL);
@@ -124,7 +126,7 @@ public class MainViewController {
             nameValuePairs.add(new BasicNameValuePair("active_tips", ActionTipsOn ? "1" : "0"));
             nameValuePairs.add(new BasicNameValuePair("approved", String.valueOf(Approved)));
             nameValuePairs.add(new BasicNameValuePair("BillingToken", BillingToken));
-            nameValuePairs.add(new BasicNameValuePair("BillingError", BillingError));
+            nameValuePairs.add(new BasicNameValuePair("BillingTime", String.valueOf(BillingTime/1000)));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             // Execute HTTP Post Request
             HttpResponse response = httpclient.execute(httppost);
@@ -231,12 +233,19 @@ public class MainViewController {
         final boolean boolgetTipsNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS_TIPS, true);
         final String strSubsId = prefs.getString(Config.PREFS_SUB_ID, "");
         final int strApproved = prefs.getInt(Config.PREFS_APPROVED, 0);
-        final String strBillingError = prefs.getString(Config.PREFS_BILLING_ERROR, "");
+        final long intBillingTime = prefs.getLong(Config.PREFS_BILLING_TIME, 0);
+
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
-                notifyServerForNotificationChange(boolgetNotifications, boolgetRainNotifications, boolgetTipsNotifications, lang, strApproved, strSubsId, strBillingError);
+                taskDone = false;
+                notifyServerForNotificationChange(boolgetNotifications, boolgetRainNotifications, boolgetTipsNotifications, lang, strApproved, strSubsId, intBillingTime);
                 return null;
+            }
+            @Override
+            protected void onPostExecute(Void result) {
+
+                taskDone = true;
             }
         }.execute(null, null, null);
 
@@ -246,6 +255,7 @@ public class MainViewController {
         // Create a new HttpClient and Post Header
         final HttpClient httpclient = new DefaultHttpClient();
         final HttpPost httppost = new HttpPost(Config.SERVER_GOOGLE_PLAY_API_REFRESH_TOKEN_URI);
+
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
@@ -255,11 +265,12 @@ public class MainViewController {
                     nameValuePairs.add(new BasicNameValuePair("client_id", Config.CLIENT_ID_GOOGLE_API));
                     nameValuePairs.add(new BasicNameValuePair("client_secret", Config.CLIENT_SECRET_GOOGLE_API));
                     nameValuePairs.add(new BasicNameValuePair("refresh_token", Config.REFRESH_TOKEN_GOOGLE_API));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                     // Execute HTTP Post Request
                     HttpResponse response = httpclient.execute(httppost);
-                    JSONObject jsonRootObject = new JSONObject(response.getStatusLine().getReasonPhrase());
+                    JSONObject jsonRootObject = new JSONObject(EntityUtils.toString(response.getEntity()));
                     String access_token = jsonRootObject.getString("access_token");
-                    final HttpPost httppost = new HttpPost(Config.SERVER_GOOGLE_PLAY_API_PREF + subscriptionId + "/tokens/" + token + ":cancel??access_token=" + access_token);
+                    final HttpPost httppost = new HttpPost(Config.SERVER_GOOGLE_PLAY_API_PREF + subscriptionId + "/tokens/" + token + ":cancel?access_token=" + access_token);
                     response = httpclient.execute(httppost);
                     Log.i(Config.TAG, "cancelSubscription subscriptionId=" + subscriptionId + " token=" + token + "response:" + response.getStatusLine().getReasonPhrase());
                     Bundle bundle = new Bundle();
@@ -279,19 +290,30 @@ public class MainViewController {
                 }
                 return null;
             }
+
         }.execute(null, null, null);
 
 
     }
-    public void notifyServerForSubChange (final String status){
+    public void notifySubChange (final String status){
         final SharedPreferences prefs = mContext.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
         final String registrationId = prefs.getString(Config.PROPERTY_REG_ID, FirebaseInstanceId.getInstance().getToken());
+        Log.i(Config.TAG, "notifySubChange taskDone=" + taskDone);
+        taskDone = false;
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... params) {
-                notifyServerForSubChange(status, registrationId);
+                Log.i(Config.TAG, "notifySubChange doInBackground taskDone=" + taskDone);
+                if (!taskDone)
+                    notifyServerForSubChange(status, registrationId);
                 return null;
             }
+            @Override
+            protected void onPostExecute(Void result) {
+
+                taskDone = true;
+            }
+
         }.execute(null, null, null);
     }
 
@@ -339,7 +361,7 @@ public class MainViewController {
             throw new RuntimeException("Could not get package name: " + e);
         }
     }
-    private void createNotificationChannel() {
+    public void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT > 25) {

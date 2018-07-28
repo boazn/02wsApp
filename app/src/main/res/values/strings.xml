@@ -74,7 +74,8 @@
     <string name="guide_soundTarget_title">Sound in widget</string>
     <string name="guide_soundTarget_desc">Click to enable sound when some event occour. First, put the small or medium widget on the screen. Then, crow=dusty, owl=no wind, wind=wind, rain=rain, light train=forecast updated.</string>
     <string name="guide_adfreeTarget_title">Ad free</string>
-    <string name="guide_adfreeTarget_desc">Click to remove ads from app (monthly or yearly). Clean design.</string>
+    <string name="guide_adfreeTarget_desc">Click to remove ads from app (monthly or yearly). Clean design. You will also will get short term alerts as a bonus.</string>
     <string name="monthly">monthly</string>
     <string name="yearly">yearly</string>
+    <string name="combined">with ad free</string>
 </resources>

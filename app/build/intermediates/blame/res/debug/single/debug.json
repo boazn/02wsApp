@@ -12,12 +12,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\raw_owl.mp3.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\raw\\owl.mp3"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_small_preview.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xhdpi\\small_preview.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\raw_owl.mp3.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\raw\\owl.mp3"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_clear_black_24dp.png.flat",
@@ -28,12 +28,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.0.0.aar\\10c1070fc1c3ec8e7245cf848207c913\\res\\color\\design_tint_password_toggle.xml"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_36dp.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_36dp.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_icons8_winter_96.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-hdpi\\icons8_winter_96.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_36dp.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_contact_mail_grey600_24dp.png.flat",
@@ -64,12 +64,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-mdpi\\ic_contact_mail_grey600_18dp.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_contact_mail_black_48dp.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-hdpi\\ic_contact_mail_black_48dp.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_go_search_api_material.xml.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable\\abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_contact_mail_black_48dp.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-hdpi\\ic_contact_mail_black_48dp.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
@@ -88,12 +88,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-hdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_design_ic_visibility.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.0.0.aar\\10c1070fc1c3ec8e7245cf848207c913\\res\\drawable-mdpi-v4\\design_ic_visibility.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_dialog_title_material.xml.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_design_ic_visibility.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.0.0.aar\\10c1070fc1c3ec8e7245cf848207c913\\res\\drawable-mdpi-v4\\design_ic_visibility.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_forum_grey600_48dp.png.flat",
@@ -120,12 +120,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_fade_out.xml.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\anim\\abc_fade_out.xml"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.6.2.aar\\c63c8248ed458f96e996df1702066941\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_fade_out.xml.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\anim\\abc_fade_out.xml"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_icons8_winter_24.png.flat",
@@ -176,20 +176,20 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxhdpi-v4\\abc_ic_star_black_48dp.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_contact_mail_grey600_36dp.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-hdpi\\ic_contact_mail_grey600_36dp.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_middle_mtrl_light.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_weather_rainy_grey600_36dp.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxhdpi\\ic_weather_rainy_grey600_36dp.png"
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_contact_mail_grey600_36dp.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-hdpi\\ic_contact_mail_grey600_36dp.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_left_mtrl_dark.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_weather_rainy_grey600_36dp.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxhdpi\\ic_weather_rainy_grey600_36dp.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_weather_rainy_white_48dp.png.flat",
@@ -208,12 +208,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-mdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_cold.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-ldpi\\cold.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_baseline_chat_black_36.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-mdpi\\baseline_chat_black_36.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_cold.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-ldpi\\cold.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_weather_rainy_grey600_18dp.png.flat",
@@ -268,12 +268,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-mdpi\\icons8_youtube_96.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_16dp.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_16dp.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_star_black_36dp.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxhdpi-v4\\abc_ic_star_black_36dp.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_16dp.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
@@ -448,12 +448,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\anim-v21_design_bottom_sheet_slide_out.xml.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.0.0.aar\\10c1070fc1c3ec8e7245cf848207c913\\res\\anim-v21\\design_bottom_sheet_slide_out.xml"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-mdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\anim-v21_design_bottom_sheet_slide_out.xml.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.0.0.aar\\10c1070fc1c3ec8e7245cf848207c913\\res\\anim-v21\\design_bottom_sheet_slide_out.xml"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_forum_grey600_24dp.png.flat",
@@ -592,12 +592,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxxhdpi\\baseline_contact_mail_black_36.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_forum_grey600_18dp.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xhdpi\\ic_forum_grey600_18dp.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_bar_up_container.xml.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_forum_grey600_18dp.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xhdpi\\ic_forum_grey600_18dp.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_avd_hide_password.xml.flat",
@@ -676,12 +676,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-mdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_baseline_chat_black_24.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxhdpi\\baseline_chat_black_24.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_reply.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-ldpi\\ic_reply.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_baseline_chat_black_24.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxhdpi\\baseline_chat_black_24.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_action.xml.flat",
@@ -780,24 +780,24 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-mdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_reply.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xhdpi\\ic_reply.png"
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_slide_in_bottom.xml.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_contact_mail_white_18dp.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_contact_mail_white_18dp.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_slide_in_bottom.xml.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\anim\\abc_slide_in_bottom.xml"
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_reply.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xhdpi\\ic_reply.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_popup_menu_header_item_layout.xml.flat",
@@ -812,16 +812,16 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.6.2.aar\\c63c8248ed458f96e996df1702066941\\res\\drawable-hdpi-v4\\googleg_disabled_color_18.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-mdpi-v4\\abc_popup_background_mtrl_mult.9.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_icons8_winter_96.png.flat",
@@ -856,16 +856,16 @@
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-hdpi\\ic_action.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_layout_snackbar.xml.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.0.0.aar\\10c1070fc1c3ec8e7245cf848207c913\\res\\layout\\design_layout_snackbar.xml"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_forum_grey600_48dp.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-hdpi\\ic_forum_grey600_48dp.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_layout_snackbar.xml.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\design-26.0.0.aar\\10c1070fc1c3ec8e7245cf848207c913\\res\\layout\\design_layout_snackbar.xml"
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_tile_bg.xml.flat",
@@ -908,16 +908,16 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_contact_mail_white_48dp.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_contact_mail_white_48dp.png"
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\raw_vop.mp3.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\raw\\vop.mp3"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxxhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\raw_vop.mp3.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\raw\\vop.mp3"
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_contact_mail_white_48dp.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_contact_mail_white_48dp.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_media_cancel_action.xml.flat",
@@ -968,20 +968,20 @@
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-mdpi\\baseline_photo_camera_black_18.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_forum_black_36dp.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xhdpi\\ic_forum_black_36dp.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_small_preview.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-ldpi\\small_preview.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_icons8_star_of_david_48.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-mdpi\\icons8_star_of_david_48.png"
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_forum_black_36dp.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xhdpi\\ic_forum_black_36dp.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_icons8_star_of_david_48.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-mdpi\\icons8_star_of_david_48.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_weather_rainy_grey600_36dp.png.flat",
@@ -1008,12 +1008,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable\\abc_btn_radio_material.xml"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_full_open_on_phone.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.6.2.aar\\c63c8248ed458f96e996df1702066941\\res\\drawable-hdpi-v4\\common_full_open_on_phone.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxhdpi-v4\\abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_full_open_on_phone.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.6.2.aar\\c63c8248ed458f96e996df1702066941\\res\\drawable-hdpi-v4\\common_full_open_on_phone.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_screen_simple.xml.flat",
@@ -1032,24 +1032,24 @@
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_contact_mail_grey600_24dp.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-ldrtl-xhdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_forum_white_48dp.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxhdpi\\ic_forum_white_48dp.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-ldrtl-xhdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_dark_normal.xml.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-11.6.2.aar\\c63c8248ed458f96e996df1702066941\\res\\drawable\\common_google_signin_btn_text_dark_normal.xml"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_btn_colored_borderless_text_material.xml.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_icons8_globe_48.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxhdpi\\icons8_globe_48.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_btn_colored_borderless_text_material.xml.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_contact_mail_grey600_48dp.png.flat",
@@ -1064,16 +1064,16 @@
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xhdpi\\baseline_contact_mail_black_48.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_36dp.png"
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_contact_mail_black_48dp.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxhdpi\\ic_contact_mail_black_48dp.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_seekbar_tick_mark_material.xml.flat",
@@ -1088,12 +1088,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.0.0.aar\\9c54717c7934fa8405cc3c1286b0522f\\res\\layout-v21\\notification_template_icon_group.xml"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_popup_exit.xml.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\anim\\abc_popup_exit.xml"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_baseline_photo_camera_black_36.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-hdpi\\baseline_photo_camera_black_36.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_popup_exit.xml.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\anim\\abc_popup_exit.xml"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_cab_background_top_mtrl_alpha.9.png.flat",
@@ -2364,6 +2364,10 @@
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_weather_rainy_grey600_48dp.png"
     },
     {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_custom_notification.xml.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\layout\\custom_notification.xml"
+    },
+    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action.png"
     },
@@ -2810,6 +2814,10 @@
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.0.0.aar\\df68c60756c1bea7743f31f99789ddc6\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_custom_notification_small.xml.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\layout\\custom_notification_small.xml"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
@@ -3532,12 +3540,12 @@
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xhdpi\\ic_weather_rainy_black_18dp.png"
     },
     {
-        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_weather_rainy_grey600_24dp.png.flat",
-        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-hdpi\\ic_weather_rainy_grey600_24dp.png"
-    },
-    {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_icons8_menu_vertical_50.png.flat",
         "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-xxxhdpi\\icons8_menu_vertical_50.png"
+    },
+    {
+        "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_weather_rainy_grey600_24dp.png.flat",
+        "source": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\src\\main\\res\\drawable-hdpi\\ic_weather_rainy_grey600_24dp.png"
     },
     {
         "merged": "D:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_icons8_globe_24.png.flat",

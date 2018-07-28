@@ -9,9 +9,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RemoteViews;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.crash.FirebaseCrash;
@@ -33,7 +40,7 @@ public class FcmBroadcastReceiver extends com.google.firebase.messaging.Firebase
     public static final String MESSAGE_TITLE = "title";
     public static final String PICTURE_URL = "picture_url";
     public static final String EMBEDDED_URL = "embedded_url";
-
+    RemoteViews contentViewBig,contentViewSmall;
     private static final String TAG = "02wsFirebaseMsgService";
 
     /**
@@ -120,19 +127,22 @@ public class FcmBroadcastReceiver extends com.google.firebase.messaging.Firebase
 
                  PendingIntent piShare = PendingIntent.getActivity(context, 0, Intent.createChooser(shareIntent, getString(R.string.share_title)), PendingIntent.FLAG_UPDATE_CURRENT);
 
-                 Intent ReplyIntent = new Intent(context, MainActivity.class);
+                 final Intent ReplyIntent = new Intent(context, MainActivity.class);
                  ReplyIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                  ReplyIntent.putExtra("REPLY_FROM_ALERT", Boolean.valueOf(true));
                  PendingIntent piReply = PendingIntent.getActivity(context, 1 /* Request code */, ReplyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-
                  Integer alert_sound_pref = prefs.getInt(Config.PREFS_ALERT_SOUND, R.raw.lighttrainshort);
+                 Uri soundUri = Uri.parse("android.resource://" + context.getPackageName() + "/" + alert_sound_pref);
+                 Bitmap remote_picture = null;
+                 contentViewBig = new RemoteViews(getPackageName(), R.layout.custom_notification);
+                 contentViewSmall = new RemoteViews(getPackageName(),R.layout.custom_notification_small);
+                 contentViewBig.setOnClickPendingIntent(R.id.reply, piReply);
+                 contentViewBig.setOnClickPendingIntent(R.id.share, piShare);
+                 contentViewBig.setOnClickPendingIntent(R.id.dismiss, piDismiss);
 
-                Uri soundUri = Uri.parse("android.resource://" + context.getPackageName() + "/" + alert_sound_pref);
 
-                Bitmap remote_picture = null;
-
-                // Create the style object with BigPictureStyle subclass.
+                 // Create the style object with BigPictureStyle subclass.
                 NotificationCompat.BigPictureStyle picStyle = new
                         NotificationCompat.BigPictureStyle();
 
@@ -140,13 +150,24 @@ public class FcmBroadcastReceiver extends com.google.firebase.messaging.Firebase
                 textStyle.setBigContentTitle(title);
                 textStyle.bigText(msg);
                 textStyle.setSummaryText(context.getString(R.string.app_name));
+
+                 contentViewBig.setTextViewText(R.id.title, title);
+                 contentViewSmall.setTextViewText(R.id.title, title);
+                 contentViewBig.setTextViewText(R.id.text, msg);
+                 contentViewSmall.setTextViewText(R.id.text, msg);
+                 contentViewBig.setImageViewBitmap(R.id.image_app, ((BitmapDrawable) ResourcesCompat.getDrawable(getResources(), R.drawable.ic_launcher, null)).getBitmap() );
+                 contentViewSmall.setImageViewBitmap(R.id.image_app, ((BitmapDrawable) ResourcesCompat.getDrawable(getResources(), R.drawable.ic_launcher, null)).getBitmap());
                 try {
-                    if ((picture_url != null)&&(!picture_url.isEmpty()))
+                    if ((picture_url != null)&&(!picture_url.isEmpty())) {
                         remote_picture = BitmapFactory.decodeStream(
                                 (InputStream) new URL(picture_url).getContent());
+                        contentViewBig.setImageViewBitmap(R.id.image_pic, BitmapFactory.decodeStream((InputStream) new URL(picture_url).getContent()));
+                    }
                     if (remote_picture != null)
                         picStyle.bigPicture(remote_picture)
-                                 .bigLargeIcon(null);
+                                .bigLargeIcon(null);
+
+
                 } catch (IOException e) {
                     printStacktrace(e);
                 }
@@ -160,12 +181,13 @@ public class FcmBroadcastReceiver extends com.google.firebase.messaging.Firebase
                 .setLargeIcon(remote_picture)
                 .setContentTitle(title)
                 .setContentText(msg)
-                .setSubText(context.getString(R.string.app_name))
+                .setSubText(new Date().toString())
                 .setAutoCancel(true)
-                .setSound(soundUri)
                 .setVibrate(v)
                 .setContentIntent(piMain)
                 .setCategory(Config.CHANNEL_ID)
+                //.setCustomContentView(contentViewSmall)
+                .setCustomBigContentView(contentViewBig)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setPriority(android.app.Notification.PRIORITY_MAX);
 
@@ -181,6 +203,8 @@ public class FcmBroadcastReceiver extends com.google.firebase.messaging.Firebase
                          getString(R.string.reply_title), piReply);
 
                  mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+                 Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), soundUri);
+                 r.play();
                 return null;
              }
         };

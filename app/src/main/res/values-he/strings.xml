@@ -72,7 +72,8 @@
     <string name="guide_soundTarget_title">סאונד בוִידְגֶ'ט</string>
     <string name="guide_soundTarget_desc">תחילה שימו וִידְגֶ'ט קטן או בינוני על המסך. אח"כ בכל פעם שיקרה משהו מעניין יישמע צליל: עורב=>אבק, ינשוף=>אוויר עומד, גשם=>גשם, אפקט רוח=>רוח, צליל רכבת קלה=>התחזית עודכנה. </string>
     <string name="guide_adfreeTarget_title">הסרת פרסומות</string>
-    <string name="guide_adfreeTarget_desc">הקליקו כדי להסיר פרסומות מהאפליקציה (חודשי או שנתי), עיצוב נקי.</string>
-    <string name="monthly">monthly</string>
-    <string name="yearly">yearly</string>
+    <string name="guide_adfreeTarget_desc">הקליקו כדי להסיר פרסומות מהאפליקציה (חודשי או שנתי), עיצוב נקי. בנוסף תוכלו לקבל התראות לטווח קצר בתור בונוס.  </string>
+    <string name="monthly">חודשי</string>
+    <string name="yearly">שנתי</string>
+    <string name="combined">בשילוב בלי פרסומות</string>
 </resources>

@@ -236,9 +236,21 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
         SharedPreferences.Editor editor = prefs.edit();
         long currentTS = new java.sql.Timestamp(System.currentTimeMillis()).getTime();
         long lastSoundAlert = prefs.getLong(Config.LAST_TIME_SOUND_ALERT, 0);
+        long lastSoundForecast = prefs.getLong(Config.LAST_TIME_SOUND_FORECAST, 0);
+        if ((currentTS - c.lastForecastUpdate*1000 < Config.TIME_SOUND_ALERT_INTERVAL)&&((currentTS - lastSoundForecast) > Config.TIME_SOUND_ALERT_INTERVAL)){
+            playSound(R.raw.lighttrainshort);
+            editor.putLong(Config.LAST_TIME_SOUND_FORECAST, currentTS);
+            editor.commit();
+        }
+        else
+        {
+            Log.v(TAG, "currentTS: " + currentTS + " (currentTS - lastSoundForecast)=" + (currentTS - lastSoundForecast) + " lastForecastUpdate:" + c.lastForecastUpdate*1000 + " currentTS - lastForecastUpdate = " + (currentTS -  c.lastForecastUpdate*1000) + " >= " + Config.TIME_SOUND_ALERT_INTERVAL);
+        }
+
         if (currentTS - lastSoundAlert < Config.TIME_SOUND_ALERT_INTERVAL) {
-            Log.v(TAG, "currentTS: " + currentTS + " lastSoundAlert:" + lastSoundAlert + " currentTS - lastSoundAlert = " + (currentTS - lastSoundAlert));
+            Log.v(TAG, "currentTS: " + currentTS + " lastSoundAlert:" + lastSoundAlert + " currentTS - lastSoundAlert = " + (currentTS - lastSoundAlert) + " < " + Config.TIME_SOUND_ALERT_INTERVAL);
             return;
+
         }
         if ((c.isRaining)&&(c.isLight)){
             playSound(R.raw.rainfibl);
@@ -264,9 +276,7 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
             editor.commit();
         }
 
-        if (currentTS - c.lastForecastUpdate < Config.TIME_SOUND_ALERT_INTERVAL){
-            playSound(R.raw.lighttrainshort);
-        }
+
 
     }
 
