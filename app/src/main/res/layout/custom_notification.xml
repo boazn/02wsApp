@@ -28,7 +28,7 @@
         android:id="@+id/lin_lyt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="fill_horizontal|center|clip_vertical"
+        android:layout_gravity="center"
         android:layout_marginTop="70dp"
         android:orientation="vertical"
         android:textAlignment="gravity"
@@ -61,8 +61,8 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:shadowColor="@color/black"
-                android:shadowDx="2"
-                android:shadowRadius="2"
+                android:shadowDy="2"
+                android:shadowRadius="3"
                 android:text="title title title title title @string/common_google_play_services_enable_title"
                 android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
                 android:textColor="@color/white" />
@@ -72,15 +72,17 @@
         <TextView
             android:id="@+id/text"
 
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/title"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:gravity="fill_horizontal|start"
+            android:gravity="fill_horizontal"
             android:shadowColor="@android:color/darker_gray"
+            android:shadowDx="2"
+
             android:shadowRadius="1"
-            android:text="Text Text Text Text Text  Text Text Text Text Text Text Text Text Text Text \n  Text Text Text Text Text  Text Text Text Text Text Text Text Text Text Text \n Text Text Text Text Text  Text Text Text Text Text Text Text Text Text Text     "
+            android:text="Text Text Text Text  \n  Text Text Text Text Text  Text Text \n Text Text Text \n  xt Text Text Text Text Text Text Text  \n  xt Text Text Text Text Text Text Text \n  xt Text Text Text Text Text Text Text   "
             android:textColor="@android:color/white" />
 
 
@@ -103,9 +105,9 @@
 
             android:background="@android:color/transparent"
             android:shadowColor="@color/black"
-            android:shadowDx="1"
+            android:shadowDx="2"
             android:shadowDy="2"
-            android:shadowRadius="1"
+            android:shadowRadius="2"
             android:singleLine="false"
             android:text="@string/dismiss"
             android:textColor="?android:attr/colorForegroundInverse"
@@ -120,9 +122,9 @@
 
             android:background="@android:color/transparent"
             android:shadowColor="@color/black"
-            android:shadowDx="1"
+            android:shadowDx="2"
             android:shadowDy="2"
-            android:shadowRadius="1"
+            android:shadowRadius="2"
             android:singleLine="false"
             android:text="@string/share_title"
             android:textColor="?android:attr/colorForegroundInverse" />

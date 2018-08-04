@@ -42,7 +42,7 @@ public interface Config {
     public static final String PREFS_CLOTH = "PREFS_CLOTH";
     public static final String PREFS_NAME = "PREFS_02WS";
     public static final String PREFS_FULLTEXT = "PREFS_FULLTEXT";
-    public static final String PREFS_SUBGUID = "PREFS_SUBGUID";
+    public static final String PREFS_SUBGUID_LEGACY = "PREFS_SUBGUID";
     public static final String PREFS_EMAIL = "PREFS_EMAIL";
     public static final String PREFS_SUB_ID = "PREFS_SUB_ID";
     public static final String ACTIVE_SUB_ID = "ACTIVE_SUB_ID";
@@ -72,4 +72,5 @@ public interface Config {
     public static final String WIDGET_TYPE_LARGE = "LARGE";
 
     public static final String LAST_TIME_SOUND_FORECAST = "LAST_TIME_SOUND_FORECAST";
+    public static final String PREFS_LANG_CODE =  "PREFS_LANG_CODE";
 }

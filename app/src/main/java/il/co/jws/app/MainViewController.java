@@ -69,6 +69,8 @@ public class MainViewController {
     private Context mContext;
     private FirebaseAnalytics mFirebaseAnalytics;
     private boolean taskDone;
+    private AsyncSubChange asyncSubChange = null;
+    private AsyncNotifChange asyncNotifChange = null;
     // Current amount of gas in tank, in units
     private int mTank;
 
@@ -124,13 +126,13 @@ public class MainViewController {
             nameValuePairs.add(new BasicNameValuePair("active", ActionOn ? "1" : "0"));
             nameValuePairs.add(new BasicNameValuePair("active_rain_etc", ActionRainOn ? "1" : "0"));
             nameValuePairs.add(new BasicNameValuePair("active_tips", ActionTipsOn ? "1" : "0"));
-            nameValuePairs.add(new BasicNameValuePair("approved", String.valueOf(Approved)));
+            nameValuePairs.add(new BasicNameValuePair("Approved", String.valueOf(Approved)));
             nameValuePairs.add(new BasicNameValuePair("BillingToken", BillingToken));
             nameValuePairs.add(new BasicNameValuePair("BillingTime", String.valueOf(BillingTime/1000)));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             // Execute HTTP Post Request
             HttpResponse response = httpclient.execute(httppost);
-            Log.i(Config.TAG, "NotificationChange ActionOn=" + ActionOn + " ActionRainOn=" + ActionRainOn +  " lang=" + lang + " httppost response: " + response.getStatusLine().getReasonPhrase());
+            Log.i(Config.TAG, "NotificationChange ActionOn=" + ActionOn + " ActionRainOn=" + ActionRainOn +  " lang=" + lang + " Approved=" +  String.valueOf(Approved) + " httppost response: " + response.getStatusLine().getReasonPhrase());
 
         } catch (ClientProtocolException e) {
             // TODO Auto-generated catch block
@@ -161,29 +163,70 @@ public class MainViewController {
      * @return registration ID, or empty string if there is no existing
      * registration ID.
      */
-    public String getRegistrationId(Context context) {
+    public String getRegistrationId(Context context)  {
         final SharedPreferences prefs = getGCMPreferences(context);
         String registrationId = prefs.getString(Config.PROPERTY_REG_ID, FirebaseInstanceId.getInstance().getToken());
-        if (registrationId.isEmpty()) {
+        // Check if app was updated; if so, it must clear the registration ID
+        // since the existing regID is not guaranteed to work with the new
+        // app version.
+        int registeredVersion = prefs.getInt(Config.PROPERTY_APP_VERSION, Integer.MIN_VALUE);
+        int currentVersion = getAppVersion(context);
+        if (registrationId == null) {
             Log.i(Config.TAG, "Registration not found.");
             Bundle bundle = new Bundle();
 
             bundle.putString("Email", mActivity.getEmailAddress());
             bundle.putString("full_text", "Registration not found");
             mFirebaseAnalytics.logEvent("getRegistrationId", bundle);
+            new AsyncTask<Void, Void, Void>(){
+
+                @Override
+                protected Void doInBackground(Void... voids) {
+                    try
+                    {
+                        FirebaseInstanceId.getInstance().deleteInstanceId();
+                        // Now manually call onTokenRefresh()
+                        Log.d(TAG, "Getting new token");
+                        FirebaseInstanceId.getInstance().getToken();
+                    }
+                    catch (IOException ex){
+                        printStacktrace(ex);
+                    }
+
+                    return null;
+                }
+
+            }.execute(null, null, null);
             return "";
         }
-        // Check if app was updated; if so, it must clear the registration ID
-        // since the existing regID is not guaranteed to work with the new
-        // app version.
-        int registeredVersion = prefs.getInt(Config.PROPERTY_APP_VERSION, Integer.MIN_VALUE);
-        int currentVersion = getAppVersion(context);
         if (registeredVersion != currentVersion) {
             Log.i(Config.TAG, "App version changed.");
-            return "";
+
+                new AsyncTask<Void, Void, Void>(){
+
+                    @Override
+                    protected Void doInBackground(Void... voids) {
+                        try
+                        {
+                           FirebaseInstanceId.getInstance().deleteInstanceId();
+                            // Now manually call onTokenRefresh()
+                            Log.d(TAG, "Getting new token");
+                            FirebaseInstanceId.getInstance().getToken();
+                        }
+                        catch (IOException ex){
+                            printStacktrace(ex);
+                        }
+                        return null;
+                    }
+
+                }.execute(null, null, null);
+
         }
         return registrationId;
     }
+
+
+
 
     /* Checks if external storage is available for read and write */
     public boolean isExternalStorageWritable() {
@@ -226,30 +269,14 @@ public class MainViewController {
 
 
     protected void toggleNotifications() {
-        SharedPreferences prefs = mContext.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
-        final int lang = prefs.getInt(Config.PREFS_LANG, 1);
-        final boolean boolgetNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS, true);
-        final boolean boolgetRainNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS_RAIN, false);
-        final boolean boolgetTipsNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS_TIPS, true);
-        final String strSubsId = prefs.getString(Config.PREFS_SUB_ID, "");
-        final int strApproved = prefs.getInt(Config.PREFS_APPROVED, 0);
-        final long intBillingTime = prefs.getLong(Config.PREFS_BILLING_TIME, 0);
-
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                taskDone = false;
-                notifyServerForNotificationChange(boolgetNotifications, boolgetRainNotifications, boolgetTipsNotifications, lang, strApproved, strSubsId, intBillingTime);
-                return null;
-            }
-            @Override
-            protected void onPostExecute(Void result) {
-
-                taskDone = true;
-            }
-        }.execute(null, null, null);
+        if (asyncNotifChange == null) {
+            asyncNotifChange = new AsyncNotifChange();
+            asyncNotifChange.execute();
+        }
 
     }
+
+
     protected void cancelSubscription(final String subscriptionId, final String token){
 
         // Create a new HttpClient and Post Header
@@ -272,9 +299,9 @@ public class MainViewController {
                     String access_token = jsonRootObject.getString("access_token");
                     final HttpPost httppost = new HttpPost(Config.SERVER_GOOGLE_PLAY_API_PREF + subscriptionId + "/tokens/" + token + ":cancel?access_token=" + access_token);
                     response = httpclient.execute(httppost);
-                    Log.i(Config.TAG, "cancelSubscription subscriptionId=" + subscriptionId + " token=" + token + "response:" + response.getStatusLine().getReasonPhrase());
+                    Log.i(Config.TAG, "cancelSubscription subscriptionId=" + subscriptionId + " token=" + token + " response:" + response.getStatusLine().getReasonPhrase());
                     Bundle bundle = new Bundle();
-                    bundle.putString(FirebaseAnalytics.Param.DESTINATION, String.valueOf("cancelSubscription subscriptionId=" + subscriptionId + " token=" + token + "response:" + response.getStatusLine().getReasonPhrase()));
+                    bundle.putString(FirebaseAnalytics.Param.DESTINATION, String.valueOf("cancelSubscription subscriptionId=" + subscriptionId + " token=" + token + " response:" + response.getStatusLine().getReasonPhrase()));
                     mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.POST_SCORE, bundle);
                     return null;
 
@@ -295,26 +322,92 @@ public class MainViewController {
 
 
     }
+
+    private class AsyncNotifChange extends AsyncTask<Void, Void, Void>{
+
+        boolean boolgetNotifications;
+        int lang;
+        boolean boolgetRainNotifications;
+        boolean boolgetTipsNotifications;
+        String strSubsId;
+        int strApproved;
+        long intBillingTime;
+
+        AsyncNotifChange(){
+            SharedPreferences prefs = mContext.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
+            lang = prefs.getInt(Config.PREFS_LANG, 1);
+            boolgetNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS, true);
+            boolgetRainNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS_RAIN, false);
+            boolgetTipsNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS_TIPS, true);
+            strSubsId = prefs.getString(Config.PREFS_SUB_ID, "");
+            strApproved = prefs.getInt(Config.PREFS_APPROVED, 0);
+            intBillingTime = prefs.getLong(Config.PREFS_BILLING_TIME, 0);
+        }
+
+        @Override
+        public void onPostExecute(Void result) {
+            Log.i(Config.TAG, "AsyncNotifChange onPostExecute ");
+            asyncNotifChange = null;
+        }
+        @Override
+        protected void onCancelled() {
+
+            asyncNotifChange = null;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            taskDone = false;
+            notifyServerForNotificationChange(boolgetNotifications, boolgetRainNotifications, boolgetTipsNotifications, lang, strApproved, strSubsId, intBillingTime);
+            return null;
+        }
+
+    }
+
+
+
+    private class AsyncSubChange extends AsyncTask<String, Void, String>{
+
+        AsyncSubChange(String pstatus, String pregid){
+            status = pstatus;
+            registrationId = pregid;
+        }
+        private String status;
+        private String registrationId;
+
+        @Override
+        public void onPostExecute(String in) {
+            Log.i(Config.TAG, "notifySubChange onPostExecute regid=" + registrationId);
+            asyncSubChange = null;
+        }
+        @Override
+        protected void onCancelled() {
+
+            asyncSubChange = null;
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                Log.i(Config.TAG, "notifySubChange doInBackground taskDone=" + taskDone);
+                    notifyServerForSubChange(status, registrationId);
+                return null;
+            } catch (Exception e) {
+                printStacktrace(e);
+            }
+
+            return null;
+        }
+
+    }
     public void notifySubChange (final String status){
         final SharedPreferences prefs = mContext.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
         final String registrationId = prefs.getString(Config.PROPERTY_REG_ID, FirebaseInstanceId.getInstance().getToken());
         Log.i(Config.TAG, "notifySubChange taskDone=" + taskDone);
-        taskDone = false;
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                Log.i(Config.TAG, "notifySubChange doInBackground taskDone=" + taskDone);
-                if (!taskDone)
-                    notifyServerForSubChange(status, registrationId);
-                return null;
-            }
-            @Override
-            protected void onPostExecute(Void result) {
-
-                taskDone = true;
-            }
-
-        }.execute(null, null, null);
+        if (asyncSubChange == null) {
+            asyncSubChange = new AsyncSubChange(status, registrationId);
+            asyncSubChange.execute(registrationId);
+        }
     }
 
     private void notifyServerForSubChange(String status, String registrationId) {

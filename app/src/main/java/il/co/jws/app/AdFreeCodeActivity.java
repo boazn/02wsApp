@@ -72,7 +72,7 @@ public class AdFreeCodeActivity extends Activity {
     private void saveGuid(){
         SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(Config.PREFS_SUBGUID, txtCode.getText().toString());
+        editor.putString(Config.PREFS_SUBGUID_LEGACY, txtCode.getText().toString());
         editor.commit();
         new AsyncTask<Void, Void, Void>() {
             @Override
@@ -85,7 +85,7 @@ public class AdFreeCodeActivity extends Activity {
 
     private void LoadGuid(){
         SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
-        txtCode.setText(prefs.getString(Config.PREFS_SUBGUID, ""));
+        txtCode.setText(prefs.getString(Config.PREFS_SUBGUID_LEGACY, ""));
     }
 
     protected void notifyServerForSubChange(String sGuid) {

@@ -85,7 +85,7 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
             c.sigtitle = sigweather.getJSONObject(0).getString("sigtitle" + lang);
             c.sigext = sigweather.getJSONObject(0).getString("sigext" + lang);
         }
-        c.date = current.getString("date" + lang);
+        c.date = current.getString("daytime" + lang);
         c.isRaining = states.getString("israining").isEmpty() ? false : true;
         c.isLight = current.getString("islight").isEmpty() ? false : true;
         c.isWindy = current.getString("iswindy").isEmpty() ? false : true;
@@ -244,7 +244,7 @@ public class DownloadJson extends AsyncTask<String, Void, String> {
         }
         else
         {
-            Log.v(TAG, "currentTS: " + currentTS + " (currentTS - lastSoundForecast)=" + (currentTS - lastSoundForecast) + " lastForecastUpdate:" + c.lastForecastUpdate*1000 + " currentTS - lastForecastUpdate = " + (currentTS -  c.lastForecastUpdate*1000) + " >= " + Config.TIME_SOUND_ALERT_INTERVAL);
+            Log.v(TAG, "currentTS: " + currentTS + " (currentTS - lastSoundForecast)=" + (currentTS - lastSoundForecast) + " lastForecastUpdate:" + c.lastForecastUpdate*1000 + " currentTS - lastForecastUpdate = " + (currentTS -  c.lastForecastUpdate*1000) + " < " + Config.TIME_SOUND_ALERT_INTERVAL);
         }
 
         if (currentTS - lastSoundAlert < Config.TIME_SOUND_ALERT_INTERVAL) {

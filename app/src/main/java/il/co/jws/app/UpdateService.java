@@ -57,13 +57,16 @@ public class UpdateService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        background.interrupt();
+        if (background != null)
+            background.interrupt();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
 
+        if (intent == null)
+            return Service.START_REDELIVER_INTENT;
         savedIntent = intent;
         int[] ids = savedIntent.getIntArrayExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS);
         String AppWidgetType = savedIntent.getStringExtra(Config.WIDGET_TYPE);

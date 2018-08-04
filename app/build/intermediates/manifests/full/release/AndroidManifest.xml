@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="il.co.jws.app"
     android:installLocation="auto"
-    android:versionCode="49"
-    android:versionName="5.1" >
+    android:versionCode="54"
+    android:versionName="5.5" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -32,7 +32,7 @@
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
-        android:name="android.support.multidex.MultiDexApplication"
+        android:name="il.co.jws.app.MainApplication"
         android:allowBackup="true"
         android:debuggable="false"
         android:icon="@drawable/ic_launcher"
@@ -129,10 +129,11 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/rect_appwidget_info" />
         </receiver>
-        <receiver android:name="il.co.jws.app.ScreenReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
+        <receiver
+            android:name="il.co.jws.app.ScreenReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
         </receiver>
 
         <service android:name="il.co.jws.app.UpdateService" />

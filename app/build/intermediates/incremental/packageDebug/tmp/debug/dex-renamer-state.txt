@@ -1,4 +1,4 @@
-#Sat Jul 28 13:13:07 IDT 2018
+#Fri Aug 03 06:11:18 IDT 2018
 path.3=classes.dex
 path.2=classes.dex
 path.1=classes.dex
@@ -7,7 +7,7 @@ renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.3=D\:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\63
-base.2=D\:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\66
-base.1=D\:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\65
-base.0=D\:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\64
+base.3=D\:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\80
+base.2=D\:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\82
+base.1=D\:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\81
+base.0=D\:\\Users\\boaz.NEW-PC\\StudioProjects\\02WSApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\83

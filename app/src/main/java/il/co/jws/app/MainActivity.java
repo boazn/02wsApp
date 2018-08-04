@@ -13,19 +13,25 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.app.NotificationChannel;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.annotation.UiThread;
@@ -59,12 +65,16 @@ import com.google.firebase.crash.FirebaseCrash;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.widget.Toast;
 
+import static il.co.jws.app.MainViewController.getAppVersion;
 import static il.co.jws.app.MainViewController.printStacktrace;
 import static il.co.jws.app.UpdateService.TAG;
 
@@ -98,7 +108,6 @@ public class MainActivity extends Activity implements BillingProvider {
     boolean replyFromAlerts = false;
     boolean isFromUpload = false;
     boolean isFromAdFreeCode = false;
-    private BroadcastReceiver mReceiver;
 
     @Override
     protected  void onNewIntent(Intent intent) {
@@ -123,13 +132,18 @@ public class MainActivity extends Activity implements BillingProvider {
 
 
     @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleHelper.onAttach(base));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseMessaging.getInstance().subscribeToTopic("02wsMessages");
         FirebaseInstanceId.getInstance().getToken();
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        registerScreenReceiver();
+        //registerScreenReceiver();
         // Start the controller and load game data
         mViewController = new MainViewController(this, getApplicationContext(), mFirebaseAnalytics);
         mViewController.createNotificationChannel();
@@ -146,21 +160,8 @@ public class MainActivity extends Activity implements BillingProvider {
         lang = prefs.getInt(Config.PREFS_LANG, 1);
         //display
         setContentView(R.layout.activity_main);
-        mNavTitles = getResources().getStringArray(R.array.navItems);
-        TypedArray typedArray = getResources().obtainTypedArray(R.array.array_drawer_icons);
-        NavDrawerItem[] NavDrawerList = new NavDrawerItem[mNavTitles.length];
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerList = findViewById(R.id.left_drawer);
-        for (int i = 0; i < mNavTitles.length; i++) {
-
-            NavDrawerItem item = new NavDrawerItem(typedArray.getResourceId(i, -1), mNavTitles[i]);
-            NavDrawerList[i] = item;
-        }
-
-        // Set the adapter for the list view
-        mDrawerList.setAdapter(new NavDrawerAdapter(this, R.layout.drawer_list_item, NavDrawerList));
-        // Set the list's click listener
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
@@ -190,6 +191,9 @@ public class MainActivity extends Activity implements BillingProvider {
             getActionBar().setDisplayHomeAsUpEnabled(true);
             getActionBar().setHomeButtonEnabled(true);
         }
+        // Set the list's click listener
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
         mSwipeRefreshLayout = findViewById(R.id.swipe_container);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -247,7 +251,6 @@ public class MainActivity extends Activity implements BillingProvider {
                             mSwipeRefreshLayout.setEnabled(true);
                         }
                         break;
-
                     case MotionEvent.ACTION_DOWN:
                         Log.v(Config.TAG, "ACTION_DOWN" + webview.getScrollY());
                         if (webview.getScrollY() > 0) {
@@ -261,6 +264,13 @@ public class MainActivity extends Activity implements BillingProvider {
                         mSwipeRefreshLayout.setEnabled(true);
                         break;
                 }
+                WebView.HitTestResult hr = ((WebView)v).getHitTestResult();
+                if (hr == null)
+                    return false;
+                if (hr.getExtra()!=null)
+                    if (hr.getExtra().contains("opensettings"))
+                        openOptionsMenu();
+                    Log.i(TAG, "getExtra = "+ hr.getExtra() + "\t\t Type=" + hr.getType());
                 return false;
             }
         });
@@ -284,11 +294,56 @@ public class MainActivity extends Activity implements BillingProvider {
 
     }
 
+    private void updateViews(String languageCode) {
+        Context context = LocaleHelper.setLocale(this, languageCode);
+        Resources resources = context.getResources();
+
+        MenuItem NotifItem = mmenu.findItem(R.id.action_notifications);
+        MenuItem NotifRainItem = mmenu.findItem(R.id.action_rain_notifications);
+        MenuItem NotifTips = mmenu.findItem(R.id.action_tips_notifications);
+        MenuItem LangItem = mmenu.findItem(R.id.action_language);
+        MenuItem AlertSoundItem = mmenu.findItem(R.id.action_alertsound);
+        MenuItem SoundItem = mmenu.findItem(R.id.action_sound);
+        MenuItem VibrationItem = mmenu.findItem(R.id.action_vibration);
+        MenuItem FullTextItem = mmenu.findItem(R.id.action_force_fulltext);
+        MenuItem ClothItem = mmenu.findItem(R.id.action_cloth);
+        MenuItem FontItem = mmenu.findItem(R.id.change_font);
+        MenuItem TempItem = mmenu.findItem(R.id.action_temp);
+        MenuItem openCameraItem = mmenu.findItem(R.id.action_opencamera);
+        MenuItem openGalleryItem = mmenu.findItem(R.id.action_opengallery);
+        ClothItem.setTitle(resources.getString(R.string.cloth));
+        FullTextItem.setTitle(resources.getString(R.string.force_fulltext));
+        NotifItem.setTitle(resources.getString(R.string.notifications));
+        NotifRainItem.setTitle(resources.getString(R.string.rain_notifications));
+        NotifTips.setTitle(resources.getString(R.string.tips_notifications));
+        LangItem.setTitle(resources.getString(R.string.language));
+        AlertSoundItem.setTitle(resources.getString(R.string.alert_sound));
+        SoundItem.setTitle(resources.getString(R.string.sound));
+        VibrationItem.setTitle(resources.getString(R.string.vibration));
+        FontItem.setTitle(resources.getString(R.string.changeFontSize));
+        openCameraItem.setTitle(resources.getString(R.string.opencamera));
+        openGalleryItem.setTitle(resources.getString(R.string.opengallery));
+        mNavTitles = resources.getStringArray(R.array.navItems);
+        TypedArray typedArray = getResources().obtainTypedArray(R.array.array_drawer_icons);
+        NavDrawerItem[] NavDrawerList = new NavDrawerItem[mNavTitles.length];
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        mDrawerList = findViewById(R.id.left_drawer);
+        for (int i = 0; i < mNavTitles.length; i++) {
+
+            NavDrawerItem item = new NavDrawerItem(typedArray.getResourceId(i, -1), mNavTitles[i]);
+            NavDrawerList[i] = item;
+        }
+
+        // Set the adapter for the list view
+        mDrawerList.setAdapter(new NavDrawerAdapter(this, R.layout.drawer_list_item, NavDrawerList));
+        setTitle(resources.getString(R.string.app_name));
+    }
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
-        mDrawerToggle.syncState();
+          mDrawerToggle.syncState();
     }
 
     /**
@@ -323,6 +378,23 @@ public class MainActivity extends Activity implements BillingProvider {
         bld.create().show();
     }
 
+    private void setLocale(){
+        String locale = "";
+        SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
+        int lang = prefs.getInt(Config.PREFS_LANG, 1);
+        switch (lang) {
+            case 0:
+                locale = "en";
+                break;
+            case 1:
+                locale = "iw";
+        }
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(Config.PREFS_LANG_CODE, locale);
+        editor.commit();
+        updateViews(locale);
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -335,6 +407,7 @@ public class MainActivity extends Activity implements BillingProvider {
         SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         lang = prefs.getInt(Config.PREFS_LANG, 1);
+
         tempunit = prefs.getString(Config.PREFS_TEMPUNIT, Config.C_TEMPUNIT);
         boolean boolgetNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS, true);
         boolean boolgetRainNotifications = prefs.getBoolean(Config.PREFS_NOTIFICATIONS_RAIN, false);
@@ -407,8 +480,9 @@ public class MainActivity extends Activity implements BillingProvider {
             }
         });
         doRefresh(isFromAlerts, false);
-        int iEntries = prefs.getInt(Config.PREFS_ENTRIES, 0);
-        editor.putInt(Config.PREFS_ENTRIES,++iEntries);
+        setLocale();
+        int iEntries = prefs.getInt(Config.PREFS_ENTRIES+mViewController.getAppVersion(this), 0);
+        editor.putInt(Config.PREFS_ENTRIES+mViewController.getAppVersion(this),++iEntries);
         editor.commit();
         if (!(prefs.getString(Config.ACTIVE_SUB_ID, null) == null)){
             long currentTS = new java.sql.Timestamp(System.currentTimeMillis()).getTime();
@@ -431,7 +505,7 @@ public class MainActivity extends Activity implements BillingProvider {
         //nav = new ScaleDrawable(nav, 0, 50, 50).getDrawable();
         //nav.setBounds(0, 0, 50, 50);
         // Tell our droid buddy where we want him to appear
-        final Rect navTarget = new Rect(280, 350, 0 , 0);
+        final Rect navTarget = new Rect(260, 350, 0 , 0);
 
         final Rect shorttermforecastTarget = new Rect(0, 0, 100 , 100);
         // Using deprecated methods makes you look way cool
@@ -444,9 +518,11 @@ public class MainActivity extends Activity implements BillingProvider {
         adfreeTarget.offset(display.getWidth()-150, (int) (0.8* display.getHeight()));
         final Rect settingsTarget = new Rect(0, 0, 100 , 100);
         settingsTarget.offset(display.getWidth()-130, 120);
+
         new Handler().post(new Runnable() {
             @Override
             public void run() {
+                //openOptionsMenu();
                 TapTargetSequence ts =  new TapTargetSequence(MainActivity.this)
                         .targets(
 
@@ -458,44 +534,49 @@ public class MainActivity extends Activity implements BillingProvider {
                                 //TapTarget.forToolbarMenuItem(toolbar, R.id.action_rain_notifications, "This is a short term forecast", "As you can see, it has gotten pretty dark around here...").id(2),
                                 // You can also target the overflow button in your toolbar
                                 TapTarget.forBounds(settingsTarget , getResources().getString(R.string.guide_settings_title), getResources().getString(R.string.guide_settings_desc))
-                                        .outerCircleAlpha(0.96f)
+                                        .outerCircleAlpha(0.88f)
                                         .outerCircleColor(R.color.gray)
                                         .targetCircleColor(R.color.white)
-                                        .targetRadius(60)
+                                        .targetRadius(45)
                                         .cancelable(false)
+                                        .dimColor(R.color.blue)
                                         .textColor(R.color.black).icon(getResources().getDrawable(R.drawable.icons8_menu_vertical_50)).id(1),
                                 // This tap target will target the back button, we just need to pass its containing toolbar
                                 //TapTarget.forToolbarNavigationIcon(toolbar, "navigation button", "desc for back button").textColor(android.R.color.white).id(4),
                                 TapTarget.forBounds(shorttermforecastTarget, getResources().getString(R.string.guide_shorttermalerts_title), getResources().getString(R.string.guide_shorttermalerts_desc))
-                                        .outerCircleAlpha(0.96f)
+                                        .outerCircleAlpha(0.88f)
                                         .outerCircleColor(R.color.gray)
                                         .targetCircleColor(R.color.white)
-                                        .targetRadius(60)
+                                        .targetRadius(45)
                                         .textColor(R.color.black)
+                                        .dimColor(R.color.blue)
                                         .cancelable(false)
                                         .icon(getResources().getDrawable(R.drawable.checkbox)).id(2),
                                 TapTarget.forBounds(soundTarget, getResources().getString(R.string.guide_soundTarget_title), getResources().getString(R.string.guide_soundTarget_desc))
-                                        .outerCircleAlpha(0.96f)
+                                        .outerCircleAlpha(0.88f)
                                         .outerCircleColor(R.color.gray)
                                         .targetCircleColor(R.color.white)
-                                        .targetRadius(60)
+                                        .targetRadius(45)
                                         .textColor(R.color.black)
+                                        .dimColor(R.color.blue)
                                         .cancelable(false)
                                         .icon(getResources().getDrawable(R.drawable.checkbox)).id(3),
                                 TapTarget.forBounds(adfreeTarget, getResources().getString(R.string.guide_adfreeTarget_title), getResources().getString(R.string.guide_adfreeTarget_desc))
-                                        .outerCircleAlpha(0.96f)
+                                        .outerCircleAlpha(0.88f)
                                         .outerCircleColor(R.color.gray)
                                         .targetCircleColor(R.color.white)
-                                        .targetRadius(60)
+                                        .targetRadius(45)
                                         .textColor(R.color.black)
+                                        .dimColor(R.color.blue)
                                         .cancelable(false)
                                         .icon(getResources().getDrawable(R.drawable.checkbox)).id(4),
                                 TapTarget.forBounds(navTarget, getResources().getString(R.string.guide_navigationdrawer_title), getResources().getString(R.string.guide_navigationdrawer_desc))
-                                        .outerCircleAlpha(0.96f)
+                                        .outerCircleAlpha(0.88f)
                                         .outerCircleColor(R.color.gray)
                                         .targetCircleColor(R.color.white)
-                                        .targetRadius(60)
+                                        .targetRadius(45)
                                         .textColor(R.color.black)
+                                        .dimColor(R.color.blue)
                                         .cancelable(false)
                                         .icon(nav).id(5))
                         .listener(new TapTargetSequence.Listener() {
@@ -505,6 +586,7 @@ public class MainActivity extends Activity implements BillingProvider {
                             public void onSequenceFinish() {
                                 // Yay
                                 Log.d("TapTargetView", "finished");
+                                openOptionsMenu();
 
 
                             }
@@ -555,6 +637,7 @@ public class MainActivity extends Activity implements BillingProvider {
                 ts.start();
 
             }
+
         });
 
         return true;
@@ -564,8 +647,8 @@ public class MainActivity extends Activity implements BillingProvider {
         long currentTS = new java.sql.Timestamp(System.currentTimeMillis()).getTime();
         SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        long iLast_check_in_app_billing= prefs.getLong(Config.LAST_CHECK_IN_APP_BILLING, 0);
         editor.putLong(Config.LAST_CHECK_IN_APP_BILLING, currentTS);
+        editor.commit();
         mBillingActivity = BillingActivity.SUBS_QUERY;
         mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
 
@@ -578,11 +661,14 @@ public class MainActivity extends Activity implements BillingProvider {
         }
       super.onDestroy();
       try {
+
           mViewController.trimCache(); //if trimCache is static
       } catch (Exception e) {
         Log.i(Config.TAG, "onDestroy" + e.getMessage());
         FirebaseCrash.report(e);
       }
+
+
     }
 
     @Override
@@ -659,11 +745,15 @@ public class MainActivity extends Activity implements BillingProvider {
          else if (item.getItemId() == R.id.action_opencamera) {
             Intent intent = new Intent(this, CameraActivity.class);
             intent.putExtra("type", Config.CAMERA_CHOSEN);
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
             this.startActivity(intent);
          }
         else if (item.getItemId() == R.id.action_opengallery) {
             Intent intent = new Intent(this, CameraActivity.class);
             intent.putExtra("type", Config.GALLERY_CHOSEN);
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
             this.startActivity(intent);
         }
         else if (item.getItemId() == R.id.change_font) {
@@ -690,7 +780,8 @@ public class MainActivity extends Activity implements BillingProvider {
             {
                 mViewController.cancelSubscription(BillingConstants.SKU_AD_FREE, prefs.getString(Config.PREFS_SUB_ID, ""));
                 mViewController.notifySubChange("0");
-                editor.putString(Config.ACTIVE_SUB_ID, null);
+                editor.putString(Config.ACTIVE_SUB_ID, "");
+                editor.putString(Config.PREFS_SUB_ID, "");
                 enter_codeItem.setChecked((yearlyItem.isChecked())||(adfree_monthly.isChecked()));
 
             }
@@ -811,11 +902,13 @@ public class MainActivity extends Activity implements BillingProvider {
         }
         else if (item.getItemId() == R.id.shorttermalerts_combined){
             // item check status is based on sons
-            boolean setAlerts = item.isChecked()&&(isPremiumYearly()||isPremiumPurchased());
-               editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, setAlerts);
+               editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, item.isChecked());
                editor.commit();
-               //put the same as pref status
-               item.setChecked(setAlerts);
+               if (item.isChecked()){
+                   mBillingActivity = BillingActivity.ADFREE_CLICK;
+                   mBillingManager = new BillingManager(this, mViewController.getUpdateListener());
+               }
+
             mViewController.toggleNotifications();
             return true;
 
@@ -893,6 +986,7 @@ public class MainActivity extends Activity implements BillingProvider {
             mBillingManager.queryPurchases();
 
         }
+        editor.commit();
     }
 
      private class SkuDetailsResponse implements SkuDetailsResponseListener {
@@ -934,30 +1028,32 @@ public class MainActivity extends Activity implements BillingProvider {
                 webview.loadUrl(Config.SITE_URL_BASE + buildQueryString());
             }
             else{
-                Log.i(Config.TAG, "loadUrl= " + webview.getUrl());
-                webview.reload();
+                Log.i(Config.TAG, "loadUrl= " + Config.SITE_URL_BASE + buildQueryString());
+                webview.loadUrl(Config.SITE_URL_BASE + buildQueryString());
             }
         }
 
     }
 
-    protected String buildQueryString(){
+    protected String buildQueryString()  {
         SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
         boolean boolSound = prefs.getBoolean(Config.PREFS_SOUND, false);
         boolean boolFulltext = prefs.getBoolean(Config.PREFS_FULLTEXT, false);
         boolean boolShowCloth = prefs.getBoolean(Config.PREFS_CLOTH, true);
-        String adFreeGUID = prefs.getString(Config.PREFS_SUBGUID, "");
+        String adFreeGUID = prefs.getString(Config.PREFS_SUBGUID_LEGACY, "");
+        String strActiveSub = prefs.getString(Config.ACTIVE_SUB_ID, "");
         tempunit = prefs.getString(Config.PREFS_TEMPUNIT, Config.C_TEMPUNIT);
         lang = prefs.getInt(Config.PREFS_LANG, 1);
         String fulltext = "&fullt=", sound = "&s=", cloth = "&c=", temp = "&tempunit=" + tempunit, guid;
-        guid = (adFreeGUID.length() > 0) ? "&reg_id=" + mViewController.getRegistrationId(this) : "";
+        guid = (adFreeGUID.length() > 0 || strActiveSub.length() > 0) ? "&reg_id=" + mViewController.getRegistrationId(this) : "";
         fulltext += boolFulltext ? "1" : "0";
         sound += boolSound ? "1" : "0";
         cloth += boolShowCloth ? "1" : "0";
+        Log.i(Config.TAG, "strActiveSub= " +strActiveSub + " adFreeGUID=" + adFreeGUID);
         return lang + fulltext + sound + cloth + temp + guid;
     }
 
-    protected void doExtUrl (String url){
+    protected void doExtUrl (String url) {
         webview = (WebView) findViewById(R.id.webview);
         webview.loadUrl(url);
     }
@@ -989,6 +1085,7 @@ public class MainActivity extends Activity implements BillingProvider {
         editor.putInt(Config.PREFS_LANG, lang);
         editor.commit();
         item.setChecked(true);
+        setLocale();
         doRefresh(true);
         mViewController.toggleNotifications();
     }
@@ -1075,7 +1172,7 @@ public class MainActivity extends Activity implements BillingProvider {
         return "";
     }
 
-    private boolean isUserWantsAlerts(){
+    private boolean isUserWantsAlertsWithAdfree(){
         SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
         return (isPremiumYearly()||isPremiumPurchased())&&prefs.getBoolean(Config.PREFS_NOTIFICATIONS_RAIN, false);
     }
@@ -1084,11 +1181,18 @@ public class MainActivity extends Activity implements BillingProvider {
         //Toast.makeText(MainActivity.this, Str, Toast.LENGTH_LONG).show();
         SharedPreferences prefs = this.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(Config.PREFS_APPROVED, isPremiumPurchased()? 1 : isAlertsOnly()? 1: 0);
+        String ActiveSubIdUntilNow = prefs.getString(Config.ACTIVE_SUB_ID, null);
+        editor.putInt(Config.PREFS_APPROVED, (isAlertsOnly()||isAlertsYearlyOnly()||isUserWantsAlertsWithAdfree()) ? 1 : 0);
         editor.putBoolean(Config.PREFS_ADFREE, isPremiumPurchased());
         editor.putString(Config.PREFS_SUB_ID, getSubsID(purchaseList));
-        if (purchaseList.isEmpty())
+        if (purchaseList.isEmpty()) {
             editor.putString(Config.ACTIVE_SUB_ID, null);
+            editor.putString(Config.PREFS_SUBGUID_LEGACY, null);
+            if (ActiveSubIdUntilNow != null){//discovered no longer subscribed
+                mViewController.notifySubChange("0");
+            }
+        }
+        editor.commit();
 
         MenuItem NotifRainItem = mmenu.findItem(R.id.action_rain_notifications);
         MenuItem shorttermalertsMonthlyItem = mmenu.findItem(R.id.shorttermalerts_monthly);
@@ -1097,31 +1201,52 @@ public class MainActivity extends Activity implements BillingProvider {
         MenuItem AdfreeItem = mmenu.findItem(R.id.enter_code);
         MenuItem adfreeMonthlyItem = mmenu.findItem(R.id.adfree_monthly);
         MenuItem adfreeYearlyItem = mmenu.findItem(R.id.adfree_yearly);
-        NotifRainItem.setChecked(isAlertsOnly()||isAlertsYearlyOnly()||isUserWantsAlerts());
+        NotifRainItem.setChecked(isAlertsOnly()||isAlertsYearlyOnly()||isUserWantsAlertsWithAdfree());
         shorttermalertsMonthlyItem.setChecked(isAlertsOnly());
         shorttermalertsYearlyItem.setChecked(isAlertsYearlyOnly());
         AdfreeItem.setChecked(isPremiumPurchased()||isPremiumYearly());
         adfreeMonthlyItem.setChecked(isPremiumPurchased());
         adfreeYearlyItem.setChecked(isPremiumYearly());
-        shorttermalertsCombined.setChecked(isUserWantsAlerts());
+        shorttermalertsCombined.setChecked(isUserWantsAlertsWithAdfree());
 
         if (BillingActivity.ALERTS_CLICK.equals(mBillingActivity)){
             editor.putString(Config.ACTIVE_SUB_ID, BillingConstants.SKU_ALERTS);
+            editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, true);
+            editor.putInt(Config.PREFS_APPROVED, 1);
+            editor.commit();
             mViewController.toggleNotifications();
         }
         else if (BillingActivity.ADFREE_CLICK.equals(mBillingActivity)){
             editor.putString(Config.ACTIVE_SUB_ID, BillingConstants.SKU_AD_FREE);
+            editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, true);
+            editor.commit();
             mViewController.notifySubChange("1");
+            doRefresh(true);
         }
         else if (BillingActivity.ALERTS_YEARLY_CLICK.equals(mBillingActivity)){
             editor.putString(Config.ACTIVE_SUB_ID, BillingConstants.SKU_ALERTS_YEARLY);
+            editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, true);
+            editor.putInt(Config.PREFS_APPROVED, 1);
+            editor.commit();
             mViewController.toggleNotifications();
         }
         else if (BillingActivity.ADFREE_YEARLY_CLICK.equals(mBillingActivity)){
             editor.putString(Config.ACTIVE_SUB_ID, BillingConstants.SKU_AD_FREE_YEARLY);
+            editor.putBoolean(Config.PREFS_NOTIFICATIONS_RAIN, true);
+            editor.commit();
             mViewController.notifySubChange("1");
+            doRefresh(true);
         }
-        editor.commit();
+        else if (BillingActivity.SUBS_QUERY.equals(mBillingActivity)) {
+
+        }
+        else {//cancel subscription
+            mViewController.notifySubChange("0");
+            editor.putString(Config.PREFS_SUBGUID_LEGACY, "");
+            editor.putString(Config.ACTIVE_SUB_ID, "");
+            editor.commit();
+        }
+
     }
 
 
@@ -1163,7 +1288,8 @@ public class MainActivity extends Activity implements BillingProvider {
         @Override
         protected void onPostExecute(String args) {
             // TODO Auto-generated method stub
-            pDialog.dismiss();
+            if (pDialog != null)
+                pDialog.dismiss();
             SharedPreferences prefs = context.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
             int lang = prefs.getInt(Config.PREFS_LANG, 1);
             share = new Intent(Intent.ACTION_SEND);
@@ -1181,15 +1307,7 @@ public class MainActivity extends Activity implements BillingProvider {
     @Override
     protected void onStop()
     {
-        try {
-            unregisterReceiver(mReceiver);
-        }
-        catch (IllegalArgumentException e){
-            printStacktrace(e);
-        }
-        catch (Exception e) {
-            printStacktrace(e);
-        }
+
         super.onStop();
     }
 
@@ -1208,25 +1326,8 @@ public class MainActivity extends Activity implements BillingProvider {
 
     @Override
     protected void onPause() {
-        // WHEN THE SCREEN IS ABOUT TO TURN OFF
-        if (ScreenReceiver.wasScreenOn) {
-            // THIS IS THE CASE WHEN ONPAUSE() IS CALLED BY THE SYSTEM DUE TO A SCREEN STATE CHANGE
-            Log.i(Config.TAG,"SCREEN TURNED OFF");
-            registerScreenReceiver();
-        } else {
-            // THIS IS WHEN ONPAUSE() IS CALLED WHEN THE SCREEN STATE HAS NOT CHANGED
-        }
-        super.onPause();
+      super.onPause();
     }
-
-    protected void registerScreenReceiver(){
-        final IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
-        filter.addAction(Intent.ACTION_SCREEN_OFF);
-        filter.addAction(Intent.ACTION_USER_PRESENT);
-        mReceiver = new ScreenReceiver();
-        registerReceiver(mReceiver, filter);
-    }
-
 
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -1279,7 +1380,17 @@ public class MainActivity extends Activity implements BillingProvider {
                     doUrl("snow.php");
                     break;
                 case 10:
-                    doExtUrl("https://m.youtube.com/channel/UCcFdTuHfckfOsCy7MwbY9vQ");
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse("https://www.youtube.com/channel/UCcFdTuHfckfOsCy7MwbY9vQ"));
+                    intent.setPackage("com.google.android.youtube");
+                    PackageManager manager = getApplicationContext().getPackageManager();
+                    List<ResolveInfo> infos = manager.queryIntentActivities(intent, 0);
+                    if (infos.size() > 0) {
+                        startActivity(intent);
+                    }else{
+                        //No Application can handle your intent
+                        doExtUrl("https://m.youtube.com/channel/UCcFdTuHfckfOsCy7MwbY9vQ");
+                    }
                     break;
                 default:
                     doUrl("");

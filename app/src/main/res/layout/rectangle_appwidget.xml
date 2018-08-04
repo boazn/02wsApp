@@ -31,61 +31,65 @@
         android:layout_gravity="center_vertical">
 
         <TextView
+            android:id="@+id/textViewUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/textViewUp"
             android:layout_gravity="center_horizontal"
-            android:textAlignment="center"
             android:gravity="center_vertical"
             android:shadowColor="#474141"
-            android:textColor="#ffffff"
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="2"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
             android:id="@+id/textViewAboveTemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:textAlignment="center"
             android:shadowColor="#474141"
-            android:textColor="#ffffff"
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="2"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/textViewTemp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/textViewTemp"
             android:layout_gravity="center_horizontal"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:textIsSelectable="false"
             android:shadowColor="#474141"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ffffff"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="1" />
+            android:textIsSelectable="false"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/textViewBelowTemp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/textViewBelowTemp"
             android:layout_gravity="center_horizontal"
-            android:textAlignment="center"
             android:shadowColor="#474141"
-            android:textColor="#ffffff"
-            android:shadowDx="1"
-            android:shadowDy="1"
+            android:shadowDx="2"
+            android:shadowDy="2"
             android:shadowRadius="1"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
     </LinearLayout>

@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.os.PersistableBundle;
+import android.util.Log;
 
 public class Util {
 
@@ -22,6 +23,7 @@ public class Util {
         //builder.setRequiresDeviceIdle(true); // device should be idle
         //builder.setRequiresCharging(false); // we don't care if the device is charging or not
         JobScheduler jobScheduler =  (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+        Log.v("JOB", "scheduleJob: " + bundle.getString(Config.WIDGET_TYPE) + " length:" + bundle.getIntArray(AppWidgetManager.EXTRA_APPWIDGET_IDS).length);
         jobScheduler.schedule(builder.build());
     }
 

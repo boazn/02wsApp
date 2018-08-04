@@ -27,7 +27,7 @@
     <string name="cloth">Cloth</string>
     <string name="vibration">Vibration on alerts</string>
     <string name="alert_sound">Notification sound</string>
-    <string name="sound">Sound (of rain, etc)</string>
+    <string name="sound">Sound of rain, dust, wind, forecast</string>
     <string name="lighttrain">light train</string>
     <string name="lighttrainpassing">light train passing</string>
     <string name="lighttrainbell">light train bell</string>

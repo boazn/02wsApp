@@ -7,7 +7,7 @@
     <string name="loading">טוען</string>
     <string name="notifications">התראה לימים הבאים - תחזית ועוד</string>
     <string name="rain_notifications">התראה מיידית - גשם ועוד</string>
-    <string name="tips_notifications">טיפים</string>
+    <string name="tips_notifications">התראה של טיפים</string>
     <string name="forum">פורום</string>
     <string name="hebrew">עברית</string>
     <string name="eng">eng</string>
@@ -33,7 +33,7 @@
     <string name="JerOfGold">ירושלים של זהב</string>
     <string name="JerOfGoldDrugs">ירושלים של זהב על טריפים</string>
     <string name="vop">voice of peace</string>
-    <string name="sound">סאונד (של גשם למשל)</string>
+    <string name="sound">צליל של גשם, רוח, אבק ותחזית</string>
     <string name="nosound">טיפת גשם במעופה</string>
     <string name="missing">שכחת למלא את השדות הריקים</string>
     <string name="uploaded">התמונה עלתה. תודה</string>
@@ -62,14 +62,14 @@
     <string name="channel_description">אינפורמציה של תחזית ארוכת טווח וקצרת טווח, בנוסף לטיפים ועוד</string>
     <string name="guide_settings_title">כפתור הגדרות</string>
     <string name="guide_settings_desc">כאן אפשר לשנות התראות, שפה, גודל גופן והרשמה לשירותים</string>
-    <string name="guide_shorttermalerts_title">התראות קצרות טווח</string>
-    <string name="guide_shorttermalerts_desc">בתוך תפריט ההגדרות אפשר להירשם להתראות קצרות טווח לשעות הקרובות, כמו: גשם מתחיל\נגמר ואירועים נוספים</string>
+    <string name="guide_shorttermalerts_title">התראות מיידיות</string>
+    <string name="guide_shorttermalerts_desc">בתוך תפריט ההגדרות אפשר להירשם להתראות מיידיות לשעות הקרובות, כמו: גשם מתחיל/נגמר ואירועים נוספים</string>
     <string name="guide_navigationdrawer_title">תפריט ניווט</string>
     <string name="guide_navigationdrawer_desc">כאן אפשר להגיע לעמודים נוספים, כמו: פורום, יצירת קשר, תמונות היום, תמונות גולשים ועוד</string>
-    <string name="guide_soundTarget_title">סאונד בוִידְגֶ'ט</string>
-    <string name="guide_soundTarget_desc">תחילה שימו וִידְגֶ'ט קטן או בינוני על המסך. אח"כ בכל פעם שיקרה משהו מעניין יישמע צליל: עורב=>אבק, ינשוף=>אוויר עומד, גשם=>גשם, אפקט רוח=>רוח, צליל רכבת קלה=>התחזית עודכנה. </string>
+    <string name="guide_soundTarget_title">סאונד בוִידְג`ט</string>
+    <string name="guide_soundTarget_desc">תחילה שימו וִידְגֶ`ט קטן או בינוני על המסך. אח"כ בכל פעם שיקרה משהו מעניין יישמע צליל: עורב=>אבק, ינשוף=>אוויר עומד, גשם=>גשם, אפקט רוח=>רוח, צליל רכבת קלה=>התחזית עודכנה. </string>
     <string name="guide_adfreeTarget_title">הסרת פרסומות</string>
-    <string name="guide_adfreeTarget_desc">הקליקו כדי להסיר פרסומות מהאפליקציה (חודשי או שנתי), עיצוב נקי. בנוסף תוכלו לקבל התראות לטווח קצר בתור בונוס.  </string>
+    <string name="guide_adfreeTarget_desc">הקליקו כדי להסיר פרסומות מהאפליקציה (חודשי או שנתי), עיצוב נקי. בנוסף תוכלו לקבל התראות מיידיות בתור בונוס.  </string>
     <string name="monthly">חודשי</string>
     <string name="yearly">שנתי</string>
     <string name="combined">בשילוב בלי פרסומות</string>

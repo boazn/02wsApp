@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -79,8 +80,13 @@ public class LargeAppWidgetProvider extends AppWidgetProvider {
 
         Log.i(TAG, "Click listeners added in onUpdate");
 
-        // Update the widget displayed content using the Service MyUpdateService
-        context.startService(intent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            //Util.scheduleJob(context, rectappWidgetIds, Config.WIDGET_TYPE_RECT);
+            context.startForegroundService(intent);
+        } else {
+            context.startService(intent);
+        }
+
     }
 
          // Called when first instance of AppWidget is added to AppWidget host (normally the

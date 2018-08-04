@@ -30,6 +30,7 @@ public class ScreenReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, final Intent intent) {
         //Log.i(TAG,"ScreenReceiver onReceive");
+        Log.i(TAG," ****** ScreenReceiver onRecieve, action: "+intent.getAction() + " **********");
 
         if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
             // do whatever you need to do here
@@ -39,6 +40,8 @@ public class ScreenReceiver extends BroadcastReceiver {
             if (!isScreenOn(context))
                 return;
            wasScreenOn = true;
+            Log.i(TAG,"ACTION_SCREEN_ON");
+            updateWidgets(context);
 
         } else if(intent.getAction().equals(Intent.ACTION_USER_PRESENT)){
             if (!isScreenOn(context))
@@ -46,7 +49,13 @@ public class ScreenReceiver extends BroadcastReceiver {
             updateWidgets(context);
             Log.i(TAG,"userpresent (unlocked)");
         }
-        Log.i(TAG,"wasScreenOn "+wasScreenOn);
+        else if(intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)){
+            if (!isScreenOn(context))
+                return;
+            updateWidgets(context);
+            Log.i(TAG,"userpresent after boot");
+        }
+
     }
 
     public void updateWidgets(Context context){
@@ -58,8 +67,9 @@ public class ScreenReceiver extends BroadcastReceiver {
         rectwidgetIntent.putExtra(Config.WIDGET_TYPE, Config.WIDGET_TYPE_RECT);
         Log.i(TAG, "discovered " + rectappWidgetIds.length + " " + Config.WIDGET_TYPE_RECT + " " +  (rectappWidgetIds.length > 0 ? rectappWidgetIds[0] : "") );
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            //Util.scheduleJob(context, rectappWidgetIds, Config.WIDGET_TYPE_RECT);
-            context.startForegroundService(rectwidgetIntent);
+            if (rectappWidgetIds.length > 0)
+               // Util.scheduleJob(context, rectappWidgetIds, Config.WIDGET_TYPE_RECT);
+               context.startForegroundService(rectwidgetIntent);
         } else {
             context.startService(rectwidgetIntent);
         }
@@ -72,8 +82,9 @@ public class ScreenReceiver extends BroadcastReceiver {
         smallWidgetIntent.putExtra(Config.WIDGET_TYPE, Config.WIDGET_TYPE_SMALL);
         Log.i(TAG, "discovered " + appWidgetIds.length + " " + Config.WIDGET_TYPE_SMALL + " " +  (appWidgetIds.length > 0 ? appWidgetIds[0] : "") );
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            //Util.scheduleJob(context, appWidgetIds, Config.WIDGET_TYPE_SMALL);
-            context.startForegroundService(smallWidgetIntent);
+            if (appWidgetIds.length > 0)
+               // Util.scheduleJob(context, appWidgetIds, Config.WIDGET_TYPE_SMALL);
+              context.startForegroundService(smallWidgetIntent);
         } else {
             context.startService(smallWidgetIntent);
         }

@@ -4,17 +4,23 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.google.firebase.crash.FirebaseCrash;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import static il.co.jws.app.MainViewController.printStacktrace;
 
 /**
  *
@@ -29,6 +35,9 @@ public class SmallAppWidgetProvider extends AppWidgetProvider {
     public static String SMALL_WIDGET_FREQ_UPDATE = "SMALL_WIDGET_FREQ_UPDATE";
     static AlarmManager myAlarmManager;
     static PendingIntent myPendingIntent;
+    private BroadcastReceiver mReceiver;
+    private static List<BroadcastReceiver> receivers = new ArrayList<BroadcastReceiver>();
+
     @Override
     public void onReceive(Context context, Intent intent) {
         // call to super.onReceive to delegate other widget intents
@@ -89,6 +98,7 @@ public class SmallAppWidgetProvider extends AppWidgetProvider {
         catch (Exception e){
             FirebaseCrash.report(e);
         }
+        registerScreenReceiver(context.getApplicationContext());
     }
 
          // Called when first instance of AppWidget is added to AppWidget host (normally the
@@ -100,6 +110,30 @@ public class SmallAppWidgetProvider extends AppWidgetProvider {
 
         Log.i(TAG, "onEnabled of SmallAppWidgetProvider called. refTimeMS = "
                 + UpdateService.refTimeMS);
+    }
+
+    protected void registerScreenReceiver(Context context){
+        final IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
+        filter.addAction(Intent.ACTION_SCREEN_OFF);
+        filter.addAction(Intent.ACTION_USER_PRESENT);
+
+        try {
+            if (isReceiverRegistered(mReceiver))
+                return;
+            mReceiver = new ScreenReceiver();
+            context.registerReceiver(mReceiver, filter);
+            receivers.add(mReceiver);
+
+        }
+        catch (IllegalArgumentException e){
+            printStacktrace(e);
+        }
+    }
+
+    public boolean isReceiverRegistered(BroadcastReceiver receiver){
+        boolean registered = receivers.contains(receiver);
+        Log.i(getClass().getSimpleName(), "is receiver "+receiver+" registered? "+registered);
+        return registered;
     }
 
          // Called each time an instance of the AppWidget is removed from the host

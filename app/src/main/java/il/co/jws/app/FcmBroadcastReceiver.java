@@ -204,7 +204,8 @@ public class FcmBroadcastReceiver extends com.google.firebase.messaging.Firebase
 
                  mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
                  Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), soundUri);
-                 r.play();
+                 if (r != null)
+                    r.play();
                 return null;
              }
         };

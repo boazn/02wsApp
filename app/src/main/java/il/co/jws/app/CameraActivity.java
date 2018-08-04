@@ -8,11 +8,13 @@ package il.co.jws.app;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -35,6 +37,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.app.AlertDialog;
+
+import com.google.android.gms.auth.GoogleAuthUtil;
+import com.google.android.gms.common.AccountPicker;
 import com.google.firebase.crash.FirebaseCrash;
 
 import org.apache.http.HttpEntity;
@@ -281,22 +286,23 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     private class UploadTask extends AsyncTask<Bitmap, String, String> {
 
         public String getEmailAddress() {
-            if((ContextCompat.checkSelfPermission(CameraActivity.this,
-                    android.Manifest.permission.GET_ACCOUNTS) != PackageManager.PERMISSION_GRANTED)) {
-                ActivityCompat.requestPermissions
-                        (CameraActivity.this, new String[]{
-                                android.Manifest.permission.GET_ACCOUNTS
-                        },MY_PERMISSIONS_REQUEST_GET_ACCOUNT);
-            }
-            Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
-            Account[] accounts = AccountManager.get(CameraActivity.this).getAccounts();
-            for (Account account : accounts) {
-                if (emailPattern.matcher(account.name).matches()) {
-                    return account.name;
+            SharedPreferences prefs = context.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
+            String email = prefs.getString(Config.PREFS_EMAIL, null);
+            if (email != null)
+                return email;
+            Intent intent = AccountPicker.newChooseAccountIntent(null, null,
+                    new String[]{GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE},
+                    false, null, null, null, null);
 
-                }
+            try {
+                startActivityForResult(intent, Config.REQUEST_CODE_EMAIL);
+                email = prefs.getString(Config.PREFS_EMAIL, null);
+                return email;
+            } catch (ActivityNotFoundException e) {
+                // This device may not have Google Play Services installed.
+                // TODO: do something else
             }
-            return "";
+            return null;
         }
         protected String doInBackground(Bitmap... bitmaps) {
             if (bitmaps[0] == null)
@@ -383,7 +389,10 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         protected void onPostExecute(String result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
-            Toast toast = Toast.makeText(CameraActivity.this, Html.fromHtml("<big><em><strong>" + getString(R.string.uploaded) + "</strong></em></big>"), Toast.LENGTH_LONG);
+            SharedPreferences prefs = context.getSharedPreferences(Config.PREFS_NAME, MODE_PRIVATE);
+            Context contexth = LocaleHelper.setLocale(context, prefs.getString(Config.PREFS_LANG_CODE, "iw"));
+            Resources resources = contexth.getResources();
+            Toast toast = Toast.makeText(CameraActivity.this, Html.fromHtml("<big><em><strong>" + resources.getString(R.string.uploaded) + "</strong></em></big>"), Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
 
